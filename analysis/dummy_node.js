@@ -24,16 +24,12 @@ console.log(`[NODE]: ${process.argv[2]}`);
 
 // Catch STDOUT from Python process.
 pythonScript.stdout.on('data', (data) => {
-
   console.log(`[PYTHON]: ${data}`);
-
 });
 
 // Catch errors from Python process.
 pythonScript.stdout.on('error', (err) => {
-
   console.log(`[PYTHON] | ERROR: ${err}`);
-
 });
 
 // Report end of script.
