@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({
 
 
 // Register a route.
-app.post('/api/v1/stock_price_lookup', (req, res, err) => {
+app.post('/api/v1/', (req, res, err) => {
 
   console.log(`Recieved: `, req.body);
 
