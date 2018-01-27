@@ -9,5 +9,5 @@ def echo_input():
     lines = sys.stdin.readlines()
     print(lines)
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     echo_input()
