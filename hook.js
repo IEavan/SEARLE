@@ -48,11 +48,11 @@ app.post('/api/v1/', (req, res, err) => {
   // Set appropriate headers.
   res.set('Content-Type', 'application/json');
 
-  var res = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
+  var responseText = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
 
   res.json({
-    "speech": res,
-     "displayText": res,
+    "speech": responseText,
+     "displayText": responseText,
      "data": {},
      "contextOut": [],
      "source": "none"
