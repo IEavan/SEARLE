@@ -1,0 +1,24 @@
+{
+  "name": "searle_webhook",
+  "version": "0.1.0",
+  "description": "SEARLE webhook for resolving DiagFlow intents into processed user responses.",
+  "main": "hook.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node hook.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IEavan/SEARLE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IEavan/SEARLE/issues"
+  },
+  "homepage": "https://github.com/IEavan/SEARLE#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
