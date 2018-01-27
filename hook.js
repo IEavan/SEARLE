@@ -39,14 +39,20 @@ app.use(bodyParser.urlencoded({
 // Register a route.
 app.post('/api/v1/', (req, res, err) => {
 
+  var params = req.body.result.parameters;
+  var action = req.body.result.action;
+  var actionName = req.body.result.metadata.intentName;
+
   console.log(`Recieved: `, req.body);
 
   // Set appropriate headers.
   res.set('Content-Type', 'application/json');
 
+  var res = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
+
   res.json({
-    "speech": "HI I HAVE PRICING NOW",
-     "displayText": "HI I HAVE PRICING NOW",
+    "speech": res,
+     "displayText": res,
      "data": {},
      "contextOut": [],
      "source": "none"
