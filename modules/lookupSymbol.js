@@ -24,7 +24,14 @@ module.exports = (name, cb) => {
 
     body = JSON.parse(coreResult);
 
-    cb(body.ResultSet.Query);
+    // If there are no results, indicate query failure by returning a null.
+    if (!body.ResultSet.Result || body.ResultSet.Result.length === 0)
+      return cb(null);
+
+    cb({
+      symbol: body.ResultSet.Result[0].symbol,
+      name: body.ResultSet.Result[0].name
+    });
 
   });
 
