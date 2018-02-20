@@ -65,7 +65,7 @@ class Stock_Reader():
     def get_current_attribute(self, ticker, attribute):
         """ Get a simple attribute of a stock from the most recent time frame """
         frame = os.path.join(self.data_path, self.current_frame)
-        return get_attribute(ticker, attribute, frame)
+        return self.get_attribute(ticker, attribute, frame)
 
     def get_attribute_range(self, ticker, attribute, start_time, end_time=None):
         """ Get a list of values for an attribute in chronological order
