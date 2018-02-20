@@ -50,7 +50,7 @@ app.post('/api/v1/', (req, res, err) => {
   console.log(`Recieved: `, req.body);
 
   // Delegate request to be fulfilled.
-  fulfill(intent, params, (result) => {
+  fulfill(action, params, (result) => {
 
     // Set appropriate headers.
     res.set('Content-Type', 'application/json');
