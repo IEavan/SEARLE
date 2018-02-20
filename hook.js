@@ -55,7 +55,7 @@ app.post('/api/v1/', (req, res, err) => {
     // Set appropriate headers.
     res.set('Content-Type', 'application/json');
 
-    log(`OUTPUT:`);
+    console.log(`OUTPUT:`);
 
     console.log(result);
 
