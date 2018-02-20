@@ -6,7 +6,7 @@
         "sector_name": "name",
         "quantity": 10,
     },
-    "attribute": "(spot/volume/open/high/low)",
+    "attribute": "(price/volume/open/high/low)",
     "start_time": unix_timestamp,
     "end_time": unix_timestamp,
 }
