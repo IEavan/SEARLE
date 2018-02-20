@@ -1,1 +1,5 @@
 # SEARLE Financial Assistant
+[![Build Status](https://travis-ci.com/IEavan/SEARLE.svg?token=qKxejX6fx9F25ZCLpQ3v&branch=master)](https://travis-ci.com/IEavan/SEARLE)
+
+This is a chatbot application that answers finacial queries
+and interfaces with the FSTE100 UK index.
