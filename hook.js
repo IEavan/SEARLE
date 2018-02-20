@@ -12,9 +12,13 @@
 // DEPENDENCIES
 const express = require('express');
 const bodyParser = require('body-parser');
+const Core = require('./modules/core');
 
 // Instantiate express instance.
 const app = express();
+
+// Instantiate instance of the core.
+const core = new Core();
 
 // Parsing for our webhook.
 app.use(bodyParser.json());
@@ -45,8 +49,18 @@ app.post('/api/v1/', (req, res, err) => {
 
   console.log(`Recieved: `, req.body);
 
+  // Delegate request to be fulfilled.
+  fulfill(intent, params, (result) => {
+
+    // Set appropriate headers.
+    res.set('Content-Type', 'application/json');
+
+    // Respond with fulfilled intent.
+    res.json(result);
+
+  });
+
   // Set appropriate headers.
-  res.set('Content-Type', 'application/json');
 
   var responseText = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
 
@@ -59,6 +73,26 @@ app.post('/api/v1/', (req, res, err) => {
   });
 
 });
+
+
+// Delegate method for recieving intents and resolving them to discrete functions
+// that will be executed.
+const fulfill = (intent, params, callback) => {
+
+  core.fulfillRequest(intent, params, (result) => {
+
+    // Attach speech & display text.
+    callback({
+      speech: (result.speech ? result.text : ""),
+      displayText: (!result.error ? result.text : result.error),
+      data: {},
+      contextOut: {},
+      source: "Webhook"
+    });
+
+  });
+
+}
 
 // Start listening for requests.
 app.listen(process.env.PORT || 3001);

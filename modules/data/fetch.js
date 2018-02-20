@@ -62,6 +62,7 @@ module.exports = () => {
     //   sentiment: x%,
     //   sources: ['Twitter', 'Reddit', 'Forum', ...]
     // }
+
   }
 
   // Spot price request.
@@ -70,10 +71,7 @@ module.exports = () => {
     // ops template
 
     // ops = {
-    //     time-period: {
-    //       start: { Date }
-    //       end: { Date }
-    //     } (def current),
+    //     symbol: entity,
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
