@@ -17,11 +17,6 @@ module.exports = (name, cb) => {
 
   request.get(getQueryURL(name), (err, res, body) => {
 
-    // // Extract the JSON portion from the string.
-    // // Just matches for the first and last curly brace to ignore the weird text at the beginning.
-    // var coreResult =
-    //   body.slice(body.indexOf('{'), body.length - body.split('').reverse().join('').indexOf('}'));
-
     body = JSON.parse(body);
 
     // If there are no results, indicate query failure by returning a null.
