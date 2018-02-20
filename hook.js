@@ -79,7 +79,7 @@ app.post('/api/v1/', (req, res, err) => {
 // that will be executed.
 const fulfill = (intent, params, callback) => {
 
-  core.fulfillRequest(intent, params, (result) => {
+  core.fulfill(intent, params, (result) => {
 
     // Attach speech & display text.
     callback({
