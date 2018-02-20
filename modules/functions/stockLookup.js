@@ -21,6 +21,8 @@ module.exports = (params) => {
 
     resolveEntity(params.companyName, (resolvedCompany) => {
 
+      if (!resolvedCompany.symbol) return reject(`Could not resolve company into symbol.`);
+
       return resolve(`You want me to perform an ${params.stockLookupType} stock lookup on ${resolvedCompany.name} [${resolvedCompany.symbol}], correct?`);
 
     });
