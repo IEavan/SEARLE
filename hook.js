@@ -61,16 +61,16 @@ app.post('/api/v1/', (req, res, err) => {
   });
 
   // Set appropriate headers.
-
-  var responseText = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
-
-  res.json({
-    "speech": responseText,
-     "displayText": responseText,
-     "data": {},
-     "contextOut": [],
-     "source": "none"
-  });
+  // 
+  // var responseText = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
+  //
+  // res.json({
+  //   "speech": responseText,
+  //    "displayText": responseText,
+  //    "data": {},
+  //    "contextOut": [],
+  //    "source": "none"
+  // });
 
 });
 
