@@ -5,8 +5,7 @@
   "main": "hook.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "start": "node hook.js",
-    "heroku-prebuild": "pip install -r ./requirements.txt"
+    "start": "node hook.js"
   },
   "repository": {
     "type": "git",
