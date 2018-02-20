@@ -61,7 +61,7 @@ app.post('/api/v1/', (req, res, err) => {
   });
 
   // Set appropriate headers.
-  // 
+  //
   // var responseText = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
   //
   // res.json({
@@ -86,7 +86,7 @@ const fulfill = (intent, params, callback) => {
       speech: (result.speech ? result.text : ""),
       displayText: (!result.error ? result.text : result.error),
       data: {},
-      contextOut: {},
+      contextOut: [],
       source: "Webhook"
     });
 
