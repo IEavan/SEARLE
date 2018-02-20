@@ -15,8 +15,11 @@ const { spawn } = require('child_process');
 // Spawn pythonScript, creaitng a pipe for the STDIN, STDOUT and STDERR streams.
 var pythonScript = spawn(`python`, [`dummy_python.py`]);
 
-// Pipe command line args to python process.
-pythonScript.stdin.write(JSON.stringify(process.argv[2]));
+// Pipe each cmdline arg to the python process.
+process.argv.slice(2, process.argv.length).forEach(arg => {
+  pythonScript.stdin.write(JSON.stringify(arg));
+});
+
 pythonScript.stdin.end();
 
 // Report passed arguments.

@@ -6,7 +6,7 @@ import sys
 
 def echo_input():
     """ Simple function to read stdin and echo that to stdout """
-    lines = sys.stdin.readlines()
+    lines = sys.stdin.readline()
     print(lines)
 
 if __name__ == "__main__":
