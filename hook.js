@@ -87,7 +87,7 @@ const fulfill = (intent, params, callback) => {
 
     // Attach speech & display text.
     callback({
-      speech: (result.speech ? result.text : ""),
+      speech: (!result.error ? result.text : result.error),
       displayText: (!result.error ? result.text : result.error),
       data: {},
       contextOut: [],
