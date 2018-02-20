@@ -69,7 +69,7 @@ module.exports = function Core() {
   this.prepareResponse = function(rawResponse, callback){
 
     // Relay response into callback for now.
-    return callback(rawResponse);
+    return callback({text: rawResponse});
 
   };
 
