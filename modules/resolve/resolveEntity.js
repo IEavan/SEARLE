@@ -8,7 +8,7 @@ const lookupSymbol = require('./lookupSymbol');
 const lookupSector = require('./lookupSector');
 
 // Module entry point.
-module.exports = (input, ops) => {
+module.exports = (input, callback, ops) => {
 
   // ops template
 
@@ -24,7 +24,11 @@ module.exports = (input, ops) => {
   // Attempt to resolve input as a company first, with a corresponding code.s
   lookupSymbol(input, (lookupResult) => {
 
+    // TODO: Ensure that the symbol is within the list of FTSE 100 companies.
 
-  })
+    // Pass result to callback.
+    return callback(lookupResult);
+
+  });
 
 }
