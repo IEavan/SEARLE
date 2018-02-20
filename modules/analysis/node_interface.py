@@ -27,3 +27,5 @@ if __name__ == "__main__":
                 input_args["attribute"],
                 frame_name)
         print(result)
+
+    sys.stdout.flush()

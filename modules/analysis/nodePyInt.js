@@ -13,7 +13,7 @@
 // Child process handles spawning new process instances.
 const { spawn } = require('child_process');
 
-var __DEBUG = false;
+var __DEBUG = (process.env.DEBUG ? true : false);
 
 // Define module entry point.
 module.exports = (path, data, args, ops) => {
@@ -27,10 +27,12 @@ module.exports = (path, data, args, ops) => {
       __DEBUG = ops && ops.debug ? ops.debug : false;
 
       // Spawn the child process.
-      var pyProc = spawn((ops && ops.pythonCmd ? ops.pythonCmd : "python"), [path, ...args]);
+      var pyProc = spawn((ops && ops.pythonCmd ? ops.pythonCmd : "python3"), [path, ...args]);
 
       // Report initiation of script.
       log(`${path} spawned with args: ${args}`);
+
+      // console.log(JSON.stringify(data));
 
       // Inject data.
       if (data) pyProc.stdin.write(JSON.stringify(data));
@@ -40,7 +42,18 @@ module.exports = (path, data, args, ops) => {
 
       // On successful data output, resolve the Promise.s
       pyProc.stdout.on('data', (data) => {
-        resolve(JSON.parse(data.toString('utf8')));
+
+        data = data.toString('utf8');
+
+        // Attempt to parse as JSON.
+        try {
+          data = JSON.parse(data);
+        } catch(e){
+          // Data is not JSON. Return raw string.
+          log(`Warning: Data returned by ${path} is not in JSON format.`);
+        }
+
+        resolve(data);
       });
 
       // On error, reject the promise.s
