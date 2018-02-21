@@ -31,7 +31,8 @@ module.exports = (name, cb) => {
         output = {
           name: item.name,
           symbol: item.symbol.replace(`.L`, ``)
-        }
+        };
+        break;
       }
     }
 
