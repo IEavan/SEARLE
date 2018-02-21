@@ -5,6 +5,7 @@
   "main": "hook.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
+    "dev": "concurrently \"npm start\" \"node ./dev/localTunnel.js\"",
     "start": "node hook.js"
   },
   "repository": {
@@ -20,7 +21,9 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
+    "concurrently": "^3.5.1",
     "express": "^4.16.2",
+    "ngrok": "^2.2.26",
     "request": "^2.83.0"
   }
 }

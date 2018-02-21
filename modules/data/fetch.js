@@ -4,7 +4,11 @@
  *  Orchestrates retrieval and output of elementary requests.
  */
 
-module.exports = () => {
+// DEPENDENCIES
+const nodePyInt = require('../analysis/nodePyInt');
+const pyScriptsPath = require('path').resolve('../analysis/');
+
+module.exports = function Fetch() {
 
   // entity template: (follows for all methods below)
   // entity arguments must be resolved before being passed here.
@@ -74,6 +78,16 @@ module.exports = () => {
     //     symbol: entity,
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
+
+    const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface`, null, {cwd: pyScriptsPath});
+
+    console.log(pyScriptsPath);
+
+    return pyStockLookup({
+      request_type: "get_current_attribute",
+      ticker: entity,
+      attribute: ops.type
+    });
 
   }
 

@@ -3,3 +3,8 @@
 
 This is a chatbot application that answers finacial queries
 and interfaces with the FSTE100 UK index.
+
+## APIs
+
+### Webhook
+https://searle-webhook-server.herokuapp.com/api/v1/
