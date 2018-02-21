@@ -5,8 +5,8 @@
  */
 
 // DEPENDENCIES
-const nodePyInt = require('../analysis/nodePyInt');
-const pyScriptsPath = require('path').resolve('../analysis/');
+const nodePyInt = require(require('path').resolve(__dirname, '../analysis/nodePyInt'));
+const pyScriptsPath = require('path').resolve(__dirname, '../analysis/');
 
 module.exports = function Fetch() {
 
@@ -79,14 +79,17 @@ module.exports = function Fetch() {
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
-    const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface`, null, {cwd: pyScriptsPath});
+    console.log(`Recieved fetch: ${entity}`);
 
-    console.log(pyScriptsPath);
+    const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
     return pyStockLookup({
       request_type: "get_current_attribute",
       ticker: entity,
-      attribute: ops.type
+      attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
+    }).then(result => {
+      if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
+      return result;
     });
 
   }

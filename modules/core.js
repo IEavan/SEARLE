@@ -40,7 +40,7 @@ module.exports = function Core() {
       // NOTE: NEED TO CONSIDER WHERE RICH TEXT PAYLOADS WILL FALL UNDER.
 
       // Prepare response into human-readable string for output.
-      this.prepareResponse(rawResponse, (readyResponse) => {
+      this.prepareResponse(rawResponse, {intent: intent, params: params}, (readyResponse) => {
         return callback(readyResponse);
       });
     });
@@ -66,7 +66,7 @@ module.exports = function Core() {
   };
 
   // Prepares response for human-readable output.
-  this.prepareResponse = function(rawResponse, callback){
+  this.prepareResponse = function(rawResponse, request, callback){
 
     // Relay response into callback for now.
     return callback({text: rawResponse});

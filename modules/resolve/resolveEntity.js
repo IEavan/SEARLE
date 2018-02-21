@@ -26,9 +26,18 @@ module.exports = (input, callback, ops) => {
 
     // TODO: Ensure that the symbol is within the list of FTSE 100 companies.
 
+    // Append information about the type of successful lookup that was made.
+    if (lookupResult) lookupResult.entityType = 'company';
+
     // Pass result to callback.
-    return callback(lookupResult);
+    if (callback) return callback(lookupResult);
+
+    return log(`No callback defined for lookupSymbol('${input}').`);
 
   });
 
+}
+
+function log(msg){
+  console.log(`RESOLVE ENTITY | ${msg}`);
 }
