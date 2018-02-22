@@ -18,14 +18,13 @@ class Stock_Reader():
     def get_attribute(self, ticker, attribute, frame):
         """ Access a simple attribute of a stock from a given frame """
         # format inputs
-        attribute = attribute.lower()
+        attribute = attribute.lower().replace(' ', '_')
         ticker = ticker.upper()
 
         with open(frame, 'r') as f:
             for line in f:
                 _ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
                 _ticker = _ticker.strip("'")
-                attribute = attribute.lower().replace(' ', '_')
                 if _ticker == ticker:
                     if attribute == "price":
                         return float(price)
@@ -106,5 +105,4 @@ class Stock_Reader():
 
 if __name__ == "__main__":
     reader = Stock_Reader()
-    # print(reader.get_current_attribute('III', 'price'))
     print(reader.get_current_attribute('III', 'abs_change'))
