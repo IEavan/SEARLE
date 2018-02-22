@@ -20,12 +20,15 @@ class Stock_Reader():
         # format inputs
         attribute = attribute.lower().replace(' ', '_')
         ticker = ticker.upper()
+        found = False
 
         with open(frame, 'r') as f:
             for line in f:
                 _ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
                 _ticker = _ticker.strip("'")
                 if _ticker == ticker:
+                    found = True
+
                     if attribute == "price":
                         return float(price)
                     if attribute == "high":
@@ -43,6 +46,8 @@ class Stock_Reader():
                     else:
                         raise ValueError("attribute " + attribute + "does not exist"
                                 + "allowed values are {price, high, low, volume, last_close, abs_change, per_change}")
+        if not found:
+            return -1
 
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
