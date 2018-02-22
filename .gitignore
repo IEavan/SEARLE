@@ -2,4 +2,4 @@
 *.pyc
 node_modules/*
 node_modules/
-.DS_Store
+.DS_Store__pycache__
