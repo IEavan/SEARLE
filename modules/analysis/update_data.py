@@ -10,7 +10,11 @@ from bs4 import BeautifulSoup
 
 # Constants
 BASE_URL = "http://www.londonstockexchange.com/exchange/prices-and-markets/stocks/summary/company-summary/"
-CSV_HEADER = "Ticker, Price, High, Low, Volume"
+CSV_HEADER = "Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change"
+
+NEWS_URLS = {
+        "stockmarketwire":"http://www.stockmarketwire.com/company-news/?epic="
+}
 
 class LSE_Reader():
     """ Class for interaction with the london stock exchange 
@@ -68,11 +72,25 @@ class LSE_Reader():
             high   = float(data_items[5].string.replace(',', ''))
             low    = float(data_items[7].string.replace(',', ''))
             volume = float(data_items[9].string.replace(',', ''))
+            last_close = float(data_items[11].string.split(' ')[0].replace(',',''))
 
-            return ticker, price, high, low, volume
+            abs_change = round(price - last_close, 2)
+            per_change = round(((price / last_close) - 1) * 100, 2)
+
+            return ticker, price, high, low, volume, last_close, abs_change, per_change
+
+    def read_news(self, ticker):
+        # Get stockmarketwire (smw) news
+        smw_url = NEWS_URLS["stockmarketwire"] + ticker
+
+        response = requests.get(smw_url)
+        if response != 200:
+            return -1
+        else:
+            # Parse html
+            html = BeautifulSoup(response.text, "html.parser")
 
 if __name__ == "__main__":
     # On run create a new frame
     reader = LSE_Reader()
     reader.create_stocks_frame()
-    print("Success")

@@ -18,12 +18,12 @@ class Stock_Reader():
     def get_attribute(self, ticker, attribute, frame):
         """ Access a simple attribute of a stock from a given frame """
         # format inputs
-        attribute = attribute.lower()
+        attribute = attribute.lower().replace(' ', '_')
         ticker = ticker.upper()
 
         with open(frame, 'r') as f:
             for line in f:
-                _ticker, price, high, low, volume = line.strip().split(',')
+                _ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
                 _ticker = _ticker.strip("'")
                 if _ticker == ticker:
                     if attribute == "price":
@@ -34,9 +34,15 @@ class Stock_Reader():
                         return float(low)
                     if attribute == "volume":
                         return float(volume)
+                    if attribute == "last_close" or attribute == "open":
+                        return float(last_close)
+                    if attribute == "abs_change" or attribute == "absolute_change":
+                        return float(abs_change)
+                    if attribute == "per_change" or attribute == "percentage_change":
+                        return float(per_change)
                     else:
                         raise ValueError("attribute " + attribute + "does not exist"
-                                + "allowed values are {price, high, low, volume}")
+                                + "allowed values are {price, high, low, volume, last_close, abs_change, per_change}")
 
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
@@ -99,5 +105,4 @@ class Stock_Reader():
 
 if __name__ == "__main__":
     reader = Stock_Reader()
-    # print(reader.get_current_attribute('III', 'price'))
-    print(reader.get_attribute_range('III', 'price', 1518927641, 1518928370))
+    print(reader.get_current_attribute('III', 'abs_change'))
