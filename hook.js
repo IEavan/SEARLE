@@ -55,22 +55,26 @@ app.post('/api/v1/', (req, res, err) => {
     // Set appropriate headers.
     res.set('Content-Type', 'application/json');
 
+    console.log(`OUTPUT:`);
+
+    console.log(result);
+
     // Respond with fulfilled intent.
     res.json(result);
 
   });
 
   // Set appropriate headers.
-
-  var responseText = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
-
-  res.json({
-    "speech": responseText,
-     "displayText": responseText,
-     "data": {},
-     "contextOut": [],
-     "source": "none"
-  });
+  //
+  // var responseText = `Hi! You want me to perform a ${actionName} on ${params.company_name}, correct?`;
+  //
+  // res.json({
+  //   "speech": responseText,
+  //    "displayText": responseText,
+  //    "data": {},
+  //    "contextOut": [],
+  //    "source": "none"
+  // });
 
 });
 
@@ -83,10 +87,10 @@ const fulfill = (intent, params, callback) => {
 
     // Attach speech & display text.
     callback({
-      speech: (result.speech ? result.text : ""),
+      speech: (!result.error ? result.text : result.error),
       displayText: (!result.error ? result.text : result.error),
       data: {},
-      contextOut: {},
+      contextOut: [],
       source: "Webhook"
     });
 

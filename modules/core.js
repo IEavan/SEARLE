@@ -16,7 +16,11 @@ const stockLookup = require('./functions/stockLookup');
 // to the user. TODO: Implement full error handling method.
 const actionMap = {
 
-  'stockLookup': (params, callback) => stockLookup(params, callback),
+  'stockLookup': (params) => {
+
+    // Return stockLookup as a promise.
+    return stockLookup(params);
+  },
   'newsLookup': null,
   'volumeLookup': null
 
@@ -51,14 +55,21 @@ module.exports = function Core() {
       return callback({error: "Sorry! I didn't understand that. Type 'help' or 'what can you do' for info on what I can help you with!"})
 
     // Forward result of intent map to fulfillment callback.s
-    return actionMap[intent](params, callback);
+    return actionMap[intent](params).then(result => {
+      return callback(result);
+    })
+    // Catch any errors.
+    .catch(err => {
+      return callback(err);
+    });
 
   };
 
   // Prepares response for human-readable output.
-  this.prepareResponse = function(rawResponse){
+  this.prepareResponse = function(rawResponse, callback){
 
-
+    // Relay response into callback for now.
+    return callback({text: rawResponse});
 
   };
 
