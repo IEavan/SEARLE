@@ -20,7 +20,11 @@ if __name__ == "__main__":
     response["error"] = {}
 
     # Init the data frame reader for easy data access
-    reader = frame_reader.Stock_Reader()
+    if input_args["use_test_data"].lower() == "false":
+        reader = frame_reader.Stock_Reader()
+    else:
+        reader = frame_reader.Stock_Reader(data_path="./data/test_frames")
+
     request_type_understood = False
 
     # Handle each type of request specified in the json

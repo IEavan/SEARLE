@@ -103,7 +103,7 @@ class Stock_Reader():
                     end_index -= 1
 
         valid_time_range = frame_times[start_index:end_index]
-        frame_names = [self.unix_time_to_frame(utime, "./data/frames")
+        frame_names = [self.unix_time_to_frame(utime, self.data_path)
                 for utime in valid_time_range]
 
         return [self.get_attribute(ticker, attribute, frame) for frame in frame_names]
