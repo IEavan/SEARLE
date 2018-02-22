@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 
 # Constants
 BASE_URL = "http://www.londonstockexchange.com/exchange/prices-and-markets/stocks/summary/company-summary/"
-CSV_HEADER = "Ticker, Price, High, Low, Volume"
+CSV_HEADER = "Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change"
 
 class LSE_Reader():
     """ Class for interaction with the london stock exchange 
@@ -68,11 +68,14 @@ class LSE_Reader():
             high   = float(data_items[5].string.replace(',', ''))
             low    = float(data_items[7].string.replace(',', ''))
             volume = float(data_items[9].string.replace(',', ''))
+            last_close = float(data_items[11].string.split(' ')[0].replace(',',''))
 
-            return ticker, price, high, low, volume
+            abs_change = round(price - last_close, 2)
+            per_change = round(((price / last_close) - 1) * 100, 2)
+
+            return ticker, price, high, low, volume, last_close, abs_change, per_change
 
 if __name__ == "__main__":
     # On run create a new frame
     reader = LSE_Reader()
     reader.create_stocks_frame()
-    print("Success")
