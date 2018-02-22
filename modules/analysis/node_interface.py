@@ -11,9 +11,13 @@ import sys
 import frame_reader
 
 if __name__ == "__main__":
+    # Load json arguments passed in from node
     input_args = json.loads(sys.stdin.readline())
+
+    # Init the data frame reader for easy data access
     reader = frame_reader.Stock_Reader()
 
+    # Handle each type of request specified in the json
     if input_args["request_type"] == "get_current_attribute":
         result = reader.get_current_attribute(
                 input_args["ticker"],
