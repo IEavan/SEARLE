@@ -12,6 +12,10 @@ from bs4 import BeautifulSoup
 BASE_URL = "http://www.londonstockexchange.com/exchange/prices-and-markets/stocks/summary/company-summary/"
 CSV_HEADER = "Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change"
 
+NEWS_URLS = {
+        "stockmarketwire":"http://www.stockmarketwire.com/company-news/?epic="
+}
+
 class LSE_Reader():
     """ Class for interaction with the london stock exchange 
     and writing data to files """
@@ -74,6 +78,17 @@ class LSE_Reader():
             per_change = round(((price / last_close) - 1) * 100, 2)
 
             return ticker, price, high, low, volume, last_close, abs_change, per_change
+
+    def read_news(self, ticker):
+        # Get stockmarketwire (smw) news
+        smw_url = NEWS_URLS["stockmarketwire"] + ticker
+
+        response = requests.get(smw_url)
+        if response != 200:
+            return -1
+        else:
+            # Parse html
+            html = BeautifulSoup(response.text, "html.parser")
 
 if __name__ == "__main__":
     # On run create a new frame
