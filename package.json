@@ -24,6 +24,7 @@
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "ngrok": "^2.2.26",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "string-template": "^1.0.0"
   }
 }

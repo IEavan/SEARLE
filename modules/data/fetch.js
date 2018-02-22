@@ -69,8 +69,10 @@ module.exports = function Fetch() {
 
   }
 
-  // Spot price request.
-  this.getSpotPrice = (entity, ops) => {
+  // Perform a stock lookup.
+  //  Can either be current spot price, open / close, high / low, volume (24 hr default),
+  //  or unit / percentage change.
+  this.stockLookup = (entity, ops) => {
 
     // ops template
 

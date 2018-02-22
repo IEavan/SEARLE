@@ -15,8 +15,6 @@ module.exports = (params) => {
   // Instantiate a new fetcher instance.
   var fetch = new Fetch();
 
-  console.log(params);
-
   // Resolve financial entity name.
   return new Promise((resolve, reject) => {
 
@@ -40,7 +38,13 @@ module.exports = (params) => {
       if (resolvedEntity.entityType === 'company')
         // Fetch and return the spot price for the resolved entity and given stockLookupType.
         // TODO: Proper error handling.
-        return resolve(fetch.getSpotPrice(resolvedEntity.symbol, {type: params.stockLookupType}));
+        return resolve(fetch.stockLookup(resolvedEntity.symbol, {type: params.stockLookupType}));
+
+      // Run a sector lookup. Keep in mind that this passes the entity name to the delegated
+      // script, and not a symbol. Perhaps we should refactor and have .symbol be replaced
+      // for .id? Since sectors could be identified with an ID as well?
+      if (resolvedEntity.entityType === 'sector')
+        return resolve(fetch.sectorLookup(resolvedEntity.name, {type: params.stockLookupType}));
 
 
       // Handle unresolved entities.
