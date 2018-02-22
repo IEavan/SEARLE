@@ -19,13 +19,13 @@ class Stock_Reader():
         """ Access a simple attribute of a stock from a given frame """
         # format inputs
         attribute = attribute.lower().replace(' ', '_')
-        ticker = ticker.upper()
+        ticker = ticker.upper().replace('.','')
         found = False
 
         with open(frame, 'r') as f:
             for line in f:
                 _ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
-                _ticker = _ticker.strip("'")
+                _ticker = _ticker.strip("'").replace('.','')
                 if _ticker == ticker:
                     found = True
 
@@ -110,4 +110,4 @@ class Stock_Reader():
 
 if __name__ == "__main__":
     reader = Stock_Reader()
-    print(reader.get_current_attribute('III', 'abs_change'))
+    print(reader.get_current_attribute('BP.', 'price'))
