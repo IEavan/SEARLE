@@ -1,0 +1,49 @@
+{
+  "stockLookup": {
+    "mainParam": "stockLookupType",
+    "stockLookupType": {
+      "price": [
+          "{name} has a spot price of {value}.",
+          "{name} is currently trading at {value}."
+      ],
+      "open": [
+        "{name} opened with {value} points {timePeriod}."
+      ],
+      "last_close": [
+        "{name} closed with {value} points {timePeriod}."
+      ],
+      "volume": [
+        "{name} has a volume of {value}.",
+        "At present, {name} has a volume of {value}.",
+        "The current volume of {name} is {value}."
+      ],
+      "high": [
+        "{name} sold at a high of {value} {timePeriod}.",
+        "The highest selling price of {name} was {value} {timePeriod}."
+      ],
+      "low": [
+        "{name} sold at a low of {value} {timePeriod}.",
+        "The lowest selling price of {name} was {value} {timePeriod}."
+      ],
+      "change": [
+          "{name} has changed by {value}."
+        ]
+    },
+    "defaults": {
+      "timePeriod": {
+        "volume": "24 hour",
+        "price": "current",
+        "open": "today",
+        "close": "yesterday",
+        "high": "today",
+        "low": "today"
+      }
+    }
+  },
+  "error": {
+    "mainParam": "reason",
+    "reason": {
+      "general": "{value}"
+    }
+  }
+}

@@ -38,13 +38,20 @@ module.exports = (params) => {
       if (resolvedEntity.entityType === 'company')
         // Fetch and return the spot price for the resolved entity and given stockLookupType.
         // TODO: Proper error handling.
-        return resolve(fetch.stockLookup(resolvedEntity.symbol, {type: params.stockLookupType}));
+        return resolve(
+          fetch.stockLookup(resolvedEntity.symbol, {type: params.stockLookupType}).then(val => {
+            return Object.assign({value: val}, resolvedEntity);
+          })
+        );
 
       // Run a sector lookup. Keep in mind that this passes the entity name to the delegated
       // script, and not a symbol. Perhaps we should refactor and have .symbol be replaced
       // for .id? Since sectors could be identified with an ID as well?
       if (resolvedEntity.entityType === 'sector')
-        return resolve(fetch.sectorLookup(resolvedEntity.name, {type: params.stockLookupType}));
+        return resolve(fetch.sectorLookup(resolvedEntity.name, {type: params.stockLookupType}).then(val => {
+          return Object.assign({value: val}, resolvedEntity);
+        })
+      );
 
 
       // Handle unresolved entities.
