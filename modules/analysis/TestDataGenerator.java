@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -33,7 +35,10 @@ public class TestDataGenerator
 	*/
 	static List<String> tickers = new ArrayList<String>();
 	static List<Double> testData = new ArrayList<Double>();	// contains generated abnormal data
-	static List<Object> data = new ArrayList <Object>();
+	static List<Company> data = new ArrayList <Company>();
+	static int numCSVs;
+	static int unixTimeDiff;
+	static int unixTimeStart;
 
     public static void main(String[] args)
     {
@@ -44,9 +49,9 @@ public class TestDataGenerator
 		// ================== static data ==================
 		//due to be changed when can receive JSON data
 		//for now, change the values labelled 'EDITTHIS' to customise the tests
-		int numCSVs = 10;	// EDITTHIS
-		int unixTimeDiff = 5 * 60 * 1000; // EDITTHIS: first value is minutes (currently five minutes)
-		int unixTimeStart = 1519412007;	// EDITTHIS
+		numCSVs = 10;	// EDITTHIS
+		unixTimeDiff = 5 * 60 * 1000; // EDITTHIS: first value is minutes (currently five minutes)
+		unixTimeStart = 1519412007;	// EDITTHIS
 
 		// UPWARD TREND: 	1
 		// DOWNARD TREND: 	2
@@ -74,7 +79,7 @@ public class TestDataGenerator
 
 		// First, create multiple company objects
 		for (int i=0; i<tickers.size(); i++){
-			data.add(new Company(numCSVs, tickers.get(i)));
+			data.add(i, new Company(numCSVs, tickers.get(i)));
 			//System.out.println(numCSVs+", "+tickers.get(i));
 		}
 
@@ -130,14 +135,39 @@ public class TestDataGenerator
 			}
 			System.out.println(priceVal);
 
+
+
+		}
+
+		//System.out.println(findIndexInDataOfCompany("III"));
+
+
+		// update company frames with new Data
+		putThisDataIntoThisCompany(testData,testOn[0]);
+
+		// have frames fill out normal data nicely
+
+		for (int i=0; i<tickers.size(); i++){
+			if (!tickers.get(i).equals(testOn[0])){
+				fillNormal(tickers.get(i));
+				//System.out.println("NOT TestOn");
+			} else {
+				//System.out.println("TestOn");
+			}
+		}
+
+		// fill other normal companies with normal looking data
+
+		for (int i=0; i<tickers.size(); i++){
+			fillOutOtherFrameData(tickers.get(i));
 		}
 
 
+		// write to file, do the magic
 
-
-		// TODO: update company frames with new Data
-		// have frames fill out rest of data nicely
-		// fill other normal companies with normal looking data
+		for (int i=0; i<numCSVs; i++){
+			writeOneFile(i);
+		}
 
 
 
@@ -151,14 +181,123 @@ public class TestDataGenerator
 
     }
 
+	private static int findIndexInDataOfCompany(String ticker){
+		for (int i=0; i<data.size(); i++){
+			if (data.get(i).getTicker().equals(ticker)){
+				return i;
+			}
+		}
+		return -1;
+	}
+
 
 	private static void putThisDataIntoThisCompany(List<Double> testData, String compCode){
+		// Given the generated range of test prices:
+		// extract each price from the list
+		// put each price into its individual frame
+
+		int index = findIndexInDataOfCompany(compCode);
+
+		for (int i=0; i<testData.size(); i++){
+			System.out.println("Index: "+index+", i: "+i);
+			System.out.println(data.get(index));
+			System.out.println(testData.get(i));
+			System.out.println(data.get(index).getSpecificFrame(i));
+			data.get(index).getSpecificFrame(i).setPrice(testData.get(i));
+			// data.get(index).frames[i].price = testData.get(i);
+			// System.out.println(data.get(i).frames[i].price+" SET TO "+testData.get(i));
+		}
+
 
 	}
 
 
 	private static void fillOutOtherFrameData(String compCode){
 		// CALCULATE High	Low	Volume	Last_Close	Absolute_Change	Percentage_Change FROM PRICE
+		// Called once all prices have been put in
+
+		// index of company to fill frames
+		int index = findIndexInDataOfCompany(compCode);
+
+		// for FIRST FRAME (frame 0) only:
+		// get price
+		double price = data.get(index).getSpecificFrame(0).getPrice();
+		double lastPrice = price;
+
+		// generate a low
+		double low = price - Math.random() * 3;
+		data.get(index).getSpecificFrame(0).setLow(low);
+		System.out.println("Generated low: "+low);
+
+		// generate a high
+		double high = price + Math.random() * 3;
+		data.get(index).getSpecificFrame(0).setHigh(high);
+		System.out.println("Generated high: "+high);
+
+		// generate random volume
+		Random randomGenerator = new Random();
+		int volume = randomGenerator.nextInt(9000000 - 1000000 + 1) + 1000000;
+		data.get(index).getSpecificFrame(0).setVolume(volume);
+		System.out.println("Generated volume: "+volume);
+
+		// create last close
+		double lastClose = price + (high + low);
+		data.get(index).getSpecificFrame(0).setLast_Close(lastClose);
+		System.out.println("Generated LastClose: "+lastClose);
+
+		// calculate absolute change
+		double absChange = price - lastClose;
+		data.get(index).getSpecificFrame(0).setAbsolute_Change(absChange);
+		System.out.println("AbsChange: "+absChange);
+
+		// calculate percentage change
+		double perChange = (absChange/lastClose) * 100;
+		data.get(index).getSpecificFrame(0).setPercentage_Change(perChange);
+		System.out.println("PerChange: "+perChange);
+
+		// set timestamp to unixTimeStart
+		data.get(index).getSpecificFrame(0).setTimestamp(unixTimeStart);
+
+		int time;
+		int lastTime = unixTimeStart;
+
+
+
+
+		for (int i=1; i<numCSVs; i++){
+			// volume never changes
+			data.get(index).getSpecificFrame(i).setVolume(volume);
+
+			// last close never changes
+			data.get(index).getSpecificFrame(0).setLast_Close(lastClose);
+
+			// get price
+			price = data.get(index).getSpecificFrame(i).getPrice();
+
+			// update low/high if necessary
+			if (price > high){
+				high = price;
+				data.get(index).getSpecificFrame(i).setHigh(high);
+			}
+			if (price < low){
+				low = price;
+				data.get(index).getSpecificFrame(i).setLow(low);
+			}
+
+			// calculate absolute change
+			absChange = price - lastClose;
+			data.get(index).getSpecificFrame(i).setAbsolute_Change(absChange);
+
+			// calculate percentage change
+			perChange = (absChange/lastClose) * 100;
+			data.get(index).getSpecificFrame(i).setPercentage_Change(perChange);
+
+			// generate timeStamp
+			time = lastTime + unixTimeDiff;
+			data.get(index).getSpecificFrame(i).setTimestamp(time);
+			lastTime = time;
+		}
+
 	}
 
 
@@ -207,10 +346,66 @@ public class TestDataGenerator
 	}
 
 
-	private static void fillNormal(String ticker){}
+	private static void fillNormal(String ticker){
+		// generates normal prices for the other companies
+		List<Double> normalData = new ArrayList<Double>();
 
-	private static void writeOneFile(){
-		// writes generated data to file
+		Random r = new Random();
+		double priceVal = 100 + (10000 - 100) * r.nextDouble();	// random starting value, between 100 and 1000
+		double prevPV;
+		for (int i=0; i<numCSVs; i++){
+			normalData.add(priceVal);
+			prevPV = priceVal;
+			double changeBy = Math.random() - 0.5 * 10;
+			priceVal = prevPV + changeBy;
+		}
+
+		putThisDataIntoThisCompany(normalData,ticker);
+		System.out.println("\n\nFilled "+ticker);
+
+
+
+	}
+
+	private static void writeOneFile(int j){
+		// writes generated frame to file
+		// j is the index of frames to refer to
+		FileWriter filewriter = null;
+		try {
+			String fileName = System.getProperty("user.dir")+"/data/test_frames/"+data.get(0).getSpecificFrame(j).getTimestamp()+".csv";
+			filewriter = new FileWriter(fileName);
+
+			String str="Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change\n";
+			for (int i=0; i<data.size(); i++){
+				//data.get(i).getSpecificFrame(j)....
+				str+="'"+data.get(i).getTicker()+"',";
+				str+=data.get(i).getSpecificFrame(j).getPrice()+",";
+				str+=data.get(i).getSpecificFrame(j).getHigh()+",";
+				str+=data.get(i).getSpecificFrame(j).getLow()+",";
+				str+=data.get(i).getSpecificFrame(j).getVolume()+",";
+				str+=data.get(i).getSpecificFrame(j).getLast_Close()+",";
+				str+=data.get(i).getSpecificFrame(j).getAbsolute_Change()+",";
+				str+=data.get(i).getSpecificFrame(j).getPercentage_Change()+",";
+
+				if (i<(data.size()-1)){
+					str+="\n";
+				}
+			}
+			filewriter.append(str);
+		} catch (Exception e) {
+			System.out.println("Error in CsvFileWriter !!!");
+			e.printStackTrace();
+		} finally {
+
+			try {
+				filewriter.flush();
+				filewriter.close();
+			} catch (IOException e) {
+				System.out.println("Error while flushing/closing fileWriter !!!");
+                e.printStackTrace();
+			}
+
+		}
 	}
 }
 
@@ -219,16 +414,29 @@ public class TestDataGenerator
 class Company{
 	public String ticker;
 	public int testType;
-	oneFrame[] frames;
+	OneFrame[] frames;
 	// if testType -1, then this company is performing normally
 
 	public Company(int numFrames, String ticker){
 		this.ticker = ticker;
-		this.frames = new oneFrame[numFrames];
+		this.frames = new OneFrame[numFrames];
+		for (int i=0; i<numFrames; i++){
+			frames[i]= new OneFrame(i);
+		}
 	}
+
+	public String getTicker(){
+		return this.ticker;
+	}
+
+	public OneFrame getSpecificFrame(int i){
+		return frames[i];
+	}
+
+
 }
 
-class oneFrame{
+class OneFrame{
 	public int count;
 	public double price;
 	public double high;
@@ -237,9 +445,13 @@ class oneFrame{
 	public double last_Close;
 	public double absolute_Change;
 	public double percentage_Change;
-	public int timeStamp;
+	public long timeStamp;
 
-	public oneFrame(double price, double high, double low, int volume, double last_Close, double absolute_Change, double percentage_Change, int timeStamp, int count){
+	public OneFrame(int count){
+		this.count = count;
+	}
+
+	public OneFrame(double price, double high, double low, int volume, double last_Close, double absolute_Change, double percentage_Change, long timeStamp, int count){
 		this.price = price;
 		this.high = high;
 		this.low = low;
@@ -249,6 +461,74 @@ class oneFrame{
 		this.percentage_Change = percentage_Change;
 		this.timeStamp = timeStamp;
 		this.count = count;
+	}
+
+	public void setPrice(double price){
+		this.price=price;
+	}
+
+	public double getPrice(){
+		return this.price;
+	}
+
+	public void setHigh(double high){
+		this.high=high;
+	}
+
+	public double getHigh(){
+		return this.high;
+	}
+
+	public void setLow(double low){
+		this.low=low;
+	}
+
+	public double getLow(){
+		return this.low;
+	}
+
+	public void setVolume(int volume){
+		this.volume=volume;
+	}
+
+	public double getVolume(){
+		return this.volume;
+	}
+
+	public void setLast_Close(double last_Close){
+		this.last_Close=last_Close;
+	}
+
+	public double getLast_Close(){
+		return this.last_Close;
+	}
+
+	public void setAbsolute_Change(double absolute_Change){
+		this.absolute_Change=absolute_Change;
+	}
+
+	public double getAbsolute_Change(){
+		return this.absolute_Change;
+	}
+
+	public void setPercentage_Change(double percentage_Change){
+		this.percentage_Change=percentage_Change;
+	}
+
+	public double getPercentage_Change(){
+		return this.percentage_Change;
+	}
+
+	public void setTimestamp(long timeStamp){
+		this.timeStamp=timeStamp;
+	}
+
+	public long getTimestamp(){
+		return this.timeStamp;
+	}
+
+	public int getCount(){
+		return this.count;
 	}
 
 }
