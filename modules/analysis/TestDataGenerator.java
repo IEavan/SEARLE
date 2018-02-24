@@ -390,7 +390,7 @@ public class TestDataGenerator
 				str+=data.get(i).getSpecificFrame(j).getVolume()+",";
 				str+=data.get(i).getSpecificFrame(j).getLast_Close()+",";
 				str+=data.get(i).getSpecificFrame(j).getAbsolute_Change()+",";
-				str+=data.get(i).getSpecificFrame(j).getPercentage_Change()+",";
+				str+=data.get(i).getSpecificFrame(j).getPercentage_Change();
 
 				if (i<(data.size()-1)){
 					str+="\n";
