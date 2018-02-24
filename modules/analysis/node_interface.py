@@ -20,10 +20,10 @@ if __name__ == "__main__":
     response["error"] = {}
 
     # Init the data frame reader for easy data access
-    if input_args["use_test_data"].lower() == "false":
-        reader = frame_reader.Stock_Reader()
-    else:
+    if input_args["use_test_data"].lower() == "true":
         reader = frame_reader.Stock_Reader(data_path="./data/test_frames")
+    else:
+        reader = frame_reader.Stock_Reader()
 
     request_type_understood = False
 
