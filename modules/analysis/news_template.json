@@ -1,0 +1,12 @@
+{
+    [
+        "title": "Some title name",
+        "body": "long body with lots of text",
+        "source": {
+            "name": "stockmarketwire", 
+            "url": "somerurl.com"
+        },
+        "sentiment": 0.7,
+        "summary": "shot summary (stretch)"
+    ]
+}
