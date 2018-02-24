@@ -274,7 +274,7 @@ public class TestDataGenerator
 			data.get(index).getSpecificFrame(i).setVolume(volume);
 
 			// last close never changes
-			data.get(index).getSpecificFrame(0).setLast_Close(lastClose);
+			data.get(index).getSpecificFrame(i).setLast_Close(lastClose);
 
 			// get price
 			price = data.get(index).getSpecificFrame(i).getPrice();
