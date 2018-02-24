@@ -17,7 +17,7 @@ NEWS_URLS = {
 }
 
 class LSE_Reader():
-    """ Class for interaction with the london stock exchange 
+    """ Class for interaction with the london stock exchange
     and writing data to files """
 
     def __init__(self, name_resolution_file="data/names_to_codes.csv"):
@@ -27,6 +27,14 @@ class LSE_Reader():
             for line in f:
                 ticker, url_code = line.strip().split(',')
                 self.names_to_codes[ticker] = url_code
+
+    def check_add_dot(self, ticker):
+        """ Checks if the ticker should have a dot appened
+        and returns the correct ticker if that's the case """
+        for proper_ticker in self.names_to_codes.keys():
+            if ticker.replace('.','') == proper_ticker.replace('.',''):
+                print(str(proper_ticker))
+                return str(proper_ticker)
 
     def create_stocks_frame(self, base_path="./data/frames/"):
         """ Dumps the current LSE stock information into a file.
@@ -79,16 +87,48 @@ class LSE_Reader():
 
             return ticker, price, high, low, volume, last_close, abs_change, per_change
 
-    def read_news(self, ticker):
-        # Get stockmarketwire (smw) news
-        smw_url = NEWS_URLS["stockmarketwire"] + ticker
+    def read_news(self, ticker, limit_per_source=10):
+        ticker = self.check_add_dot(ticker)
 
-        response = requests.get(smw_url)
-        if response != 200:
-            return -1
-        else:
-            # Parse html
-            html = BeautifulSoup(response.text, "html.parser")
+        def get_stockmarketwire_news():
+            # Get stockmarketwire (smw) news
+            smw_url = NEWS_URLS["stockmarketwire"] + ticker
+            news_list = []
+
+            response = requests.get(smw_url)
+            if response.status_code != 200:
+                return -1
+            else:
+                # Parse html
+                html = BeautifulSoup(response.text, "html.parser")
+                li_list = html.find(id="content").find_all("li")
+
+                for i, li in enumerate(li_list):
+                    news = {}
+                    time_text = li.div.text.strip()
+                    time_published = time.mktime(time.strptime(time_text + " 2018", "%d %b%H:%M %Y"))
+                    if time_published > time.time():
+                        time_published = time.mktime(time.strptime(time_text + " 2017", "%d %b%H:%M %Y"))
+                    # print(time.ctime(time_published))
+
+                    a_tag = li.find("a")
+                    title = a_tag.text
+                    link = "www.stockmarketwire.com" + a_tag.attrs["href"]
+                    body = li.find("p").text.strip()
+
+                    news["time_published"] = time_published
+                    news["url"] = link
+                    news["title"] = title
+                    news["body"] = body
+
+                    news_list.append(news)
+
+                    if (i + 1) >= limit_per_source:
+                        break
+                return news_list
+
+        return get_stockmarketwire_news()
+
 
 if __name__ == "__main__":
     # On run create a new frame
