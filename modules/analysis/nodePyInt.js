@@ -13,42 +13,59 @@
 // Child process handles spawning new process instances.
 const { spawn } = require('child_process');
 
-var __DEBUG = false;
+var __DEBUG = process.env.DEBUG;
 
 // Define module entry point.
-module.exports = (path, data, args, ops) => {
+module.exports = (path, args, ops) => {
 
   // Prepare args if empty.
   if (!args) args = [];
 
-  // Return promise.
-  return new Promise((resolve, reject) => {
+  // Returna function which is invoked with data, and returns promise with results.
+  return (data) => {
 
-      __DEBUG = ops && ops.debug ? ops.debug : false;
+      return new Promise((resolve, reject) => {
 
-      // Spawn the child process.
-      var pyProc = spawn((ops && ops.pythonCmd ? ops.pythonCmd : "python"), [path, ...args]);
+        __DEBUG = ops && ops.debug ? ops.debug : false;
 
-      // Report initiation of script.
-      log(`${path} spawned with args: ${args}`);
+        var spawnOps = (ops && ops.cwd ? {cwd: ops.cwd} : null);
 
-      // Inject data.
-      if (data) pyProc.stdin.write(JSON.stringify(data));
+        // Spawn the child process.
+        var pyProc = spawn((ops && ops.pythonCmd ? ops.pythonCmd : "python3"), [path, ...args], spawnOps);
 
-      // Notify end of data write.
-      if (data) pyProc.stdin.end();
+        // Report initiation of script.
+        log(`${path} spawned with args: ${args}`);
 
-      // On successful data output, resolve the Promise.s
-      pyProc.stdout.on('data', (data) => {
-        resolve(JSON.parse(data.toString('utf8')));
+        // Inject data.
+        if (data) pyProc.stdin.write(JSON.stringify(data));
+
+        // Notify end of data write.
+        if (data) pyProc.stdin.end();
+
+        // On successful data output, resolve the Promise.s
+        pyProc.stdout.on('data', (data) => {
+
+          data = data.toString('utf8');
+
+          // Attempt to parse as JSON.
+          try {
+            data = JSON.parse(data);
+          } catch(e){
+            // Data is not JSON. Return raw string.
+            log(`Warning: Data returned by ${path} is not in JSON format.`);
+          }
+
+          resolve(data);
+        });
+
+        // On error, reject the promise.s
+        pyProc.stdout.on('error', (err) => {
+          reject(err);
+        });
+
       });
 
-      // On error, reject the promise.s
-      pyProc.stdout.on('error', (err) => {
-        reject(err);
-      });
-
-  });
+}
 
 
 }

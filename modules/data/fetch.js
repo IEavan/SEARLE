@@ -4,7 +4,16 @@
  *  Orchestrates retrieval and output of elementary requests.
  */
 
-module.exports = () => {
+// DEPENDENCIES
+const nodePyInt = require(require('path').resolve(__dirname, '../analysis/nodePyInt'));
+const pyScriptsPath = require('path').resolve(__dirname, '../analysis/');
+const request = require('request');
+const cheerio = require('cheerio');
+const Data = require('./data');
+
+var data = new Data();
+
+module.exports = function Fetch() {
 
   // entity template: (follows for all methods below)
   // entity arguments must be resolved before being passed here.
@@ -65,8 +74,10 @@ module.exports = () => {
 
   }
 
-  // Spot price request.
-  this.getSpotPrice = (entity, ops) => {
+  // Perform a stock lookup.
+  //  Can either be current spot price, open / close, high / low, volume (24 hr default),
+  //  or unit / percentage change.
+  this.stockLookup = (entity, ops) => {
 
     // ops template
 
@@ -74,6 +85,19 @@ module.exports = () => {
     //     symbol: entity,
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
+
+    console.log(`Recieved fetch: ${entity}`);
+
+    const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
+
+    return pyStockLookup({
+      request_type: "get_current_attribute",
+      ticker: entity,
+      attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
+    }).then(result => {
+      if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
+      return result;
+    });
 
   }
 
@@ -92,7 +116,8 @@ module.exports = () => {
     //
   }
 
-  // Get list of companies currently listed on the FTSE 100.
+  // Get list of companies currently listed on the FTSE 100, including
+  // symbols & sector names.
   this.getFTSE = (ops) => {
 
     // ops template

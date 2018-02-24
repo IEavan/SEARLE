@@ -7,9 +7,13 @@
 
 // DEPENDENCIES
 const resolveEntity = require('../resolve/resolveEntity');
+const Fetch = require('../data/fetch');
 
 // Module entry point.
 module.exports = (params) => {
+
+  // Instantiate a new fetcher instance.
+  var fetch = new Fetch();
 
   // Resolve financial entity name.
   return new Promise((resolve, reject) => {
@@ -17,13 +21,47 @@ module.exports = (params) => {
     // Return extended stock name + symbol for now.
 
     // If no company name return error.
-    if (!params.companyName) return reject(`In order to make a stock lookup, I need a company name!`)
+    if (!params.entityName) return reject(`In order to make a stock lookup, I need a company name!`)
 
-    resolveEntity(params.companyName, (resolvedCompany) => {
+    resolveEntity(params.entityName, (resolvedEntity) => {
 
-      if (!resolvedCompany.symbol) return reject(`Could not resolve company into symbol.`);
+      if (!resolvedEntity || !resolvedEntity.symbol) return reject(`Could not resolve financial entity.`);
 
-      return resolve(`You want me to perform an ${params.stockLookupType} stock lookup on ${resolvedCompany.name} [${resolvedCompany.symbol}], correct?`);
+      // Once financial entity resolved, perform the lookup, depending on the type of resolved entity,
+      // this could be (3) types.
+      //  (1) Company lookup
+      //  (2) Sector lookup
+      //  (3) Entire FTSE 100 lookup
+
+      console.log(`Spot Price lookup for `, resolvedEntity, 'params: ', params);
+
+      if (resolvedEntity.entityType === 'company'){
+
+        // If no stockLookupType defined, set to 'price'.
+        if (!params.stockLookupType) params.stockLookupType = 'price';
+
+        // Fetch and return the spot price for the resolved entity and given stockLookupType.
+        // TODO: Proper error handling.
+        return resolve(
+          fetch.stockLookup(resolvedEntity.symbol, {type: (params.stockLookupType)}).then(val => {
+            return Object.assign({value: val}, resolvedEntity);
+          })
+        );
+
+      }
+
+      // Run a sector lookup. Keep in mind that this passes the entity name to the delegated
+      // script, and not a symbol. Perhaps we should refactor and have .symbol be replaced
+      // for .id? Since sectors could be identified with an ID as well?
+      if (resolvedEntity.entityType === 'grouping')
+        return resolve(fetch.sectorLookup(resolvedEntity.name, {type: params.stockLookupType}).then(val => {
+          return Object.assign({value: val}, resolvedEntity);
+        })
+      );
+
+
+      // Handle unresolved entities.
+      return reject(`Could not resolve financial entity.`);
 
     });
 

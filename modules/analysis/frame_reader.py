@@ -64,7 +64,7 @@ class Stock_Reader():
 
     def get_closest_frame(self, target_utime):
         """ Find the filename of the frame generated at a time closest to the target time """
-        closest = None
+        closest = False
         min_dist = -1
         for utime in [self.frame_to_unix_time(name) for name in self.files]:
             dist = abs(utime - target_utime)
