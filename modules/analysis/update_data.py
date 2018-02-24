@@ -33,7 +33,6 @@ class LSE_Reader():
         and returns the correct ticker if that's the case """
         for proper_ticker in self.names_to_codes.keys():
             if ticker.replace('.','') == proper_ticker.replace('.',''):
-                print(str(proper_ticker))
                 return str(proper_ticker)
 
     def create_stocks_frame(self, base_path="./data/frames/"):

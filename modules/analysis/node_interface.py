@@ -9,6 +9,7 @@ import json
 import sys
 
 import frame_reader
+import update_data
 
 if __name__ == "__main__":
     # Load json arguments passed in from node
@@ -27,7 +28,9 @@ if __name__ == "__main__":
 
     request_type_understood = False
 
-    # Handle each type of request specified in the json
+    # ------------- Handle each type of request specified in the json ------------------#
+
+    # get current attribute
     if input_args["request_type"] == "get_current_attribute":
         request_type_understood = True
         result = reader.get_current_attribute(
@@ -41,6 +44,7 @@ if __name__ == "__main__":
                     input_args["ticker"] + "' was not found"
             response["error"]["type"] = "ValueError"
 
+    # get attribute from specified time
     if input_args["request_type"] == "get_attribute":
         request_type_understood = True
         frame_name = reader.get_closest_frame(input_args["start_time"])
@@ -48,6 +52,19 @@ if __name__ == "__main__":
                 input_args["ticker"],
                 input_args["attribute"],
                 frame_name)
+        
+        if result != -1:
+            response["result"]["value"] = result
+        else:
+            response["error"]["message"] = "Stock with ticker '" + \
+                    input_args["ticker"] + "' was not found"
+            response["error"]["type"] = "ValueError"
+    
+    # get news on a certain company
+    if input_args["request_type"] == "get_news":
+        request_type_understood = True
+        scraper = update_data.LSE_Reader()
+        result = scraper.read_news(input_args["ticker"])
         
         if result != -1:
             response["result"]["value"] = result
