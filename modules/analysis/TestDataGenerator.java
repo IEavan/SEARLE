@@ -72,22 +72,26 @@ public class TestDataGenerator
 		String[] testOn = new String[1];
 
 		// Set company to apply test to here:
-		testOn[0] = "III"; 		// EDITTHIS to valid company. Testing on one specific company
+		testOn[0] = "ABF"; 		// EDITTHIS to valid company. Testing on one specific company
 
 
 		// =====================================================================
 
+
+
+
 		// First, create multiple company objects
 		for (int i=0; i<tickers.size(); i++){
 			data.add(i, new Company(numCSVs, tickers.get(i)));
-			//System.out.println(numCSVs+", "+tickers.get(i));
 		}
 
-		// Second, generate data for the company to test on
+
+		// Second, generate data for the company to test on ====================
 
 		// generate pricing data
 		Random r = new Random();
 		double priceVal = 100 + (5000 - 100) * r.nextDouble();
+		priceVal = round(priceVal,2);
 		double prevPV;
 
 		// if spike or dip:
@@ -111,7 +115,9 @@ public class TestDataGenerator
 				case 1: case 2:
 				// up / down trend
 				double changeBy = niceTrendDiff + Math.random() * (50); // trend difference varies each time
+				changeBy = round(changeBy,2);
 				priceVal = prevPV + (posNeg*changeBy);
+				priceVal = round(priceVal,2);
 				System.out.println("Trending: changeBy = "+changeBy+", priceVal = "+priceVal);
 				break;
 
@@ -120,9 +126,11 @@ public class TestDataGenerator
 				// abnormal spike / dip
 				if (i==countToSpikeOn){ // if time to spike
                 	priceVal = prevPV + (posNeg*spikeVal);
+					priceVal = round(priceVal,2);
 					System.out.println("SPIKED! Spike value is "+priceVal);
 				} else if (i>countToSpikeOn){
 					priceVal = prevPV + niceTrendDiff + Math.random() * (50);
+					priceVal = round(priceVal,2);
 					System.out.println("Post spike. Value is "+priceVal);
 				} else {
 					// normal bumping about
@@ -132,6 +140,7 @@ public class TestDataGenerator
 					} else {
 						priceVal = prevPV - changeBy;
 					}
+					priceVal = round(priceVal,2);
 					System.out.println("Unspiked, value is "+priceVal);
 				}
 				break;
@@ -231,11 +240,13 @@ public class TestDataGenerator
 
 		// generate a low
 		double low = price - Math.random() * 3;
+		low = round(low,2);
 		data.get(index).getSpecificFrame(0).setLow(low);
 		//System.out.println("Generated low: "+low);
 
 		// generate a high
 		double high = price + Math.random() * 3;
+		high = round(high,2);
 		data.get(index).getSpecificFrame(0).setHigh(high);
 		//System.out.println("Generated high: "+high);
 
@@ -247,16 +258,19 @@ public class TestDataGenerator
 
 		// create last close
 		double lastClose = price + (high + low);
+		lastClose = round(lastClose,2);
 		data.get(index).getSpecificFrame(0).setLast_Close(lastClose);
 		//System.out.println("Generated LastClose: "+lastClose);
 
 		// calculate absolute change
 		double absChange = price - lastClose;
+		absChange = round(absChange,2);
 		data.get(index).getSpecificFrame(0).setAbsolute_Change(absChange);
 		//System.out.println("AbsChange: "+absChange);
 
 		// calculate percentage change
 		double perChange = (absChange/lastClose) * 100;
+		perChange = round(perChange,2);
 		data.get(index).getSpecificFrame(0).setPercentage_Change(perChange);
 		//System.out.println("PerChange: "+perChange);
 
@@ -291,10 +305,12 @@ public class TestDataGenerator
 
 			// calculate absolute change
 			absChange = price - lastClose;
+			absChange = round(absChange,2);
 			data.get(index).getSpecificFrame(i).setAbsolute_Change(absChange);
 
 			// calculate percentage change
 			perChange = (absChange/lastClose) * 100;
+			perChange = round(perChange,2);
 			data.get(index).getSpecificFrame(i).setPercentage_Change(perChange);
 
 			// generate timeStamp
@@ -359,7 +375,7 @@ public class TestDataGenerator
 		double priceVal = 100 + (10000 - 100) * r.nextDouble();	// random starting value, between 100 and 1000
 		double prevPV;
 		for (int i=0; i<numCSVs; i++){
-			normalData.add(priceVal);
+			normalData.add(round(priceVal,2));
 			prevPV = priceVal;
 			double changeBy = Math.random() - 0.5 * 10;
 			priceVal = prevPV + changeBy;
@@ -370,6 +386,15 @@ public class TestDataGenerator
 
 
 
+	}
+
+	public static double round(double value, int places) {
+    	if (places < 0) throw new IllegalArgumentException();
+
+    	long factor = (long) Math.pow(10, places);
+    	value = value * factor;
+    	long tmp = Math.round(value);
+    	return (double) tmp / factor;
 	}
 
 	private static void writeOneFile(int j){
