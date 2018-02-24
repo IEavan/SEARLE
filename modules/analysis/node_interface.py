@@ -21,7 +21,12 @@ if __name__ == "__main__":
     response["error"] = {}
 
     # Init the data frame reader for easy data access
-    if input_args["use_test_data"].lower() == "true":
+    try:
+        use_test_data = input_args["use_test_data"].lower()
+    except (KeyError):
+        use_test_data = "false"
+
+    if use_test_data == "true":
         reader = frame_reader.Stock_Reader(data_path="./data/test_frames")
     else:
         reader = frame_reader.Stock_Reader()
@@ -63,8 +68,13 @@ if __name__ == "__main__":
     # get news on a certain company
     if input_args["request_type"] == "get_news":
         request_type_understood = True
+        try:
+            limit_per_source = int(input_args["limit_per_source"])
+        except (KeyError):
+            limit_per_source = 10
+
         scraper = update_data.LSE_Reader()
-        result = scraper.read_news(input_args["ticker"])
+        result = scraper.read_news(input_args["ticker"], limit_per_source)
         
         if result != -1:
             response["result"]["value"] = result
