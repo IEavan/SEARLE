@@ -24,7 +24,7 @@ module.exports = function Data(){
 
     return new Promise((resolve, reject) => {
 
-      fs.exists('./FTSEListings.json', exists => {
+      fs.exists(require('path').resolve(__dirname, './FTSEListings.json'), exists => {
         if (!exists)
           this.updateFTSEListings().then(() => {
             return resolve(require('./FTSEListings'));
@@ -49,7 +49,7 @@ module.exports = function Data(){
       // Get the newest FTSE listings off of Wikipedia and save to a JSON file.
       self.getLiveFTSEListings().then(data => {
 
-        fs.writeFile('FTSEListings.json', JSON.stringify(data, null, 2), (err) => {
+        fs.writeFile(require('path').resolve(__dirname, 'FTSEListings.json'), JSON.stringify(data, null, 2), (err) => {
           if (err) return reject(err);
           log(`Updated FTSEListings cache.`);
           return resolve();
