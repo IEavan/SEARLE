@@ -49,7 +49,7 @@ public class TestDataGenerator
 		// ================== static data ==================
 		//due to be changed when can receive JSON data
 		//for now, change the values labelled 'EDITTHIS' to customise the tests
-		numCSVs = 10;	// EDITTHIS
+		numCSVs = 20;	// EDITTHIS
 		unixTimeDiff = 5 * 60 * 1000; // EDITTHIS: first value is minutes (currently five minutes)
 		unixTimeStart = 1519412007;	// EDITTHIS
 
@@ -59,7 +59,7 @@ public class TestDataGenerator
 		// ABNORMAL DIP: 	4
 
 		// If spiking or dipping, set spike value here:
-		double spikeVal = 1000;	//EDITTHIS with a positive value, regardless of spike direction
+		double spikeVal = 9000;	//EDITTHIS with a positive value, regardless of spike direction
 
 		// If trending upwards or downwards, set average difference value here:
 		double niceTrendDiff = 100;  // EDITTHIS with a positive value, regardless of trend direction
@@ -68,7 +68,7 @@ public class TestDataGenerator
 		int[] tests = new int[1];		// not currently capable of multiple tests at a time
 
 		// Set test type here:
-		tests[0] = 1;			// EDITTHIS to alter type of test performed
+		tests[0] = 3;			// EDITTHIS to alter type of test performed
 		String[] testOn = new String[1];
 
 		// Set company to apply test to here:
@@ -101,7 +101,8 @@ public class TestDataGenerator
 		if (tests[0]%2==0){
 			posNeg = -1;
 		}
-;
+
+		System.out.println("Generating Abnormal Data");
 		for (int i=0; i<numCSVs; i++){
 			testData.add(priceVal);
 			prevPV = priceVal;
@@ -119,7 +120,10 @@ public class TestDataGenerator
 				// abnormal spike / dip
 				if (i==countToSpikeOn){ // if time to spike
                 	priceVal = prevPV + (posNeg*spikeVal);
-					System.out.println("SPIKED!");
+					System.out.println("SPIKED! Spike value is "+priceVal);
+				} else if (i>countToSpikeOn){
+					priceVal = prevPV + niceTrendDiff + Math.random() * (50);
+					System.out.println("Post spike. Value is "+priceVal);
 				} else {
 					// normal bumping about
 					changeBy = Math.random() * 50;
@@ -128,12 +132,13 @@ public class TestDataGenerator
 					} else {
 						priceVal = prevPV - changeBy;
 					}
+					System.out.println("Unspiked, value is "+priceVal);
 				}
 				break;
 
 				default:
 			}
-			System.out.println(priceVal);
+			//System.out.println(priceVal);
 
 
 
@@ -199,10 +204,10 @@ public class TestDataGenerator
 		int index = findIndexInDataOfCompany(compCode);
 
 		for (int i=0; i<testData.size(); i++){
-			System.out.println("Index: "+index+", i: "+i);
-			System.out.println(data.get(index));
-			System.out.println(testData.get(i));
-			System.out.println(data.get(index).getSpecificFrame(i));
+			// System.out.println("Index: "+index+", i: "+i);
+			// System.out.println(data.get(index));
+			// System.out.println(testData.get(i));
+			// System.out.println(data.get(index).getSpecificFrame(i));
 			data.get(index).getSpecificFrame(i).setPrice(testData.get(i));
 			// data.get(index).frames[i].price = testData.get(i);
 			// System.out.println(data.get(i).frames[i].price+" SET TO "+testData.get(i));
@@ -227,33 +232,33 @@ public class TestDataGenerator
 		// generate a low
 		double low = price - Math.random() * 3;
 		data.get(index).getSpecificFrame(0).setLow(low);
-		System.out.println("Generated low: "+low);
+		//System.out.println("Generated low: "+low);
 
 		// generate a high
 		double high = price + Math.random() * 3;
 		data.get(index).getSpecificFrame(0).setHigh(high);
-		System.out.println("Generated high: "+high);
+		//System.out.println("Generated high: "+high);
 
 		// generate random volume
 		Random randomGenerator = new Random();
 		int volume = randomGenerator.nextInt(9000000 - 1000000 + 1) + 1000000;
 		data.get(index).getSpecificFrame(0).setVolume(volume);
-		System.out.println("Generated volume: "+volume);
+		//System.out.println("Generated volume: "+volume);
 
 		// create last close
 		double lastClose = price + (high + low);
 		data.get(index).getSpecificFrame(0).setLast_Close(lastClose);
-		System.out.println("Generated LastClose: "+lastClose);
+		//System.out.println("Generated LastClose: "+lastClose);
 
 		// calculate absolute change
 		double absChange = price - lastClose;
 		data.get(index).getSpecificFrame(0).setAbsolute_Change(absChange);
-		System.out.println("AbsChange: "+absChange);
+		//System.out.println("AbsChange: "+absChange);
 
 		// calculate percentage change
 		double perChange = (absChange/lastClose) * 100;
 		data.get(index).getSpecificFrame(0).setPercentage_Change(perChange);
-		System.out.println("PerChange: "+perChange);
+		//System.out.println("PerChange: "+perChange);
 
 		// set timestamp to unixTimeStart
 		data.get(index).getSpecificFrame(0).setTimestamp(unixTimeStart);
@@ -277,12 +282,12 @@ public class TestDataGenerator
 			// update low/high if necessary
 			if (price > high){
 				high = price;
-				data.get(index).getSpecificFrame(i).setHigh(high);
 			}
+			data.get(index).getSpecificFrame(i).setHigh(high);
 			if (price < low){
 				low = price;
-				data.get(index).getSpecificFrame(i).setLow(low);
 			}
+			data.get(index).getSpecificFrame(i).setLow(low);
 
 			// calculate absolute change
 			absChange = price - lastClose;
@@ -306,7 +311,7 @@ public class TestDataGenerator
 
 	private static void printTickers(){
 		for (String s : tickers) {
-        	System.out.println(s);
+        	//System.out.println(s);
     	}
 	}
 
@@ -325,7 +330,7 @@ public class TestDataGenerator
 			while ((line = br.readLine()) != null) {
 				String[] tickerncode = line.split(cvsSplitBy);
 
-				System.out.println("[Ticker = " + tickerncode[0] + " , code=" + tickerncode[1] + "]");
+				//System.out.println("[Ticker = " + tickerncode[0] + " , code=" + tickerncode[1] + "]");
    				tickers.add(tickerncode[0]);
 
 			}
@@ -361,7 +366,7 @@ public class TestDataGenerator
 		}
 
 		putThisDataIntoThisCompany(normalData,ticker);
-		System.out.println("\n\nFilled "+ticker);
+		//System.out.println("\n\nFilled "+ticker);
 
 
 
@@ -372,7 +377,7 @@ public class TestDataGenerator
 		// j is the index of frames to refer to
 		FileWriter filewriter = null;
 		try {
-			String fileName = System.getProperty("user.dir")+"/data/test_frames/"+data.get(0).getSpecificFrame(j).getTimestamp()+".csv";
+			String fileName = System.getProperty("user.dir")+"/data/test_frames/"+data.get(0).getSpecificFrame(j).getTimestamp()+"-frame.csv";
 			filewriter = new FileWriter(fileName);
 
 			String str="Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change\n";
