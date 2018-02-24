@@ -9,6 +9,9 @@ const nodePyInt = require(require('path').resolve(__dirname, '../analysis/nodePy
 const pyScriptsPath = require('path').resolve(__dirname, '../analysis/');
 const request = require('request');
 const cheerio = require('cheerio');
+const Data = require('./data');
+
+var data = new Data();
 
 module.exports = function Fetch() {
 
@@ -124,43 +127,9 @@ module.exports = function Fetch() {
     //   target: 'fallers', 'risers',
     // }
 
-    // Grab current FTSE list off wikipedia.
-    requests.get('https://en.wikipedia.org/wiki/FTSE_100_Index', (err, res, body) => {
-      var $ = cheerio.load(body);
-
-      var output = {};
-
-      $($('#constituents tr')[5]).children('td')[0].innerText;
-
-
-    });
   }
 
   log(`Loaded.`);
-
-}
-
-// Parses the table into an array of object, where each table header is the key
-// for the unique value in each object element in the array.
-function parseTable($){
-
-  var output = [];
-
-  // Get object keys from table headers.
-  var keys = $($('#constituents tr')[0]).children('td').map(el => {return el.innerText});
-
-  // Iterate over every entry in the table.
-  var rows =  $($('#constituents tr'));
-  for (var i = 0; i < rows.length; i++){
-    var ci = {};
-    var cells = $(rows[i]).children('td');
-    for (var k = 0; k < cells.length; k++){
-      ci[keys[k]] = cells[k]
-    }
-    output.push(cells);
-  }
-
-  return output;
 
 }
 
