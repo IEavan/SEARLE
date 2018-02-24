@@ -47,17 +47,11 @@ app.post('/api/v1/', (req, res, err) => {
   var action = req.body.result.action;
   var actionName = req.body.result.metadata.intentName;
 
-  console.log(`Recieved: `, req.body);
-
   // Delegate request to be fulfilled.
   fulfill(action, params, (result) => {
 
     // Set appropriate headers.
     res.set('Content-Type', 'application/json');
-
-    console.log(`OUTPUT:`);
-
-    console.log(result);
 
     // Respond with fulfilled intent.
     res.json(result);

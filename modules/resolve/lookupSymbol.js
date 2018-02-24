@@ -30,7 +30,8 @@ module.exports = (name, cb) => {
       if (item && item.exch === 'LSE') {
         output = {
           name: item.name,
-          symbol: item.symbol.replace(`.L`, ``)
+          symbol: item.symbol.replace(`.L`, ``),
+          entityType: 'company'
         };
         break;
       }

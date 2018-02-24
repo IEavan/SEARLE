@@ -6,10 +6,11 @@
  */
 
 // TODO: UTIL FUNCTIONS e.g. responding to unknown requests; help commands,
-// explaining what each command can do, etc.
+
 
 // DEPENDENCIES
 const stockLookup = require('./functions/stockLookup');
+const transform = require('./resolve/languageTransformer');
 
 // Mapping of intent names into discrete functions which delegate task of fulfilling
 // requets. If some intent is not mapped, a default 'helper' message will be relayed
@@ -17,12 +18,10 @@ const stockLookup = require('./functions/stockLookup');
 const actionMap = {
 
   'stockLookup': (params) => {
-
     // Return stockLookup as a promise.
     return stockLookup(params);
   },
-  'newsLookup': null,
-  'volumeLookup': null
+  'newsLookup': null
 
 };
 
@@ -32,47 +31,133 @@ module.exports = function Core() {
   log(`Initiated.`);
 
 
+  /**
+   * REFERENCE
+   *  intent: 'stockLookup', 'newsLookup'.
+   *  params: {
+   *   timePeriod: '',
+   *   stockLookupType: 'price',
+   *   entityName: '3i group',
+   *
+   *   }
+   */
+
   this.fulfill = function(intent, params, callback){
 
-    // Just fulfill raw for now.
-    this.fulfillRaw(intent, params, (rawResponse) => {
+    // Prepare the request object which contains the details of the request,
+    // relevant meta data, and a results array which will be used for transforming
+    // and enrichment.
+    var request = new Request(intent, params);
+
+    // Perform a raw request fulfilment.
+    this.fulfillRaw(request, (updatedRequest) => {
 
       // NOTE: NEED TO CONSIDER WHERE RICH TEXT PAYLOADS WILL FALL UNDER.
 
+      // TODO: Enrichment flow will take place here.
+      // this.enrichRequest(<rawResponse>)
+
+      // console.log(`------------- RAW RESPONSE --------------`, updatedRequest, `------------- END RESPONSE --------------`);
+
+
       // Prepare response into human-readable string for output.
-      this.prepareResponse(rawResponse, {intent: intent, params: params}, (readyResponse) => {
+      this.prepareResponse(updatedRequest, (readyResponse) => {
         return callback(readyResponse);
       });
     });
 
   };
 
-  // Fulfill (raw) request (no human-readable transforming).
-  this.fulfillRaw = function(intent, params, callback){
+  // Basic fulfilment of request. This does not include any enrichment or
+  // human-readable transforming.
+  this.fulfillRaw = function(request, callback){
 
     // Check that intent is valid.
-    if (!actionMap[intent])
-      return callback({error: "Sorry! I didn't understand that. Type 'help' or 'what can you do' for info on what I can help you with!"})
+    if (!actionMap[request.intent])
+      // Here a follow up intent should be made to the help command.
+      return callback(new ErrorReport("Sorry! I didn't understand that. Type 'help' or 'what can you do' for info on what I can help you with!"));
 
     // Forward result of intent map to fulfillment callback.s
-    return actionMap[intent](params).then(result => {
-      return callback(result);
+    return actionMap[request.intent](request.params).then(result => {
+
+      // Attach the result to the request object.
+      request.results.push(result);
+
+      // Send back the request object with newly attached result(s).
+      return callback(request);
     })
     // Catch any errors.
     .catch(err => {
-      return callback(err);
+      console.log(`[CORE]| Error fulfilling raw request: `, request, 'Error: ', err);
+      return callback(new ErrorReport(`I'm having trouble servicing your request at the moment. Details: ${err}`));
     });
 
   };
 
-  // Prepares response for human-readable output.
-  this.prepareResponse = function(rawResponse, request, callback){
+  // Takes a raw fulfilled request (just values, and details of original intenet /
+  // request) and transforms it to be human-readable. [COMMON TRANSLATION LAYER]
+  //  E.g.
+  //  { result: 3 , entity: "Barclays PLT" } --> "Barclays has a value of 3.".
+  this.prepareResponse = function(request, callback){
+
+    log(`Preparing response.`);
+
+    // It may be desirable to have different 'components' of an outgoing response.
+    // E.g., we may have the 'elementary' request as one component, some comment on
+    // the significance of the request as another component, perhaps a suggestion as another component,
+    // and so on. This may require that we split up the rawResponse object into
+    // an array which contains discrete request 'components' that can each be
+    // transformed with string templates into human-readable responses depending
+    // on their properties.
+
+    var outputString = "";
+
+    // Make each result component human-readable.
+    request.results.forEach(result => {
+
+      // TEMP: Make result into an object if not already.
+      if (typeof result !== 'object') result = {value: result};
+
+      // Send request object to transformer as if it only had a single result
+      // attached to it.
+      var {results, ...singleResRequest} = request;
+      singleResRequest.result = result;
+
+      outputString += transform(singleResRequest);
+
+    });
+
+    // Add rich-text payload (Extension).
+
+
 
     // Relay response into callback for now.
-    return callback({text: rawResponse});
+    return callback({text: outputString});
 
   };
 
+}
+
+// Conforms error message to expected language transformer structure.
+function ErrorReport(reason, internal, type){
+  this.results = [
+    {
+      intent: "error",
+      params: {
+        reason: "general",
+        value: reason
+      },
+      name: (type ? type : "Error")
+    }
+  ];
+}
+
+// Request object. Contains relevant details on the request as well as metadata,
+// and pre-requisites for storing multiple results.
+function Request(intent, parameters, results){
+  this.intent = intent;
+  this.params = parameters;
+  this.results = (results && Array.isArray(results) ? results : (results ? [results] : []));
 }
 
 function log(msg){

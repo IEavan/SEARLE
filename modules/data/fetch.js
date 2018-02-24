@@ -7,6 +7,11 @@
 // DEPENDENCIES
 const nodePyInt = require(require('path').resolve(__dirname, '../analysis/nodePyInt'));
 const pyScriptsPath = require('path').resolve(__dirname, '../analysis/');
+const request = require('request');
+const cheerio = require('cheerio');
+const Data = require('./data');
+
+var data = new Data();
 
 module.exports = function Fetch() {
 
@@ -69,8 +74,10 @@ module.exports = function Fetch() {
 
   }
 
-  // Spot price request.
-  this.getSpotPrice = (entity, ops) => {
+  // Perform a stock lookup.
+  //  Can either be current spot price, open / close, high / low, volume (24 hr default),
+  //  or unit / percentage change.
+  this.stockLookup = (entity, ops) => {
 
     // ops template
 
@@ -109,7 +116,8 @@ module.exports = function Fetch() {
     //
   }
 
-  // Get list of companies currently listed on the FTSE 100.
+  // Get list of companies currently listed on the FTSE 100, including
+  // symbols & sector names.
   this.getFTSE = (ops) => {
 
     // ops template
