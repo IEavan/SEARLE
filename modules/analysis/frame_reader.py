@@ -78,6 +78,36 @@ class Stock_Reader():
         frame = os.path.join(self.data_path, self.current_frame)
         return self.get_sector_attribute(sector_name, attribute, frame)
 
+    def get_sector_range(self, sector_name, attribute, start_time, end_time=None):
+        """ Get a list of values for an attribute in chronological order for a whole sector
+        from the specified start time to the specified end time (not inclusive).
+        If no end time is specified, the list goes up to the current time. """
+        frame_times = [int(name[:-10]) for name in self.files]
+        frame_times.sort()
+
+        start_index = 0
+        end_index = len(frame_times)
+
+        for utime in frame_times:
+            if start_time < utime:
+                break
+            else:
+                start_index += 1
+
+        if end_time is not None:
+            frame_times.reverse()
+            for utime in frame_times:
+                if end_time > utime:
+                    break
+                else:
+                    end_index -= 1
+
+        valid_time_range = frame_times[start_index:end_index]
+        frame_names = [self.unix_time_to_frame(utime, self.data_path)
+                for utime in valid_time_range]
+
+        return [self.get_sector_attribute(sector_name, attribute, frame) for frame in frame_names]
+
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
         file_name = os.basename(file_name)
