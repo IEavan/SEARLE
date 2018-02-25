@@ -4,6 +4,7 @@ the stored stock frames and formatting the information """
 # Imports
 import os
 import time
+import sector_helper
 
 class Stock_Reader():
     """ Class for reading specific data from the stock frames
@@ -48,6 +49,33 @@ class Stock_Reader():
                                 + "allowed values are {price, high, low, volume, last_close, abs_change, per_change}")
         if not found:
             return -1
+
+    def get_sector_attribute(self, sector_name, attribute, frame):
+        """ Access a simple attribute about a whole sector """
+        tickers = sector_helper.sector2tickers[sector_name]
+        results = []
+        for ticker in tickers:
+            results.append((self.get_attribute(ticker, attribute, frame),
+                            self.get_attribute(ticker, "volume",  frame)))
+
+        total_volume = 0
+        for result in results:
+            total_volume += result[1]
+
+        if attribute == "volume":
+            return total_volume
+        
+        reduced_result = 0
+        for result in results:
+            reduced_result += result[0] * result[1]
+        reduced_result /= total_volume
+
+        return reduced_result
+
+    def get_current_sector_attribute(self, sector_name, attribute):
+        """ Get a simple attribute about a whole sector from the most recent time frame """
+        frame = os.path.join(self.data_path, self.current_frame)
+        return self.get_sector_attribute(sector_name, attribute, frame)
 
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
