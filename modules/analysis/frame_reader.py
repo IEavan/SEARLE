@@ -14,6 +14,7 @@ class Stock_Reader():
         """ Read all the file names in the specified data directory """
         self.data_path = data_path
         self.files = os.listdir(data_path)
+        self.files.sort()
         self.current_frame = self.files[-1]
 
     def get_attribute(self, ticker, attribute, frame):
