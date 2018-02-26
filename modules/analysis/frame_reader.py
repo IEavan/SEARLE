@@ -53,7 +53,7 @@ class Stock_Reader():
 
     def get_sector_attribute(self, sector_name, attribute, frame):
         """ Access a simple attribute about a whole sector """
-        tickers = sector_helper.sector2tickers[sector_name]
+        tickers = sector_helper.sector2tickers[sector_name.lower()]
         results = []
         for ticker in tickers:
             results.append((self.get_attribute(ticker, attribute, frame),
