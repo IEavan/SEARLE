@@ -4,6 +4,7 @@ the stored stock frames and formatting the information """
 # Imports
 import os
 import time
+import sector_helper
 
 class Stock_Reader():
     """ Class for reading specific data from the stock frames
@@ -13,6 +14,7 @@ class Stock_Reader():
         """ Read all the file names in the specified data directory """
         self.data_path = data_path
         self.files = os.listdir(data_path)
+        self.files.sort()
         self.current_frame = self.files[-1]
 
     def get_attribute(self, ticker, attribute, frame):
@@ -49,9 +51,66 @@ class Stock_Reader():
         if not found:
             return -1
 
+    def get_sector_attribute(self, sector_name, attribute, frame):
+        """ Access a simple attribute about a whole sector """
+        tickers = sector_helper.sector2tickers[sector_name.lower()]
+        results = []
+        for ticker in tickers:
+            results.append((self.get_attribute(ticker, attribute, frame),
+                            self.get_attribute(ticker, "volume",  frame)))
+
+        total_volume = 0
+        for result in results:
+            total_volume += result[1]
+
+        if attribute == "volume":
+            return total_volume
+        
+        reduced_result = 0
+        for result in results:
+            reduced_result += result[0] * result[1]
+        reduced_result /= total_volume
+
+        return reduced_result
+
+    def get_current_sector_attribute(self, sector_name, attribute):
+        """ Get a simple attribute about a whole sector from the most recent time frame """
+        frame = os.path.join(self.data_path, self.current_frame)
+        return self.get_sector_attribute(sector_name, attribute, frame)
+
+    def get_sector_range(self, sector_name, attribute, start_time, end_time=None):
+        """ Get a list of values for an attribute in chronological order for a whole sector
+        from the specified start time to the specified end time (not inclusive).
+        If no end time is specified, the list goes up to the current time. """
+        frame_times = [int(name[:-10]) for name in self.files]
+        frame_times.sort()
+
+        start_index = 0
+        end_index = len(frame_times)
+
+        for utime in frame_times:
+            if start_time < utime:
+                break
+            else:
+                start_index += 1
+
+        if end_time is not None:
+            frame_times.reverse()
+            for utime in frame_times:
+                if end_time > utime:
+                    break
+                else:
+                    end_index -= 1
+
+        valid_time_range = frame_times[start_index:end_index]
+        frame_names = [self.unix_time_to_frame(utime, self.data_path)
+                for utime in valid_time_range]
+
+        return [self.get_sector_attribute(sector_name, attribute, frame) for frame in frame_names]
+
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
-        file_name = os.basename(file_name)
+        file_name = os.path.basename(file_name)
         return int(file_name[:-10])
 
     def unix_time_to_frame(self, utime, base_path=None):
@@ -64,14 +123,14 @@ class Stock_Reader():
 
     def get_closest_frame(self, target_utime):
         """ Find the filename of the frame generated at a time closest to the target time """
-        closest = False
+        closest = None
         min_dist = -1
         for utime in [self.frame_to_unix_time(name) for name in self.files]:
             dist = abs(utime - target_utime)
-            if dist < min_dist:
+            if dist < min_dist or min_dist == -1:
                 min_dist = dist
                 closest = self.unix_time_to_frame(utime)
-        return closest
+        return os.path.join(self.data_path, closest)
 
     def get_current_attribute(self, ticker, attribute):
         """ Get a simple attribute of a stock from the most recent time frame """

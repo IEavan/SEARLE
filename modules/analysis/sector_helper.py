@@ -9,9 +9,9 @@ with open("../data/FTSEListings.json", 'r') as f:
 sector2tickers = {}
 for company in data["lookup"]["company"].values():
     try:
-        sector2tickers[company["ftse sector"]].append(company["ticker"])
+        sector2tickers[company["ftse sector"].lower()].append(company["ticker"])
     except KeyError:
-        sector2tickers[company["ftse sector"]] = [company["ticker"]]
+        sector2tickers[company["ftse sector"].lower()] = [company["ticker"]]
 
 ticker2sector = {}
 for sector in sector2tickers:
