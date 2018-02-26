@@ -110,7 +110,7 @@ class Stock_Reader():
 
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
-        file_name = os.basename(file_name)
+        file_name = os.path.basename(file_name)
         return int(file_name[:-10])
 
     def unix_time_to_frame(self, utime, base_path=None):
@@ -123,14 +123,14 @@ class Stock_Reader():
 
     def get_closest_frame(self, target_utime):
         """ Find the filename of the frame generated at a time closest to the target time """
-        closest = False
+        closest = None
         min_dist = -1
         for utime in [self.frame_to_unix_time(name) for name in self.files]:
             dist = abs(utime - target_utime)
-            if dist < min_dist:
+            if dist < min_dist or min_dist == -1:
                 min_dist = dist
                 closest = self.unix_time_to_frame(utime)
-        return closest
+        return os.path.join(self.data_path, closest)
 
     def get_current_attribute(self, ticker, attribute):
         """ Get a simple attribute of a stock from the most recent time frame """
