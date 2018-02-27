@@ -43,8 +43,8 @@ module.exports = (params) => {
         // Fetch and return the spot price for the resolved entity and given stockLookupType.
         // TODO: Proper error handling.
         return resolve(
-          fetch.stockLookup(resolvedEntity.symbol, {type: (params.stockLookupType)}).then(val => {
-            return Object.assign({value: val}, resolvedEntity);
+          fetch.stockLookup(resolvedEntity.symbol, {type: (params.stockLookupType)}).then(result => {
+            return Object.assign(result, resolvedEntity);
           })
         );
 

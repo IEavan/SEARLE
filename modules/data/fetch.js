@@ -95,6 +95,7 @@ module.exports = function Fetch() {
       ticker: entity,
       attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
     }).then(result => {
+      console.log(result);
       if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
       return result;
     });
