@@ -54,7 +54,8 @@ module.exports = (params) => {
             return fetch.stockLookup(resolvedEntity.symbol, {type: 'per_change'}).then(percentageChangeResult => {
 
               // Compose the two values and return the result.
-              var composedResultValue = `${absChangeResult.result.value} (${percentageChangeResult.result.value}%)`;
+              // TODO: Handle this part in the language transformer as a composed result.
+              var composedResultValue = `${absChangeResult.result.value} points (${percentageChangeResult.result.value}%)`;
 
               var composedObject = absChangeResult;
 
