@@ -13,8 +13,6 @@
 // Child process handles spawning new process instances.
 const { spawn } = require('child_process');
 
-var __DEBUG = process.env.DEBUG;
-
 // Define module entry point.
 module.exports = (path, args, ops) => {
 
@@ -47,7 +45,7 @@ module.exports = (path, args, ops) => {
 
           data = data.toString('utf8');
 
-          // console.log(data);
+          console.log(data);
 
           // Attempt to parse as JSON.
           try {
@@ -58,6 +56,12 @@ module.exports = (path, args, ops) => {
           }
 
           resolve(data);
+        });
+
+        // On close, resolve the promise as empty.
+        pyProc.on('close', () => {
+          log("Closed");
+          resolve();
         });
 
         // On error, reject the promise.s
@@ -73,5 +77,5 @@ module.exports = (path, args, ops) => {
 }
 
 function log(msg){
-  if (__DEBUG) console.log(`nodePyInt | ${msg}`);
+  if (process.env.DEBUG) console.log(`nodePyInt | ${msg}`);
 }

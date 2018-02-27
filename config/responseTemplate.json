@@ -13,9 +13,9 @@
         "{name} closed with {value} points {timePeriod}."
       ],
       "volume": [
-        "{name} has a volume of {value}.",
-        "At present, {name} has a volume of {value}.",
-        "The current volume of {name} is {value}."
+        "Since open, {name} has a volume of {value} shares.",
+        "At present, {name} has a volume of {value} shares.",
+        "The current volume of {name} is {value} shares."
       ],
       "high": [
         "{name} sold at a high of {value} {timePeriod}.",
@@ -41,7 +41,45 @@
     }
   },
   "sectorLookup": {
-
+    "mainParam": "stockLookupType",
+    "stockLookupType": {
+      "price": [
+          "{name} as a whole is trading at {value}.",
+          "{name} is currently trading at {value}."
+      ],
+      "open": [
+        "The {name} sector opened with {value} points {timePeriod}."
+      ],
+      "last_close": [
+        "The {name} sector closed with {value} points {timePeriod}."
+      ],
+      "volume": [
+        "The {name} sector has a volume of {value} shares.",
+        "At present, {name} has a volume of {value} shares.",
+        "The current volume of the {name} sector is {value} shares."
+      ],
+      "high": [
+        "{name} sold at a high of {value} {timePeriod}.",
+        "The highest selling price of the {name} sector was {value} {timePeriod}."
+      ],
+      "low": [
+        "{name} sold at a low of {value} {timePeriod}.",
+        "The lowest selling price of {name} was {value} {timePeriod}."
+      ],
+      "change": [
+          "{name} has changed by {value}."
+        ]
+    },
+    "defaults": {
+      "timePeriod": {
+        "volume": "24 hour",
+        "price": "current",
+        "open": "today",
+        "close": "yesterday",
+        "high": "today",
+        "low": "today"
+      }
+    }
   },
   "error": {
     "mainParam": "reason",

@@ -17,10 +17,7 @@ const transform = require('./resolve/languageTransformer');
 // to the user. TODO: Implement full error handling method.
 const actionMap = {
 
-  'stockLookup': (params) => {
-    // Return stockLookup as a promise.
-    return stockLookup(params);
-  },
+  'stockLookup': stockLookup,
   'newsLookup': null
 
 };
@@ -77,7 +74,7 @@ module.exports = function Core() {
       // Here a follow up intent should be made to the help command.
       return callback(new ErrorReport("Sorry! I didn't understand that. Type 'help' or 'what can you do' for info on what I can help you with!"));
 
-    // Forward result of intent map to fulfillment callback.s
+    // Forward result of intent map to fulfillment callback.
     return actionMap[request.intent](request.params).then(result => {
 
       // Attach the result to the request object.

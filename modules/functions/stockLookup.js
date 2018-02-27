@@ -3,6 +3,16 @@
  *
  *  Resolves financial entity name into either a stock ticker symbol &
  *  full company name, sector name, or entire FTSE 100.
+ *
+ *  Note: When a particular entity is resolved as a sector, the nature of the
+ *  intent is changed to reflect this. Because it is not feasible to separate
+ *  the intents on dialogflow into a 'company' lookup and 'sector' lookup
+ *  respectively, the distinction will be made here, at the point of resolution.
+ *
+ *  This is important to note, as it will mean that there will be an extra
+ *  'groupLookup' intent, used for sector and index-wide (FTSE rises & fallers)
+ *  lookups, only represented on the core backend logic, while dialogflow will
+ *  only be concerned with 'stockLookup' and 'newsLookup' intents.
  */
 
 // DEPENDENCIES
@@ -85,33 +95,40 @@ module.exports = (params) => {
 
       // Run a sector / index-wide (ftse) lookup. Keep in mind that this passes the entity name to the delegated
       // script, and not a symbol.
-      if (["sector", "ftse"].indexOf(resolvedEntity.entityType) !== -1 && resolvedEntity.name){
+      if (resolvedEntity.entityType == "sector" && resolvedEntity.name){
 
         // If no stockLookupType defined, set to 'price'.
         if (!params.stockLookupType) params.stockLookupType = 'price';
 
-        return resolve(fetch.groupLookup(resolvedEntity.name, {type: 'abs_change'}).then(absChangeResult => {
+        // Set the ltID to 'groupLookup'.
+        params.ltID = 'sectorLookup';
 
-          // Perform the same query for percentage change.
-          return fetch.groupLookup(resolvedEntity.name, {type: 'per_change'}).then(percentageChangeResult => {
+        // Handle change separately. (Requires composition of percentage & absolute change).
+        if (params.stockLookupType == "change"){
 
-            // Compose the two values and return the result.
-            var composedResultValue = `${absChangeResult.result.value} (${percentageChangeResult.result.value}%)`;
+          return resolve(fetch.groupLookup(resolvedEntity, {type: 'abs_change'}).then(absChangeResult => {
 
-            var composedObject = absChangeResult;
+            // Perform the same query for percentage change.
+            return fetch.groupLookup(resolvedEntity, {type: 'per_change'}).then(percentageChangeResult => {
 
-            // Used composed result value.
-            composedObject.result.value = composedResultValue;
+              // Compose the two values and return the result.
+              var composedResultValue = `${absChangeResult.result.value} (${percentageChangeResult.result.value}%)`;
 
-            // Collect all request attributes into an array for later inspection if need be.
-            composedObject.request.attribute = [composedObject.request.attribute, percentageChangeResult.request.attribute];
+              var composedObject = absChangeResult;
 
-            // Return the composedObject merged with the input resolvedEntity.
-            return Object.assign(composedObject, resolvedEntity);
+              // Used composed result value.
+              composedObject.result.value = composedResultValue;
 
-          });
+              // Collect all request attributes into an array for later inspection if need be.
+              composedObject.request.attribute = [composedObject.request.attribute, percentageChangeResult.request.attribute];
 
-        }));
+              // Return the composedObject merged with the input resolvedEntity.
+              return Object.assign(composedObject, resolvedEntity);
+
+            });
+
+          }));
+        }
 
         return resolve(fetch.groupLookup(resolvedEntity, {type: params.stockLookupType}).then(res => {
           return Object.assign(res, resolvedEntity);

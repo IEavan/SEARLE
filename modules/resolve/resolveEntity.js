@@ -25,6 +25,8 @@ module.exports = (input, callback, ops) => {
   // Obtain a fresh copy of the FTSEListings.
   data.getFTSEListings().then(listings => {
 
+    // First conduct a 'strict' match, that is, only tolerate changes in casing.
+
 
 
     // Do a match against everything, then break it down to see where it came
@@ -34,23 +36,23 @@ module.exports = (input, callback, ops) => {
                               .concat(listings['company'])
                               .concat(listings['ticker']);
 
-    var generalMatch = stringMatch(input, resolveableEntities);
+    var matched = stringMatch(input, resolveableEntities);
 
     // Check to see if the FTSE100 as a whole was queried.
-    var ftseMatch = stringMatch(input, ['ftse 100', 'ftse', 'index']);
-    if (ftseMatch) return callback({name: 'FTSE 100', entityType: 'ftse'});
+    if (["ftse 100", "ftse", "index"].indexOf(matched) !== -1)
+    return callback({name: 'FTSE 100', entityType: 'ftse'});
 
-    // Sectors are checked first.
-    var sectorMatch = stringMatch(input, listings['ftse sector']);
-    if (sectorMatch) return callback({name: sectorMatch, entityType: 'sector'});
+    // Check to see if match came from sectors.
+    if (listings['ftse sector'].indexOf(matched) !== -1)
+      return callback({name: matched, entityType: 'sector'});
 
-    // Check for company next.
-    var companyMatch = stringMatch(input, listings['company']);
-    if (companyMatch) return callback({name: companyMatch, symbol: listings.lookup.company[companyMatch].ticker, entityType: 'company'});
+    // Check to see if match came from companies.
+    if (listings['company'].indexOf(matched) !== -1)
+      return callback({name: matched, symbol: listings.lookup.company[matched].ticker, entityType: 'company'});
 
-    // Check for a symbol next.
-    var symbolMatch = stringMatch(input, listings['ticker']);
-    if (symbolMatch) return callback({name: listings.lookup.ticker[symbolMatch].company, symbol: symbolMatch, entityType: 'company'});
+    // Check to see if match came from symbols.
+    if (listings['ticker'].indexOf(matched) !== -1)
+      return callback({name: listings.lookup.ticker[matched].company, symbol: matched, entityType: 'company'});
 
     // If the above stricter methods fail, attempt to resolve the input with
     // Yahoo! Finance's query API.

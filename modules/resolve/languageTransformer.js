@@ -8,6 +8,7 @@
  * REFERENCE INPUT
  *  RESULT {
  *    intent: "...",
+ *    ltID: "...",
  *    params: {
  *      stockLookupType: "price" / "open" / "high" / "low" / "absolute_change"...
  *      timePeriod: '',
@@ -28,13 +29,18 @@ const transform = (result) => {
   log(`Transforming: `, result);
 
   var params = objectDFS(result, 'params');
-  var intent = objectDFS(result, 'intent');
+  var ltID = objectDFS(result, 'ltID');
+
+  // If no ltID is defined, use the intent a a default ltID.
+  if (!ltID) ltID = objectDFS(result, 'intent');
   var value  = objectDFS(result, 'value');
   var name = objectDFS(result, 'name');
 
+  log(`ltID: ${ltID}`);
+
   // Check that result is not empty.
-  if (!result || !params || !intent || !value || !name){
-    log(`Missing crucial parameter for transformation. \nResult: ${result}, Params: ${params}, Intent: ${intent}, Value: ${value}, Name: ${name}.`);
+  if (!result || !params || !ltID || !value || !name){
+    log(`Missing crucial parameter for transformation. \nResult: ${result}, Params: ${params}, ltID: ${ltID}, Value: ${value}, Name: ${name}.`);
     return null;
   }
 
@@ -43,15 +49,15 @@ const transform = (result) => {
   var output = value;
 
   // Check to see that we have a mapping in the responseTemplate json.
-  var template = responseTemplate[intent];
+  var template = responseTemplate[ltID];
   if (!template) {
-    log(`No template found for ${intent}.`);
+    log(`No template found for ${ltID}.`);
     return null;
   }
 
   // No main parameter mapping to get granular templates.
   if (!template.mainParam) {
-    log(`Main parameter not specified in respone template for ${intent}.`);
+    log(`Main parameter not specified in respone template for ${ltID}.`);
     return null;
   }
 
@@ -61,11 +67,11 @@ const transform = (result) => {
   console.log(mainParamVal);
 
   if (!mainParamVal){
-    log(`No entry in ${intent} for main parameter ${template.mainParam}.`);
+    log(`No entry in ${ltID} for main parameter ${template.mainParam}.`);
     return null;
   } // Result does not contain main parameter.
 
-  // If the intent is mapped, then we should extract the parameters and fill
+  // If the ltID is mapped, then we should extract the parameters and fill
   // in the template slots.
   substitutableParams = {};
 
@@ -109,7 +115,7 @@ const transform = (result) => {
 
     // First we compare to see if there are any unmapped params.
     // Then we check if a 'defaults' property is defined in the responseTemplate for
-    // the current intent. If there is one, then we check to see if defaults exist for
+    // the current ltID. If there is one, then we check to see if defaults exist for
     // the current parameter. If this is the case, then we want to get the default
     // value, and add it along with the param as a KVP to the substitutableParams
     // object.
@@ -144,6 +150,9 @@ const transform = (result) => {
 
   });
 
+  // Round all numerical values to 2d.p. at most (if not an integer).
+  substitutableParams = roundValues(substitutableParams);
+
   // Format string and return transformed response if all goes well.
   var formattedString = format(templateString, substitutableParams);
   if (formattedString) return formattedString;
@@ -155,6 +164,24 @@ const transform = (result) => {
 
 // Module entry point.
 module.exports = transform;
+
+// Round off values to 2d.p. for readability.
+function roundValues(params){
+
+  Object.keys(params).forEach(key => {
+
+    // Parse the number.
+    var parsedNum = Number(params[key]);
+
+    // If it is not an integer, it must be a float or double. If this is the case,
+    // round it to 2 decimal places.
+    if (!isNaN(parsedNum) && !Number.isInteger(parsedNum))
+      params[key] = parsedNum.toFixed(2);
+  });
+
+  return params;
+
+}
 
 // Given a template string, returns an array of valid parameters that the template
 // string can accept.

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "dev": "concurrently \"npm start\" \"node ./dev/localTunnel.js\"",
-    "start": "node hook.js"
+    "webhook": "node ./deployment/hook.js",
+    "update": "node ./deployment/update.js",
+    "start": "concurrently \"npm run update\" \"npm run webhook\""
   },
   "repository": {
     "type": "git",

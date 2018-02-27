@@ -1,10 +1,12 @@
 /**
- * Experimental WEBHOOK test for DialogFlow, deployed on Heroku.
+ *  Webook server for SEARLE.
  *
  *  Webhooks are HTTP 'callbacks' that get called on specific events.
  *  When DialogFlow resolves an intent, it can 'figure out' what to respond by
  *  calling the Webhook and relaying the response to DialogFlow so that it can
  *  respond to the user.
+ *
+ *  @Team16 2018. Aaron Baw, Eavan Pattie, Ralph Richards, Eloise Lenihan, Teodora Druga.
  *
  */
 
@@ -12,7 +14,7 @@
 // DEPENDENCIES
 const express = require('express');
 const bodyParser = require('body-parser');
-const Core = require('./modules/core');
+const Core = require('../modules/core');
 
 // Instantiate express instance.
 const app = express();
