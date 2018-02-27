@@ -7,10 +7,11 @@ is then stored in a csv for access by other scripts """
 import requests
 import time
 from bs4 import BeautifulSoup
+from tqdm import tqdm # TODO Remove this line :p
 
 # Constants
 BASE_URL = "http://www.londonstockexchange.com/exchange/prices-and-markets/stocks/summary/company-summary/"
-CSV_HEADER = "Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change"
+CSV_HEADER = "Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change, Market_Cap"
 
 NEWS_URLS = {
         "stockmarketwire":"http://www.stockmarketwire.com/company-news/?epic="
@@ -54,7 +55,7 @@ class LSE_Reader():
     def read_all_stocks(self):
         """ Iterate over all stock ticker found upon init """
         results = []
-        for ticker in self.names_to_codes.keys():
+        for ticker in tqdm(self.names_to_codes.keys()): # TODO remove tqdm
             results.append(self.read_stock(ticker))
         return results
 
@@ -68,11 +69,11 @@ class LSE_Reader():
         if response.status_code != 200:
             return -1
         else:
-            # Parse html
+            # Parse html for basic attributes
             html = BeautifulSoup(response.text, 'html.parser')
-            html = html.find(id="pi-colonna1-display")
-            html = html.find("tbody")
-            data_items = html.find_all("td")
+            table1 = html.find(id="pi-colonna1-display")
+            table1 = table1.find("tbody")
+            data_items = table1.find_all("td")
 
             # Extract numerical data and remove ',' thousands seperator
             price  = float(data_items[1].string.replace(',', ''))
@@ -84,7 +85,12 @@ class LSE_Reader():
             abs_change = round(price - last_close, 2)
             per_change = round(((price / last_close) - 1) * 100, 2)
 
-            return ticker, price, high, low, volume, last_close, abs_change, per_change
+            # Parse to find market cap
+            table2 = html.find(id="pi-colonna2").find("tbody")
+            table2_data = table2.find_all("td")
+            market_cap = float(table2_data[5].string.replace('£','').replace(',',''))
+
+            return ticker, price, high, low, volume, last_close, abs_change, per_change, market_cap
 
     def read_news(self, ticker, limit_per_source=10):
         ticker = self.check_add_dot(ticker)
