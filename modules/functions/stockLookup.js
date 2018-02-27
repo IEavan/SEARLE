@@ -54,8 +54,8 @@ module.exports = (params) => {
       // script, and not a symbol. Perhaps we should refactor and have .symbol be replaced
       // for .id? Since sectors could be identified with an ID as well?
       if (resolvedEntity.entityType === 'grouping')
-        return resolve(fetch.sectorLookup(resolvedEntity.name, {type: params.stockLookupType}).then(val => {
-          return Object.assign({value: val}, resolvedEntity);
+        return resolve(fetch.sectorLookup(resolvedEntity.name, {type: params.stockLookupType}).then(res => {
+          return Object.assign(res, resolvedEntity);
         })
       );
 

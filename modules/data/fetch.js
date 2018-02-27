@@ -102,6 +102,34 @@ module.exports = function Fetch() {
 
   }
 
+  // Perform a stock lookup.
+  //  Can either be current spot price, open / close, high / low, volume (24 hr default),
+  //  or unit / percentage change.
+  this.sectorLookup = (entity, ops) => {
+
+    // ops template
+
+    // ops = {
+    //     symbol: entity,
+    //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
+    // }
+
+    console.log(`Recieved fetch: ${entity}`);
+
+    const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
+
+    return pyStockLookup({
+      request_type: "get_current_attribute",
+      ticker: entity,
+      attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
+    }).then(result => {
+      console.log(result);
+      if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
+      return result;
+    });
+
+  }
+
   // Trade volume request.
   this.getTradeVolume = (entity, ops) => {
 
