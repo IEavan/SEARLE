@@ -61,30 +61,31 @@ class Stock_Reader():
                 ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
 
                 # Cast and format data from csv
+                row = {}
                 ticker = ticker.strip("'").replace('.','')
-                price = float(price)
-                high = float(high)
-                low = float(low)
-                last_close = float(last_close)
-                abs_change = float(abs_change)
-                per_change = float(per_change)
+                row["price"] = float(price)
+                row["high"] = float(high)
+                row["low"] = float(low)
+                row["last_close"] = float(last_close)
+                row["abs_change"] = float(abs_change)
+                row["per_change"] = float(per_change)
 
-                ftse_constituents[ticker] = price, high, low, volume, last_close, abs_change, per_change
-                all_changes.append(per_change)
+                ftse_constituents[ticker] = row
+                all_changes.append(float(per_change))
 
         if rising:
             all_changes.sort(reverse=True)
             limit = all_changes[quantity - 1] # inclusive
             filtered_constituents = {}
             for stock in ftse_constituents:
-                if ftse_constituents[stock][-1] >= limit: # pls change 6 TODO
+                if ftse_constituents[stock]["per_change"] >= limit:
                     filtered_constituents[stock] = ftse_constituents[stock]
         else:
             all_changes.sort()
             limit = all_changes[quantity - 1] # inclusive
             filtered_constituents = {}
             for stock in ftse_constituents:
-                if ftse_constituents[stock][-1] <= limit: #TODO see above
+                if ftse_constituents[stock]["per_change"] <= limit:
                     filtered_constituents[stock] = ftse_constituents[stock]
 
         return filtered_constituents
@@ -209,4 +210,4 @@ class Stock_Reader():
 
 if __name__ == "__main__":
     reader = Stock_Reader()
-    print(reader.get_risers(5, rising=True))
+    print(reader.get_risers(2, rising=True))
