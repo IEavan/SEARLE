@@ -97,16 +97,17 @@ class Stock_Reader():
         if frame is None:
             frame = os.path.join(self.data_path, self.current_frame)
 
-        rising_stocks = self.get_risers(quantity, frame)
+        rising_stocks = self.get_risers(quantity, frame, rising=rising)
         attribute_list = []
         for stock in rising_stocks:
             attribute_list.append({"ticker": stock,
-                                   attribute: rising_stocks[stock][attribute]})
+                                   "value": rising_stocks[stock][attribute]})
 
         return attribute_list
 
     def get_sector_attribute(self, sector_name, attribute, frame):
         """ Access a simple attribute about a whole sector """
+        #TODO change to weighting by market cap.
         tickers = sector_helper.sector2tickers[sector_name.lower()]
         results = []
         for ticker in tickers:

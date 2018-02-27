@@ -91,6 +91,24 @@ if __name__ == "__main__":
             response["error"]["message"] = "Sector with name '" + \
                     input_args["group"]["sector_name"] + "' was not found"
             response["error"]["type"] = "ValueError"
+
+    # Get attributes of the risers or fallers
+    if input_args["request_type"] == "get_risers_attribute":
+        request_type_understood = True
+
+        rising = input_args["group"]["type"] == "risers"
+        result = reader.get_risers_attribute(
+                input_args["attribute"],
+                input_args["group"]["quantity"],
+                rising=rising
+                )
+
+        if result != -1:
+            response["result"] = result
+        elif "group" in input_args:
+            response["error"]["message"] = "Sector with name '" + \
+                    input_args["group"]["sector_name"] + "' was not found"
+            response["error"]["type"] = "ValueError"
     
     # get news on a certain company
     if input_args["request_type"] == "get_news":
