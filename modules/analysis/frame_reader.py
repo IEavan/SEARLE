@@ -51,11 +51,11 @@ class Stock_Reader():
         if not found:
             return -1
     
-    def get_risers(self, quantity, rising=True):
+    def get_risers(self, quantity, frame, rising=True):
         """ Return a dict of all the top or bottom stocks wrt percentage change """
         ftse_constituents = {}
         all_changes = []
-        with open(os.path.join(self.data_path, self.current_frame), 'r') as f:
+        with open(frame, 'r') as f:
             f.readline() # Skip header
             for line in f:
                 ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
@@ -73,6 +73,8 @@ class Stock_Reader():
                 ftse_constituents[ticker] = row
                 all_changes.append(float(per_change))
 
+        # Filter from ftse_constituents those stocks that don't have
+        # a significant enough percentage change
         if rising:
             all_changes.sort(reverse=True)
             limit = all_changes[quantity - 1] # inclusive
@@ -90,6 +92,18 @@ class Stock_Reader():
 
         return filtered_constituents
 
+    def get_risers_attribute(self, attribute, quantity, frame=None, rising=True):
+        """ Extracts a list of attributes from the top or bottom <quantity> stocks """
+        if frame is None:
+            frame = os.path.join(self.data_path, self.current_frame)
+
+        rising_stocks = self.get_risers(quantity, frame)
+        attribute_list = []
+        for stock in rising_stocks:
+            attribute_list.append({"ticker": stock,
+                                   attribute: rising_stocks[stock][attribute]})
+
+        return attribute_list
 
     def get_sector_attribute(self, sector_name, attribute, frame):
         """ Access a simple attribute about a whole sector """
@@ -210,4 +224,4 @@ class Stock_Reader():
 
 if __name__ == "__main__":
     reader = Stock_Reader()
-    print(reader.get_risers(2, rising=True))
+    print(reader.get_risers_attribute("per_change", 3, rising=False))
