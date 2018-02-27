@@ -55,21 +55,39 @@ class Stock_Reader():
         """ Return a dict of all the top or bottom stocks wrt percentage change """
         ftse_constituents = {}
         all_changes = []
-        with open(os.path.join(self.data_path, self.current_frame, 'r') as f:
-            f.next() # Skip header
+        with open(os.path.join(self.data_path, self.current_frame), 'r') as f:
+            f.readline() # Skip header
             for line in f:
                 ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
+
+                # Cast and format data from csv
                 ticker = ticker.strip("'").replace('.','')
+                price = float(price)
+                high = float(high)
+                low = float(low)
+                last_close = float(last_close)
+                abs_change = float(abs_change)
+                per_change = float(per_change)
+
                 ftse_constituents[ticker] = price, high, low, volume, last_close, abs_change, per_change
                 all_changes.append(per_change)
-        all_changes.sort(reverse=True)
-        limit = all_changes[quantity] # non inclusive
-        filtered_csontituents = {}
-        for stock in ftse_constituents:
-            if ftse_constituents[stock][6] > limit: # pls change 6 TODO
-                filtered_csontituents[stock] = ftse_constituents[stock]
 
-        return filtered_csontituents
+        if rising:
+            all_changes.sort(reverse=True)
+            limit = all_changes[quantity - 1] # inclusive
+            filtered_constituents = {}
+            for stock in ftse_constituents:
+                if ftse_constituents[stock][-1] >= limit: # pls change 6 TODO
+                    filtered_constituents[stock] = ftse_constituents[stock]
+        else:
+            all_changes.sort()
+            limit = all_changes[quantity - 1] # inclusive
+            filtered_constituents = {}
+            for stock in ftse_constituents:
+                if ftse_constituents[stock][-1] <= limit: #TODO see above
+                    filtered_constituents[stock] = ftse_constituents[stock]
+
+        return filtered_constituents
 
 
     def get_sector_attribute(self, sector_name, attribute, frame):
@@ -191,4 +209,4 @@ class Stock_Reader():
 
 if __name__ == "__main__":
     reader = Stock_Reader()
-    print(reader.get_current_attribute('BP.', 'price'))
+    print(reader.get_risers(5, rising=True))
