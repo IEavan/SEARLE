@@ -40,6 +40,9 @@
       }
     }
   },
+  "sectorLookup": {
+
+  },
   "error": {
     "mainParam": "reason",
     "reason": {

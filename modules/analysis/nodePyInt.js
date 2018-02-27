@@ -28,7 +28,7 @@ module.exports = (path, args, ops) => {
 
         __DEBUG = ops && ops.debug ? ops.debug : false;
 
-        var spawnOps = (ops && ops.cwd ? {cwd: ops.cwd} : null);
+        var spawnOps = (ops && ops.cwd ? {cwd: ops.cwd} : {});
 
         // Spawn the child process.
         var pyProc = spawn((ops && ops.pythonCmd ? ops.pythonCmd : "python3"), [path, ...args], spawnOps);
@@ -46,6 +46,8 @@ module.exports = (path, args, ops) => {
         pyProc.stdout.on('data', (data) => {
 
           data = data.toString('utf8');
+
+          // console.log(data);
 
           // Attempt to parse as JSON.
           try {

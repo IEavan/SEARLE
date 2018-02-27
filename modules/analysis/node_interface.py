@@ -10,6 +10,7 @@ import sys
 
 import frame_reader
 import update_data
+import sector_helper
 
 if __name__ == "__main__":
     # Load json arguments passed in from node
@@ -38,31 +39,57 @@ if __name__ == "__main__":
     # get current attribute
     if input_args["request_type"] == "get_current_attribute":
         request_type_understood = True
-        result = reader.get_current_attribute(
-                input_args["ticker"],
-                input_args["attribute"])
-       
+
+        result = -1
+        if "ticker" in input_args:
+            result = reader.get_current_attribute(
+                    input_args["ticker"],
+                    input_args["attribute"])
+        elif "group" in input_args:
+            if input_args["group"]["type"] == "sector":
+                result = reader.get_current_sector_attribute(
+                        input_args["group"]["sector_name"],
+                        input_args["attribute"])
+
         if result != -1:
             response["result"]["value"] = result
-        else:
+        elif "ticker" in input_args:
             response["error"]["message"] = "Stock with ticker '" + \
                     input_args["ticker"] + "' was not found"
+            response["error"]["type"] = "ValueError"
+        elif "group" in input_args:
+            response["error"]["message"] = "Sector with name '" + \
+                    input_args["group"]["sector_name"] + "' was not found"
             response["error"]["type"] = "ValueError"
 
     # get attribute from specified time
     if input_args["request_type"] == "get_attribute":
         request_type_understood = True
         frame_name = reader.get_closest_frame(input_args["start_time"])
-        result = reader.get_attribute(
-                input_args["ticker"],
-                input_args["attribute"],
-                frame_name)
+
+        result = -1
+
+        if "ticker" in input_args:
+            result = reader.get_attribute(
+                    input_args["ticker"],
+                    input_args["attribute"],
+                    frame_name)
+        elif "group" in input_args:
+            if input_args["group"]["type"] == "sector":
+                result = reader.get_sector_attribute(
+                        input_args["group"]["sector_name"],
+                        input_args["attribute"],
+                        frame_name)
         
         if result != -1:
             response["result"]["value"] = result
-        else:
+        elif "ticker" in input_args:
             response["error"]["message"] = "Stock with ticker '" + \
                     input_args["ticker"] + "' was not found"
+            response["error"]["type"] = "ValueError"
+        elif "group" in input_args:
+            response["error"]["message"] = "Sector with name '" + \
+                    input_args["group"]["sector_name"] + "' was not found"
             response["error"]["type"] = "ValueError"
     
     # get news on a certain company
