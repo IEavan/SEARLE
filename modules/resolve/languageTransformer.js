@@ -25,7 +25,7 @@ const format = require('string-template');
 // Main function.
 const transform = (result) => {
 
-  console.log(`Transforming: `, result);
+  log(`Transforming: `, result);
 
   var params = objectDFS(result, 'params');
   var intent = objectDFS(result, 'intent');
@@ -153,16 +153,6 @@ const transform = (result) => {
 
 }
 
-console.log(transform({
-  'intent': 'stockLookup',
-  params: {
-    entityName: 'Barclays PLT',
-    'stockLookupType': 'change'
-  },
-  value: '14144',
-  name: 'Barclays PLT'
-}));
-
 // Module entry point.
 module.exports = transform;
 
@@ -260,5 +250,5 @@ function getValidParamsFromTemplate(templateString){
  }
 
 function log(msg){
-  console.log(`LANGUAGE TRANSFORMER | ${msg}`);
+  if (process.env.DEBUG) console.log(`LANGUAGE TRANSFORMER | ${msg}`);
 }

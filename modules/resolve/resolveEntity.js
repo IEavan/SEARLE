@@ -38,11 +38,11 @@ module.exports = (input, callback, ops) => {
 
     // Check to see if the FTSE100 as a whole was queried.
     var ftseMatch = stringMatch(input, ['ftse 100', 'ftse', 'index']);
-    if (ftseMatch) return callback({name: 'FTSE 100', entityType: 'grouping'});
+    if (ftseMatch) return callback({name: 'FTSE 100', entityType: 'ftse'});
 
     // Sectors are checked first.
     var sectorMatch = stringMatch(input, listings['ftse sector']);
-    if (sectorMatch) return callback({name: sectorMatch, entityType: 'grouping'});
+    if (sectorMatch) return callback({name: sectorMatch, entityType: 'sector'});
 
     // Check for company next.
     var companyMatch = stringMatch(input, listings['company']);

@@ -57,7 +57,7 @@ module.exports = function Core() {
       // TODO: Enrichment flow will take place here.
       // this.enrichRequest(<rawResponse>)
 
-      // console.log(`------------- RAW RESPONSE --------------`, updatedRequest, `------------- END RESPONSE --------------`);
+      console.log(`------------- RAW RESPONSE --------------`, updatedRequest, `------------- END RESPONSE --------------`);
 
 
       // Prepare response into human-readable string for output.

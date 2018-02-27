@@ -86,7 +86,7 @@ module.exports = function Fetch() {
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
-    console.log(`Recieved fetch: ${entity}`);
+    console.log(`Recieved fetch`, entity);
 
     const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
@@ -105,7 +105,7 @@ module.exports = function Fetch() {
   // Perform a stock lookup.
   //  Can either be current spot price, open / close, high / low, volume (24 hr default),
   //  or unit / percentage change.
-  this.sectorLookup = (entity, ops) => {
+  this.groupLookup = (entity, ops) => {
 
     // ops template
 
@@ -114,13 +114,18 @@ module.exports = function Fetch() {
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
-    console.log(`Recieved fetch: ${entity}`);
+    console.log(`Recieved fetch`, entity);
 
     const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
+    // TODO: Account for time-dependent queries.
+
     return pyStockLookup({
       request_type: "get_current_attribute",
-      ticker: entity,
+      group: {
+        type: entity.entityType,
+        sector_name: entity.name
+      },
       attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
     }).then(result => {
       console.log(result);
