@@ -50,9 +50,64 @@ class Stock_Reader():
                                 + "allowed values are {price, high, low, volume, last_close, abs_change, per_change}")
         if not found:
             return -1
+    
+    def get_risers(self, quantity, frame, rising=True):
+        """ Return a dict of all the top or bottom stocks wrt percentage change """
+        ftse_constituents = {}
+        all_changes = []
+        with open(frame, 'r') as f:
+            f.readline() # Skip header
+            for line in f:
+                ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
+
+                # Cast and format data from csv
+                row = {}
+                ticker = ticker.strip("'").replace('.','')
+                row["price"] = float(price)
+                row["high"] = float(high)
+                row["low"] = float(low)
+                row["last_close"] = float(last_close)
+                row["abs_change"] = float(abs_change)
+                row["per_change"] = float(per_change)
+
+                ftse_constituents[ticker] = row
+                all_changes.append(float(per_change))
+
+        # Filter from ftse_constituents those stocks that don't have
+        # a significant enough percentage change
+        if rising:
+            all_changes.sort(reverse=True)
+            limit = all_changes[quantity - 1] # inclusive
+            filtered_constituents = {}
+            for stock in ftse_constituents:
+                if ftse_constituents[stock]["per_change"] >= limit:
+                    filtered_constituents[stock] = ftse_constituents[stock]
+        else:
+            all_changes.sort()
+            limit = all_changes[quantity - 1] # inclusive
+            filtered_constituents = {}
+            for stock in ftse_constituents:
+                if ftse_constituents[stock]["per_change"] <= limit:
+                    filtered_constituents[stock] = ftse_constituents[stock]
+
+        return filtered_constituents
+
+    def get_risers_attribute(self, attribute, quantity, frame=None, rising=True):
+        """ Extracts a list of attributes from the top or bottom <quantity> stocks """
+        if frame is None:
+            frame = os.path.join(self.data_path, self.current_frame)
+
+        rising_stocks = self.get_risers(quantity, frame, rising=rising)
+        attribute_list = []
+        for stock in rising_stocks:
+            attribute_list.append({"ticker": stock,
+                                   "value": rising_stocks[stock][attribute]})
+
+        return attribute_list
 
     def get_sector_attribute(self, sector_name, attribute, frame):
         """ Access a simple attribute about a whole sector """
+        #TODO change to weighting by market cap.
         tickers = sector_helper.sector2tickers[sector_name.lower()]
         results = []
         for ticker in tickers:
@@ -107,6 +162,7 @@ class Stock_Reader():
                 for utime in valid_time_range]
 
         return [self.get_sector_attribute(sector_name, attribute, frame) for frame in frame_names]
+
 
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
@@ -169,4 +225,4 @@ class Stock_Reader():
 
 if __name__ == "__main__":
     reader = Stock_Reader()
-    print(reader.get_current_attribute('BP.', 'price'))
+    print(reader.get_risers_attribute("per_change", 3, rising=False))
