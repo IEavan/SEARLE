@@ -50,6 +50,27 @@ class Stock_Reader():
                                 + "allowed values are {price, high, low, volume, last_close, abs_change, per_change}")
         if not found:
             return -1
+    
+    def get_risers(self, quantity, rising=True):
+        """ Return a dict of all the top or bottom stocks wrt percentage change """
+        ftse_constituents = {}
+        all_changes = []
+        with open(os.path.join(self.data_path, self.current_frame, 'r') as f:
+            f.next() # Skip header
+            for line in f:
+                ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
+                ticker = ticker.strip("'").replace('.','')
+                ftse_constituents[ticker] = price, high, low, volume, last_close, abs_change, per_change
+                all_changes.append(per_change)
+        all_changes.sort(reverse=True)
+        limit = all_changes[quantity] # non inclusive
+        filtered_csontituents = {}
+        for stock in ftse_constituents:
+            if ftse_constituents[stock][6] > limit: # pls change 6 TODO
+                filtered_csontituents[stock] = ftse_constituents[stock]
+
+        return filtered_csontituents
+
 
     def get_sector_attribute(self, sector_name, attribute, frame):
         """ Access a simple attribute about a whole sector """
@@ -107,6 +128,7 @@ class Stock_Reader():
                 for utime in valid_time_range]
 
         return [self.get_sector_attribute(sector_name, attribute, frame) for frame in frame_names]
+
 
     def frame_to_unix_time(self, file_name):
         """ Convert a file name to a unix timestamp """
