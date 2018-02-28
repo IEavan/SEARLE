@@ -1,3 +1,5 @@
 {
-  "updateInterval": 900000
+  "updateInterval": 900000,
+  "openTime": "09:00",
+  "closeTime": "17:00"
 }
