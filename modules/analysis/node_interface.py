@@ -11,6 +11,7 @@ import sys
 import frame_reader
 import update_data
 import sector_helper
+import ai
 
 if __name__ == "__main__":
     # Load json arguments passed in from node
@@ -33,6 +34,7 @@ if __name__ == "__main__":
         reader = frame_reader.Stock_Reader()
 
     request_type_understood = False
+    result = -1
 
     # ------------- Handle each type of request specified in the json ------------------#
 
@@ -40,7 +42,6 @@ if __name__ == "__main__":
     if input_args["request_type"] == "get_current_attribute":
         request_type_understood = True
 
-        result = -1
         if "ticker" in input_args:
             result = reader.get_current_attribute(
                     input_args["ticker"],
@@ -66,8 +67,6 @@ if __name__ == "__main__":
     if input_args["request_type"] == "get_attribute":
         request_type_understood = True
         frame_name = reader.get_closest_frame(input_args["start_time"])
-
-        result = -1
 
         if "ticker" in input_args:
             result = reader.get_attribute(
@@ -133,4 +132,11 @@ if __name__ == "__main__":
                 input_args["request_type"] + "' was not recognised"
         response["error"]["type"] = "ValueError"
 
+    # If there was no error
+    # Log the user request
+    if result != -1:
+        log_writer = ai.User_Log_Writer()
+        log_writer.append_request(input_args)
+
+    # Send response out on stdout
     print(json.dumps(response))
