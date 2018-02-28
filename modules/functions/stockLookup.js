@@ -65,7 +65,7 @@ module.exports = (params) => {
 
               // Compose the two values and return the result.
               // TODO: Handle this part in the language transformer as a composed result.
-              var composedResultValue = `${absChangeResult.result.value} points (${percentageChangeResult.result.value}%)`;
+              var composedResultValue = `${absChangeResult.result.value} points (${percentageChangeResult.result.value.toFixed(2)}%)`;
 
               var composedObject = absChangeResult;
 

@@ -135,6 +135,28 @@ module.exports = function Fetch() {
 
   }
 
+  // Perform a Risers & Fallers lookup. Retrieve the best n or worst n performing
+  // companies on the index, based on some desired property e.g. percentage
+  // or absolute change.
+  this.rafLookup = (ops) => {
+
+    const pyRafLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
+
+    return pyRafLookup({
+      request_type: "get_risers_attribute",
+      group: {
+        type: ops.type,
+        quantity: ops.quantity
+      },
+      attribute: ops.attribute
+    })
+    .then(result => {
+      if (!result || result === 'None\n') return Promise.reject(`Could not lookup top ${ops.quantity} ${ops.type}.`);
+      return result;
+    });
+
+  }
+
   // Trade volume request.
   this.getTradeVolume = (entity, ops) => {
 

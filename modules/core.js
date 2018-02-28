@@ -10,6 +10,7 @@
 
 // DEPENDENCIES
 const stockLookup = require('./functions/stockLookup');
+const rafLookup = require('./functions/rafLookup');
 const transform = require('./resolve/languageTransformer');
 
 // Mapping of intent names into discrete functions which delegate task of fulfilling
@@ -18,6 +19,7 @@ const transform = require('./resolve/languageTransformer');
 const actionMap = {
 
   'stockLookup': stockLookup,
+  'rafLookup': rafLookup,
   'newsLookup': null
 
 };
@@ -75,10 +77,13 @@ module.exports = function Core() {
       return callback(new ErrorReport("Sorry! I didn't understand that. Type 'help' or 'what can you do' for info on what I can help you with!"));
 
     // Forward result of intent map to fulfillment callback.
-    return actionMap[request.intent](request.params).then(result => {
+    return actionMap[request.intent](request.params).then(results => {
 
-      // Attach the result to the request object.
-      request.results.push(result);
+      // Attach the result to the request object. If there are multiple results,
+      // then push multiple results to the array.
+      if (!Array.isArray(results)) results = [results];
+
+      request.results = request.results.concat(results);
 
       // Send back the request object with newly attached result(s).
       return callback(request);

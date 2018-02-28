@@ -26,14 +26,13 @@ const format = require('string-template');
 // Main function.
 const transform = (result) => {
 
-  log(`Transforming: `, result);
-
   var params = objectDFS(result, 'params');
   var ltID = objectDFS(result, 'ltID');
 
   // If no ltID is defined, use the intent a a default ltID.
   if (!ltID) ltID = objectDFS(result, 'intent');
   var value  = objectDFS(result, 'value');
+  if (!value) value = objectDFS(result, 'results');
   var name = objectDFS(result, 'name');
 
   log(`ltID: ${ltID}`);
@@ -50,35 +49,83 @@ const transform = (result) => {
 
   // Check to see that we have a mapping in the responseTemplate json.
   var template = responseTemplate[ltID];
+
   if (!template) {
     log(`No template found for ${ltID}.`);
     return null;
   }
 
   // No main parameter mapping to get granular templates.
-  if (!template.mainParam) {
-    log(`Main parameter not specified in respone template for ${ltID}.`);
+  if (template.mainParam) return subByMainParam(result, template);
+
+  // If no main param found, naively substitute object's properties to the
+  // parameters in the template with DFS.
+  if (!template.type) return naiveSubstitution(result, template);
+
+  // Check to see if the template is of type list.
+  if (template.type && template.type == 'list') return listSubstitution(result, result.result.result, template, ltID);
+
+
+}
+
+// Module entry point.
+module.exports = transform;
+
+// Substitute a list of results, containing a header and templateString which is repeatedly
+// used for each item.
+function listSubstitution(result, list, template, ltID){
+
+  if (!template.pre || !template.listItem) {
+    log(`No pre (header) or list entry found for ${ltID}.`);
     return null;
   }
 
-  // Get the main param from the object.
-  log(`Searching result object for ${template.mainParam}`);
-  var mainParamVal = objectDFS(result, template.mainParam);
-  console.log(mainParamVal);
+  // Essentially naive substitution for each result element.
+  var header = naiveSubstitution(result, template.pre);
 
-  if (!mainParamVal){
-    log(`No entry in ${ltID} for main parameter ${template.mainParam}.`);
-    return null;
-  } // Result does not contain main parameter.
+  // For each list element, naivelySubstitute.
+  var body = "";
+
+  list.forEach(item => {body += '\n' + naiveSubstitution(item, template.listItem)});
+
+  var end = "";
+
+  if (template.end) end = naiveSubstitution(result, template.end);
+
+  return header + '\n' + body + (end ? '\n' + end : '');
+
+}
+
+// Perform substitution based off of some main parameter (e.g. spot price, volume, etc).
+function subByMainParam(result, template){
+
+    // Get the main param from the object.
+    log(`Searching result object for ${template.mainParam}`);
+    var mainParamVal = objectDFS(result, template.mainParam);
+
+    if (!mainParamVal){
+      log(`No entry in ${ltID} for main parameter ${template.mainParam}.`);
+      return null;
+    } // Result does not contain main parameter.
+
+    // Based on the main parameter (stockLookupType in the case of stock Lookup, get
+    // the list of templates that will be further divided upon based on auxiliary parameters
+    // such as price, volume, high, low, etc.)
+    var templateString = template[template.mainParam][mainParamVal];
+    var defaults = template.defaults ? template.defaults: null;
+
+    return naiveSubstitution(result, templateString, defaults);
+
+
+}
+
+// Naively substitute the template paramters with matching values from associated
+// keys in the result object, found with DFS traversal.
+function naiveSubstitution(result, templateString, defaults){
 
   // If the ltID is mapped, then we should extract the parameters and fill
   // in the template slots.
   substitutableParams = {};
-
-  // Based on the main parameter (stockLookupType in the case of stock Lookup, get
-  // the list of templates that will be further divided upon based on auxiliary parameters
-  // such as price, volume, high, low, etc.)
-  var templateString = template[template.mainParam][mainParamVal];
 
   // Template string could be an array. If this is the case, choose a random
   // entry. EXTENSION IDEA: Settings for this (disable randomness, or alter likelihood
@@ -86,7 +133,7 @@ const transform = (result) => {
   if (Array.isArray(templateString))
     templateString = templateString[Math.floor(Math.random() * templateString.length)];
 
-  console.log('template string ', templateString);
+  log('template string ', templateString);
 
   // Get all substituable parameters.
   var validParams = getValidParamsFromTemplate(templateString);
@@ -97,58 +144,14 @@ const transform = (result) => {
   // the corresponding value and attach to the substitutableParams object.
   validParams.forEach(param => {
     var foundValue = objectDFS(result, param);
-
     // If parameter is found, attach it to the substitutableParams object.
     if (foundValue) substitutableParams[param] = foundValue;
   });
 
   // console.log('Current substitutableParams ', substitutableParams);
 
-  // Handle timePeriod defaults.
-  //
-  // If the responseTemplate contians some timePeriod parameter which is not
-  // mapped in the substitutableParams object, then we will add in the default
-  // value declared in the responeTemplate file.
-  validParams.forEach(param => {
-
-    // console.log('Checking valid param default for ', param);
-
-    // First we compare to see if there are any unmapped params.
-    // Then we check if a 'defaults' property is defined in the responseTemplate for
-    // the current ltID. If there is one, then we check to see if defaults exist for
-    // the current parameter. If this is the case, then we want to get the default
-    // value, and add it along with the param as a KVP to the substitutableParams
-    // object.
-    if (!substitutableParams[param] && template.defaults && template.defaults[param]){
-
-      // console.log(param, ' has a default.');
-
-      // Two options here; we know that for the stockLookup, the exact stockLookupType
-      // is immediately used following the mainParam lookup for the responseTemplate.
-      // We could simply leverage this to extract the timeframe default here, but
-      // for generality and extension, it would be better to once again traverse the object
-      // for all possible keys it contains (provided it is not that large, which holds true for
-      // our purposes), and see if any match the keys in the template.defaults[param] object.
-      // We simply just need to return the one that does (if there are any).
-
-      // Get the list of default parameters that are supported in the template.
-      var defaultParams = Object.keys(template.defaults[param]);
-
-      // console.log('Supported default parameter values for ', param, ': ', template.defaults[param]);
-
-      // Search the result object for matching values for any of the default parameters.
-      var matchingParameter = objectDFSByVal(result, Object.keys(template.defaults[param]));
-
-      // console.log('Found matching parameter ', matchingParameter);
-
-      // If we have a matching parameter, grab the value from the template default
-      // and add it to the substitutable params object.
-      if (matchingParameter)
-        substitutableParams[param] = template.defaults[param][matchingParameter];
-
-    }
-
-  });
+  // Handle defaults.
+  substitutableParams = subDefaults(validParams, result, substitutableParams, defaults);
 
   // Round all numerical values to 2d.p. at most (if not an integer).
   substitutableParams = roundValues(substitutableParams);
@@ -162,8 +165,58 @@ const transform = (result) => {
 
 }
 
-// Module entry point.
-module.exports = transform;
+// Substitute in any default values in our string template, where parameter values have
+// not been specified.
+function subDefaults(validParams, result, substitutableParams, defaults){
+
+  // If the responseTemplate contians some timePeriod parameter which is not
+  // mapped in the substitutableParams object, then we will add in the default
+  // value declared in the responeTemplate file.
+  validParams.forEach(param => {
+
+    // console.log('Checking valid param default for ', param);
+
+    // First we compare to see if there are any unmapped params.
+    // Then we check if a 'defaults' property is defined in the responseTemplate for
+    // the current ltID. If there is one, then we check to see if defaults exist for
+    // the current parameter. If this is the case, then we want to get the default
+    // value, and add it along with the param as a KVP to the substitutableParams
+    // object.
+    if (!substitutableParams[param] && defaults && defaults[param]){
+
+      // console.log(param, ' has a default.');
+
+      // Two options here; we know that for the stockLookup, the exact stockLookupType
+      // is immediately used following the mainParam lookup for the responseTemplate.
+      // We could simply leverage this to extract the timeframe default here, but
+      // for generality and extension, it would be better to once again traverse the object
+      // for all possible keys it contains (provided it is not that large, which holds true for
+      // our purposes), and see if any match the keys in the template.defaults[param] object.
+      // We simply just need to return the one that does (if there are any).
+
+      // Get the list of default parameters that are supported in the template.
+      var defaultParams = Object.keys(defaults[param]);
+
+      // console.log('Supported default parameter values for ', param, ': ', template.defaults[param]);
+
+      // Search the result object for matching values for any of the default parameters.
+      var matchingParameter = objectDFSByVal(result, Object.keys(defaults[param]));
+
+      // console.log('Found matching parameter ', matchingParameter);
+
+      // If we have a matching parameter, grab the value from the template default
+      // and add it to the substitutable params object.
+      if (matchingParameter)
+        substitutableParams[param] = defaults[param][matchingParameter];
+
+    }
+
+  });
+
+  // Return substitutableParams with added substituted default values.
+  return substitutableParams;
+
+}
 
 // Round off values to 2d.p. for readability.
 function roundValues(params){

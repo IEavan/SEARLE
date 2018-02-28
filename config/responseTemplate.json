@@ -81,6 +81,11 @@
       }
     }
   },
+  "rafLookup": {
+    "type": "list",
+    "pre": "Here is the {attribute} for the top {quantity} {type}:",
+    "listItem": "{name} ({symbol}): {value}"
+  },
   "error": {
     "mainParam": "reason",
     "reason": {
