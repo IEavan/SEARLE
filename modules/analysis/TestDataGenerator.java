@@ -405,7 +405,7 @@ public class TestDataGenerator
 			String fileName = System.getProperty("user.dir")+"/data/test_frames/"+data.get(0).getSpecificFrame(j).getTimestamp()+"-frame.csv";
 			filewriter = new FileWriter(fileName);
 
-			String str="Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change\n";
+			String str="Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change, Market_Cap\n";
 			for (int i=0; i<data.size(); i++){
 				//data.get(i).getSpecificFrame(j)....
 				str+="'"+data.get(i).getTicker()+"',";
@@ -415,7 +415,8 @@ public class TestDataGenerator
 				str+=data.get(i).getSpecificFrame(j).getVolume()+",";
 				str+=data.get(i).getSpecificFrame(j).getLast_Close()+",";
 				str+=data.get(i).getSpecificFrame(j).getAbsolute_Change()+",";
-				str+=data.get(i).getSpecificFrame(j).getPercentage_Change();
+				str+=data.get(i).getSpecificFrame(j).getPercentage_Change()+",";
+				str+=data.get(i).getSpecificFrame(j).getPrice()*5000000;
 
 				if (i<(data.size()-1)){
 					str+="\n";
