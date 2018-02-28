@@ -17,6 +17,9 @@ if __name__ == "__main__":
     # Load json arguments passed in from node
     input_args = json.loads(sys.stdin.readline())
 
+    predictor = ai.Intent_Predictor()
+    log_writer = ai.User_Log_Writer(hooks=[predictor.update_graph])
+
     response = {}
     response["result"] = {}
     response["request"] = input_args
@@ -135,7 +138,6 @@ if __name__ == "__main__":
     # If there was no error
     # Log the user request
     if result != -1:
-        log_writer = ai.User_Log_Writer()
         log_writer.append_request(input_args)
 
     # Send response out on stdout

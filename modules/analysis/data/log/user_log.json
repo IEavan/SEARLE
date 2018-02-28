@@ -14,6 +14,149 @@
             "ticker": "III",
             "attribute": "volume",
             "request_type": "get_current_attribute"
+        },
+        {
+            "group": {
+                "quantity": 2,
+                "type": "fallers"
+            },
+            "attribute": "price",
+            "request_type": "get_risers_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "price",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "attribute": "volume",
+            "ticker": "III",
+            "request_type": "get_current_attribute"
         }
     ]
 }
