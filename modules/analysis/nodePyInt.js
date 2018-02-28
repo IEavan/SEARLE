@@ -45,7 +45,7 @@ module.exports = (path, args, ops) => {
 
           data = data.toString('utf8');
 
-          console.log(data);
+          // console.log(data);
 
           // Attempt to parse as JSON.
           try {
@@ -60,7 +60,6 @@ module.exports = (path, args, ops) => {
 
         // On close, resolve the promise as empty.
         pyProc.on('close', () => {
-          log("Closed");
           resolve();
         });
 

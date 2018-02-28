@@ -10,6 +10,7 @@ const path = require('path');
 const nodePyInt = require(path.resolve(__dirname, "../modules/analysis/nodePyInt"));
 const {spawn} = require("child_process");
 const config = require(path.resolve(__dirname, "../config/config"));
+const moment = require('moment');
 
 const pyScriptsPath = path.resolve(__dirname, "../modules/analysis");
 const updateScript = nodePyInt(`${pyScriptsPath}/update_data.py`, null, {cwd: pyScriptsPath});
@@ -26,6 +27,10 @@ setInterval(() => {
 // Add helper function for update so we can concisely add it outside of the interval for
 // running the script on startup as well.
 function update(){
+
+  // Check to see we are within opening hours.
+  if (!moment().between(moment(config.openTime, 'HH:mm'), moment(config.closeTime, 'HH:mm'))) return; // Markets closed, do not update.
+
   log(`Updating FTSE cache...`);
   updateScript().then(() => {
     log(`Updated.`);
