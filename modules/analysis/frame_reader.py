@@ -97,6 +97,8 @@ class Stock_Reader():
                 if ftse_constituents[stock]["per_change"] <= limit:
                     filtered_constituents[stock] = ftse_constituents[stock]
 
+        # TODO handle for when multiple stocks change by the same amount
+
         return filtered_constituents
 
     def get_risers_attribute(self, attribute, quantity, frame=None, rising=True):
