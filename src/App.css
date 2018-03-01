@@ -1,28 +1,77 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body, html {
+  height: 100%;
+  width: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+p, h1, h2, h3, h4 {
+  font-family: "Nunito", sans-serif;
 }
 
-.App-title {
-  font-size: 1.5em;
+/* Reset input box styling */
+input, button {
+  border:none;
+  background-image:none;
+  background-color:transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin:0;
+  border:0;
+  padding:0;
+  display:inline-block;
+  vertical-align:middle;
+  white-space:normal;
+  background:none;
+  line-height:1;
+  focus: none;
+  font-size: 13px;
+  font-family: "Nunito", sans-serif;
+  outline: none;
 }
 
-.App-intro {
-  font-size: large;
+button {
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+div.hidden {
+  display: none;
+}
+
+button.inputNavButton {
+  height: 50px;
+  width: 50px;
+  padding: 15px;
+  position: relative;
+}
+
+button.inputNavButton path, rect {
+  transition: 0.3s ease-in-out;
+  fill: rgb(125, 124, 124);
+}
+
+
+button.active path {
+  fill: #ffda44;
+}
+
+
+button.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: block;
+  border-top: 1px solid #ffda44;
+  margin-top: -1px;
+  transition: 0.3s ease-in-out;
 }
