@@ -9,6 +9,12 @@ import json
 import pickle
 from itertools import product
 
+from frame_reader import Stock_Reader
+import time
+
+import numpy as np
+from scipy.stats import norm
+
 # Constants
 MARKOV_TUPLE_SIZE = 2 # Delete /data/log/graph if changed
 
@@ -176,3 +182,30 @@ class Intent_Predictor():
             new_request["request_type"] = intent
 
         return new_request
+
+
+# ----------- Methods for determining the likelihood of an attriubte ------------
+def get_likelihood(attribute, ticker, value, exclude_current=True,
+                   look_back=2419200, distribution="normal"):
+    reader = Stock_Reader()
+    historical_attrs = reader.get_attribute_range(ticker, attribute, time.time() - look_back)
+
+    if len(historical_attrs) <= 1:
+        return 1
+
+    if distribution == "normal":
+        loc, scale = norm.fit(historical_attrs[:len(historical_attrs) - exclude_current])
+        prob = norm.cdf(value, loc=loc, scale=scale)
+        if prob > 0.5:
+            prob = 1 - prob
+        prob *= 2
+    elif distribution == "lognorm":
+        log_val = np.log(value)
+        log_hist = np.log(historical_attrs[:len(historical_attrs) - exclude_current])
+        loc, scale = norm.fit(log_hist)
+        prob = norm.cdf(log_val, loc=loc, scale=scale)
+        if prob > 0.5:
+            prob = 1 - prob
+        prob *= 2
+
+    return prob
