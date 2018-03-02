@@ -129,11 +129,21 @@ if __name__ == "__main__":
             response["error"]["message"] = "Stock with ticker '" + \
                     input_args["ticker"] + "' was not found"
             response["error"]["type"] = "ValueError"
+    
+    
+    # Predict the users next request
+    if input_args["request_type"] == "predict_intent":
+        request_type_understood = True
+        intent = predictor.predict_intent()
+        predicted_request = predictor.intent_to_request(intent)
+        response["result"]["value"] = predicted_request
+
 
     if not request_type_understood:
         response["error"]["message"] = "Request type '" + \
                 input_args["request_type"] + "' was not recognised"
         response["error"]["type"] = "ValueError"
+
 
     # If there was no error
     # Log the user request
