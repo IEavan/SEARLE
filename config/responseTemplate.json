@@ -86,6 +86,7 @@
     "pre": "Here is the {attribute} for the top {quantity} {type}:",
     "listItem": "{name} ({symbol}): {value}"
   },
+  "newsLookup": "I found {limit_per_source} articles on {name}:",
   "error": {
     "mainParam": "reason",
     "reason": {

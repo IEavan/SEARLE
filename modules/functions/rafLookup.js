@@ -74,17 +74,25 @@ function rafLookup(params){
 // details related to the company, by performing an entity resolution.
 function fillCompanyInfo(data, filledCompanyInfo){
 
+  // Rename data.result to data.value.
+  // TODO: This is a temporary fix, change Python JSON response structure for RAF
+  // to reflect this.
+  if (!data.value) {
+    data.value = data.result;
+    delete data.result;
+  }
+
   if (!filledCompanyInfo) filledCompanyInfo = [];
 
   return new Promise((resolve, reject) => {
 
-    if (!data.result || data.result.length == 0) {
-      data.result = filledCompanyInfo;
+    if (!data.value || data.value.length == 0) {
+      data.value = filledCompanyInfo;
 
       return resolve(data);
     }
 
-    var ci = data.result.shift();
+    var ci = data.value.shift();
 
     resolveEntity(ci.ticker, resolved => {
       filledCompanyInfo.push(Object.assign(ci, resolved));
@@ -99,9 +107,9 @@ function fillCompanyInfo(data, filledCompanyInfo){
 // parameters object, and composes the two results into a single result object.
 function composeResult(absChangeResult, perChangeResult, params){
 
-  absChangeResult.result.forEach((result, i) => {
-    absChangeResult.result[i] = {
-      ...result, value: `${result.value} (${perChangeResult.result[i].value.toFixed(2)})%`
+  absChangeResult.value.forEach((result, i) => {
+    absChangeResult.value[i] = {
+      ...result, value: `${result.value} (${perChangeResult.value[i].value.toFixed(2)})%`
     }
   });
 

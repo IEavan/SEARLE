@@ -313,6 +313,281 @@
             "request_type": "get_current_attribute",
             "ticker": "BARC",
             "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "volume"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 2
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
         }
     ]
 }

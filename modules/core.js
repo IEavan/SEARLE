@@ -11,6 +11,7 @@
 // DEPENDENCIES
 const stockLookup = require('./functions/stockLookup');
 const rafLookup = require('./functions/rafLookup');
+const newsLookup = require('./functions/newsLookup');
 const transform = require('./resolve/languageTransformer');
 
 // Mapping of intent names into discrete functions which delegate task of fulfilling
@@ -20,7 +21,7 @@ const actionMap = {
 
   'stockLookup': stockLookup,
   'rafLookup': rafLookup,
-  'newsLookup': null
+  'newsLookup': newsLookup
 
 };
 
@@ -56,7 +57,7 @@ module.exports = function Core() {
       // TODO: Enrichment flow will take place here.
       // this.enrichRequest(<rawResponse>)
 
-      console.log(`------------- RAW RESPONSE --------------`, updatedRequest, `------------- END RESPONSE --------------`);
+      // console.log(`------------- RAW RESPONSE --------------`, updatedRequest, `------------- END RESPONSE --------------`);
 
 
       // Prepare response into human-readable string for output.
@@ -130,11 +131,12 @@ module.exports = function Core() {
     });
 
     // Add rich-text payload (Extension).
-
+    //
+    console.log('preparedResponse data object ',request.data);
 
 
     // Relay response into callback for now.
-    return callback({text: outputString});
+    return callback({text: outputString, data: (request.data ? request.data : {})});
 
   };
 

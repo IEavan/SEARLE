@@ -32,10 +32,14 @@ const transform = (result) => {
   // If no ltID is defined, use the intent a a default ltID.
   if (!ltID) ltID = objectDFS(result, 'intent');
   var value  = objectDFS(result, 'value');
-  if (!value) value = objectDFS(result, 'results');
+  if (!value) value = objectDFS(result, 'result');
   var name = objectDFS(result, 'name');
 
   log(`ltID: ${ltID}`);
+
+
+  console.log("LT RECIEVED: ");
+  console.log(result);
 
   // Check that result is not empty.
   if (!result || !params || !ltID || !value || !name){
@@ -55,6 +59,7 @@ const transform = (result) => {
     return null;
   }
 
+
   // No main parameter mapping to get granular templates.
   if (template.mainParam) return subByMainParam(result, template);
 
@@ -63,7 +68,7 @@ const transform = (result) => {
   if (!template.type) return naiveSubstitution(result, template);
 
   // Check to see if the template is of type list.
-  if (template.type && template.type == 'list') return listSubstitution(result, result.result.result, template, ltID);
+  if (template.type && template.type == 'list') return listSubstitution(result, value, template, ltID);
 
 
 }

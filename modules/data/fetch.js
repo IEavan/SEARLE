@@ -26,7 +26,7 @@ module.exports = function Fetch() {
   // }
 
   // News lookup request.
-  this.getNews = (entity, ops) => {
+  // this.getNews = (entity, ops) => {
 
     // ops template:
 
@@ -48,6 +48,27 @@ module.exports = function Fetch() {
     // then look for specifically positive, or specifically negative sentiment articles
     // based off of this. (e.g. if <50% sentiment for an entity, return 3 negative articles
     // to help derive insight)
+
+
+  // }
+
+  this.getNews = (symbol, itemLimit) => {
+
+    if (process.env.DEBUG) console.log(`Recieved news fetch`, symbol);
+
+    const pyNewslookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
+
+    return pyNewslookup({
+      request_type: "get_news",
+      ticker: symbol,
+      limit_per_source: (itemLimit ? itemLimit : 3)
+    }).then(result => {
+      // console.log(result);
+      if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${symbol}.`);
+      if (result && result.error && result.error.message) Promise.reject(result.error.message);
+      return result;
+    });
+
 
   }
 
