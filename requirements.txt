@@ -3,3 +3,4 @@ requests
 tqdm
 numpy
 scipy
+nltk

@@ -13,6 +13,17 @@ import update_data
 import sector_helper
 import ai
 
+DISTRIBUTION_TYPES = {
+        "price" : "lognorm",
+        "high" : "lognorm",
+        "low" : "lognorm",
+        "volume" : "norm",
+        "market_cap" : "lognorm",
+        "last_close" : "lognorm",
+        "abs_change" : "norm",
+        "per_change" : "norm"
+        }
+
 if __name__ == "__main__":
     # Load json arguments passed in from node
     input_args = json.loads(sys.stdin.readline())
@@ -27,11 +38,11 @@ if __name__ == "__main__":
 
     # Init the data frame reader for easy data access
     try:
-        use_test_data = input_args["use_test_data"].lower()
+        use_test_data = input_args["use_test_data"].lower() == "true"
     except (KeyError):
-        use_test_data = "false"
+        use_test_data = False
 
-    if use_test_data == "true":
+    if use_test_data:
         reader = frame_reader.Stock_Reader(data_path="./data/test_frames")
     else:
         reader = frame_reader.Stock_Reader()
@@ -49,6 +60,9 @@ if __name__ == "__main__":
             result = reader.get_current_attribute(
                     input_args["ticker"],
                     input_args["attribute"])
+
+            prob = ai.get_likelihood(input_args["attribute"], input_args["ticker"], result,
+                                     distribution=DISTRIBUTION_TYPES[input_args["attribute"]], test=use_test_data)
         elif "group" in input_args:
             if input_args["group"]["type"] == "sector":
                 result = reader.get_current_sector_attribute(
@@ -57,6 +71,10 @@ if __name__ == "__main__":
 
         if result != -1:
             response["result"]["value"] = result
+            try:
+                response["result"]["likelihood"] = prob
+            except NameError:
+                pass
         elif "ticker" in input_args:
             response["error"]["message"] = "Stock with ticker '" + \
                     input_args["ticker"] + "' was not found"

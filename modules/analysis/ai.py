@@ -12,11 +12,21 @@ from itertools import product
 from frame_reader import Stock_Reader
 import time
 
+# Likelihood analysis
 import numpy as np
 from scipy.stats import norm
 
+# Sentiment Analysis
+import warnings
+
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore", category=UserWarning)
+    import nltk
+    from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 # Constants
 MARKOV_TUPLE_SIZE = 2 # Delete /data/log/graph if changed
+EPSILON = 1e-6
 
 class User_Log_Writer():
     def __init__(self, log_dir="./data/log/", hooks=[]):
@@ -186,22 +196,25 @@ class Intent_Predictor():
 
 # ----------- Methods for determining the likelihood of an attriubte ------------
 def get_likelihood(attribute, ticker, value, exclude_current=True,
-                   look_back=2419200, distribution="normal"):
-    reader = Stock_Reader()
+                   look_back=2419200, distribution="norm", test=False):
+
+    if not test: reader = Stock_Reader()
+    else:        reader = Stock_Reader(data_path="./data/test_frames")
+
     historical_attrs = reader.get_attribute_range(ticker, attribute, time.time() - look_back)
 
-    if len(historical_attrs) <= 1:
-        return 1
+    if len(historical_attrs) - exclude_current <3:
+        return -1
 
-    if distribution == "normal":
-        loc, scale = norm.fit(historical_attrs[:len(historical_attrs) - exclude_current])
-        prob = norm.cdf(value, loc=loc, scale=scale)
+    if distribution == "norm":
+        loc, scale = norm.fit(historical_attrs[:-exclude_current])
+        prob = norm.cdf(value, loc=loc, scale=(scale + EPSILON))
         if prob > 0.5:
             prob = 1 - prob
         prob *= 2
     elif distribution == "lognorm":
-        log_val = np.log(value)
-        log_hist = np.log(historical_attrs[:len(historical_attrs) - exclude_current])
+        log_val = np.log(value + EPSILON)
+        log_hist = np.log(historical_attrs[:-exclude_current])
         loc, scale = norm.fit(log_hist)
         prob = norm.cdf(log_val, loc=loc, scale=scale)
         if prob > 0.5:
@@ -209,3 +222,13 @@ def get_likelihood(attribute, ticker, value, exclude_current=True,
         prob *= 2
 
     return prob
+
+# ---------- Functionality for determining the sentiment of text --------------
+class Sentiment_Analyzer():
+    def __init__(self):
+        """ Update the data files for vader and init the analyzer (VADER)"""
+        nltk.download("vader_lexicon", quiet=True)
+        self.vader = SentimentIntensityAnalyzer()
+
+    def analyze(self, text):
+        return self.vader.polarity_scores(text)
