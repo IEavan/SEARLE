@@ -1,0 +1,3 @@
+{"request_type": "get_current_attribute", "attribute": "price", "ticker": "BARC"}
+{"request_type": "get_risers_attribute", "attribute": "per_change", "group": {"type": "fallers", "quantity": "5"}}
+{"request_type": "get_current_attribute", "attribute": "price", "ticker": "BARC", "use_test_data": "true"}

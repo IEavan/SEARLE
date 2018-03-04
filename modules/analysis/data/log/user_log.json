@@ -257,6 +257,62 @@
             "ticker": "III",
             "limit_per_source": 2,
             "request_type": "get_news"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 8
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 8
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "attribute": "per_change",
+            "group": {
+                "type": "fallers",
+                "quantity": 5
+            }
+        },
+        {
+            "request_type": "get_current_attribute",
+            "attribute": "price",
+            "ticker": "BARC",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "attribute": "price",
+            "ticker": "BARC"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 8
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 8
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
         }
     ]
 }
