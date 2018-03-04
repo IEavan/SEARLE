@@ -12,6 +12,10 @@ import Header from './Header';
 import Conversation from './Conversation';
 import {UserMessage, BotMessage} from './ChatMessage';
 import Settings from './Settings';
+import {ApiAiClient} from "api-ai-javascript/ApiAiClient";
+
+// Create new DialogFlow Client
+const client = new ApiAiClient({accessToken: 'f279f85913b3477e91ca64140191eb9b'});
 
 const LogoPath = '../assets/SEARLE_Logo.svg';
 const AccentColour = '#ffda44';
@@ -43,7 +47,7 @@ class MainWindow extends Component {
 
   render(){
     return (
-      <div style={Style.MainWindow}>
+      <div ref={(el) => {this.props.getWindowRef(el)}} style={Style.MainWindow}>
         <Conversation conversation={this.props.conversation} visible={this.props.activeTab == 'Conversation'} />
         <Settings visible={this.props.activeTab == 'Settings'} />
       </div>
@@ -60,20 +64,34 @@ class ChatBox extends Component {
 
     // Set the Conversation to the default active tab.
     this.state = {
-      activeTab: 'Conversation'
-    }
+      activeTab: 'Conversation',
+      conversation: [
+      {
+        content: "ITV plc is currently trading at 161.65.",
+         type: "user"
+       },
+       {
+         content:  "Here is the change for the top 5 risers:\n\nBAE Systems (BA.): 10 (1.75)%\nInforma (INF): 10.2 (1.49)%\nShire plc (SHP): 45.5 (1.49)%\nSt. James's Place plc (STJ): 37.5 (3.33)%\nTesco (TSCO): 5.6 (2.70)%",
+         type: "bot"
+       }
+      ]
+    };
 
-    this.conversation = [
-    {
-      content: "ITV plc is currently trading at 161.65.",
-       type: "user"
-     },
-     {
-       content:  "Here is the change for the top 5 risers:\n\nBAE Systems (BA.): 10 (1.75)%\nInforma (INF): 10.2 (1.49)%\nShire plc (SHP): 45.5 (1.49)%\nSt. James's Place plc (STJ): 37.5 (3.33)%\nTesco (TSCO): 5.6 (2.70)%",
-       type: "bot"
-     }
-    ];
-    this.conversation = this.conversation.concat(this.conversation).concat(this.conversation);
+    this.sendMessageHandler = this.sendMessageHandler.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.getWindowRef = this.getWindowRef.bind(this);
+  }
+
+  componentDidUpdate(){
+    this.scrollToBottom();
+  }
+
+  getWindowRef(el){
+    this.el = el;
+  }
+
+  scrollToBottom(){
+    this.el.scrollIntoView({behavior: 'smooth'});
   }
 
   changeTab(tabName){
@@ -84,16 +102,57 @@ class ChatBox extends Component {
 
   }
 
+  // Handler for when the user sends a new message to SEARLE
+  sendMessageHandler(newUserMessage){
+
+    console.log(`Adding new User Message ${newUserMessage}`);
+
+    this.setState({
+      conversation: this.state.conversation.concat([new UserMessageObj(newUserMessage)])
+    }, () => {
+      this.scrollToBottom();
+    });
+
+
+    client.textRequest(newUserMessage)
+        .then((response) => {
+
+          console.log(response.result.fulfillment.messages.map(message => new BotMessageObj(message)));
+
+          // Add the response message to the chatbox.
+          this.setState({
+            conversation: this.state.conversation.concat(response.result.fulfillment.messages.map(message => new BotMessageObj(message.speech)))
+          }, () => {
+            this.scrollToBottom();
+          });
+
+        })
+        .catch((error) => {
+        console.log(error);
+      })
+
+  }
+
   render(){
     return (
-      <div style={Style.ChatBox}>
+      <div style={Style.ChatBox} >
         <Header />
-        <MainWindow conversation={this.conversation} activeTab={this.state.activeTab}/>
-        <Input activeButton={this.state.activeTab} changeTab={this.changeTab.bind(this)}/>
+        <MainWindow getWindowRef={this.getWindowRef} conversation={this.state.conversation} activeTab={this.state.activeTab}/>
+        <Input sendMessageHandler={this.sendMessageHandler.bind(this)} activeButton={this.state.activeTab} changeTab={this.changeTab.bind(this)}/>
       </div>
     )
   }
 
+}
+
+function UserMessageObj(userMessageText){
+  this.type = "user";
+  this.content = userMessageText;
+}
+
+function BotMessageObj(botMessageText){
+  this.type = "bot";
+  this.content = botMessageText;
 }
 
 export default ChatBox;

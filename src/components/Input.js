@@ -45,16 +45,45 @@ class InputNav extends Component {
 
 class Input extends Component {
 
+  constructor(props, context){
+    super(props, context);
+
+    // Set initial state of input value to empty string.
+    this.state = ({
+      inputValue: ""
+    });
+
+    this.updateInputValue = this.updateInputValue.bind(this);
+  }
+
+  // Update the state of the input value so that we can pass to the new user message
+  // handler when required.
+  updateInputValue(e){
+    this.setState({
+      inputValue: e.target.value
+    });
+  }
+
+  onSubmitHandler(e){
+    // Prevent form submission by default; we just want to grab the text.
+    e.preventDefault();
+    this.setState({
+      inputValue: ''
+    });
+  }
+
   render(){
     return (
       <div style={Style.Input}>
         <InputNav activeButton={this.props.activeButton} changeTab={this.props.changeTab}/>
-        <input style={{
+        <form onSubmit={(e) => {this.onSubmitHandler(e); this.props.sendMessageHandler(this.state.inputValue)}} >
+        <input value={this.state.inputValue} onChange={this.updateInputValue} style={{
           'padding': '10px',
           'color': LightTextColour,
           paddingTop: '20px',
-        paddingBottom: '25px'
+          paddingBottom: '25px'
         }} placeholder="Ask Something..."/>
+        </form>
       </div>
     );
   }

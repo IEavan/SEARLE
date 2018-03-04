@@ -42,12 +42,12 @@ class UserMessage extends Component {
       <div style={{
         maxWidth: '60%',
         marginLeft: 'auto',
+        marginBottom: '10px',
         backgroundColor: '#363636',
-        borderRadius: '10px',
-        display: 'flex',
+        borderRadius: '13px',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '10px'
+        padding: '15px'
       }}>
         <Message align="right" messageContent={this.props.messageContent} />
       </div>

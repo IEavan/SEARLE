@@ -12,7 +12,7 @@ class Conversation extends Component {
   render(){
     return (
       <div
-        className={!this.props.visible ? 'hidden' : ''}
+        className={'conversation'+(!this.props.visible ? ' hidden' : '')}
         style={{
         }}
       >

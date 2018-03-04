@@ -42,7 +42,12 @@ button {
 }
 
 div.hidden {
-  display: none;
+  display: none !important;
+}
+
+div.conversation {
+  display: flex;
+  flex-direction: column;
 }
 
 button.inputNavButton {
