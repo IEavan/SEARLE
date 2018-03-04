@@ -50,7 +50,7 @@ public class TestDataGenerator
 		//due to be changed when can receive JSON data
 		//for now, change the values labelled 'EDITTHIS' to customise the tests
 		numCSVs = 20;	// EDITTHIS
-		unixTimeDiff = 5 * 60 * 1000; // EDITTHIS: first value is minutes (currently five minutes)
+		unixTimeDiff = 5 * 60; // EDITTHIS: first value is minutes (currently five minutes)
 		unixTimeStart = 1519412007;	// EDITTHIS
 
 		// UPWARD TREND: 	1
@@ -405,7 +405,8 @@ public class TestDataGenerator
 			String fileName = System.getProperty("user.dir")+"/data/test_frames/"+data.get(0).getSpecificFrame(j).getTimestamp()+"-frame.csv";
 			filewriter = new FileWriter(fileName);
 
-			String str="Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change\n";
+			String str="Ticker, Price, High, Low, Volume, Last_Close," + 
+                " Absolute_Change, Percentage_Change, Market_Capitalization\n";
 			for (int i=0; i<data.size(); i++){
 				//data.get(i).getSpecificFrame(j)....
 				str+="'"+data.get(i).getTicker()+"',";
@@ -416,6 +417,9 @@ public class TestDataGenerator
 				str+=data.get(i).getSpecificFrame(j).getLast_Close()+",";
 				str+=data.get(i).getSpecificFrame(j).getAbsolute_Change()+",";
 				str+=data.get(i).getSpecificFrame(j).getPercentage_Change();
+
+                // Quick and dirty market cap injection
+                str+=", 1000";
 
 				if (i<(data.size()-1)){
 					str+="\n";

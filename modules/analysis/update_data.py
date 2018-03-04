@@ -9,6 +9,8 @@ import time
 from bs4 import BeautifulSoup
 from tqdm import tqdm # TODO Remove this line :p
 
+from ai import Sentiment_Analyzer
+
 # Constants
 BASE_URL = "http://www.londonstockexchange.com/exchange/prices-and-markets/stocks/summary/company-summary/"
 CSV_HEADER = "Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change, Market_Cap"
@@ -94,6 +96,7 @@ class LSE_Reader():
 
     def read_news(self, ticker, limit_per_source=10):
         ticker = self.check_add_dot(ticker)
+        sentiment = Sentiment_Analyzer()
 
         def get_stockmarketwire_news():
             # Get stockmarketwire (smw) news
@@ -132,7 +135,11 @@ class LSE_Reader():
                         break
                 return news_list
 
-        return get_stockmarketwire_news()
+        news_list = get_stockmarketwire_news()
+        for news in news_list:
+            news["sentiment"] = sentiment.analyze(news["body"])
+
+        return news_list
 
 
 if __name__ == "__main__":
