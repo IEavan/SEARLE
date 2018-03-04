@@ -1,6 +1,6 @@
 Dear Ralph,
     If you are reading this, then it means you have found the
-directory where I want you to put the fake stock data.
+directory where I want you to put the fake stock data (test_frames).
 The data should be formatted as csv files with a unix time
 stamp in the name to signal the time the data relates to.
 For an example of what these files should look like then

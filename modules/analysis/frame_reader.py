@@ -26,8 +26,11 @@ class Stock_Reader():
 
         with open(frame, 'r') as f:
             for line in f:
-                _ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
+                _ticker, price, high, low, volume, last_close, abs_change, \
+                        per_change, market_cap = line.strip().split(',')
+                
                 _ticker = _ticker.strip("'").replace('.','')
+                
                 if _ticker == ticker:
                     found = True
 
@@ -45,6 +48,8 @@ class Stock_Reader():
                         return float(abs_change)
                     if attribute == "per_change" or attribute == "percentage_change":
                         return float(per_change)
+                    if attribute == "market_cap":
+                        return float(market_cap)
                     else:
                         raise ValueError("attribute " + attribute + "does not exist"
                                 + "allowed values are {price, high, low, volume, last_close, abs_change, per_change}")
@@ -58,7 +63,8 @@ class Stock_Reader():
         with open(frame, 'r') as f:
             f.readline() # Skip header
             for line in f:
-                ticker, price, high, low, volume, last_close, abs_change, per_change = line.strip().split(',')
+                ticker, price, high, low, volume, last_close, \
+                        abs_change, per_change, market_cap = line.strip().split(',')
 
                 # Cast and format data from csv
                 row = {}
@@ -69,6 +75,7 @@ class Stock_Reader():
                 row["last_close"] = float(last_close)
                 row["abs_change"] = float(abs_change)
                 row["per_change"] = float(per_change)
+                row["market_cap"] = float(market_cap)
 
                 ftse_constituents[ticker] = row
                 all_changes.append(float(per_change))
@@ -90,6 +97,8 @@ class Stock_Reader():
                 if ftse_constituents[stock]["per_change"] <= limit:
                     filtered_constituents[stock] = ftse_constituents[stock]
 
+        # TODO handle for when multiple stocks change by the same amount
+
         return filtered_constituents
 
     def get_risers_attribute(self, attribute, quantity, frame=None, rising=True):
@@ -107,24 +116,28 @@ class Stock_Reader():
 
     def get_sector_attribute(self, sector_name, attribute, frame):
         """ Access a simple attribute about a whole sector """
-        #TODO change to weighting by market cap.
         tickers = sector_helper.sector2tickers[sector_name.lower()]
         results = []
         for ticker in tickers:
             results.append((self.get_attribute(ticker, attribute, frame),
-                            self.get_attribute(ticker, "volume",  frame)))
+                            self.get_attribute(ticker, "market_cap",  frame)))
 
-        total_volume = 0
+        total_market_cap = 0
         for result in results:
-            total_volume += result[1]
+            total_market_cap += result[1]
 
-        if attribute == "volume":
+        if attribute == "market_cap":
+            return total_market_cap
+        elif attribute == "volume":
+            total_volume = 0
+            for result in results:
+                total_volume += result[0]
             return total_volume
         
         reduced_result = 0
         for result in results:
             reduced_result += result[0] * result[1]
-        reduced_result /= total_volume
+        reduced_result /= total_market_cap
 
         return reduced_result
 

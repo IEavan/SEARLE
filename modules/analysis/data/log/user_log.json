@@ -1,0 +1,262 @@
+{
+    "requests": [
+        {
+            "ticker": "III",
+            "attribute": "market_cap",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "price",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "attribute": "price",
+            "group": {
+                "quantity": 2,
+                "type": "fallers"
+            },
+            "request_type": "get_risers_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "price",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "III",
+            "attribute": "volume",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "volume",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "volume",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "high",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "true",
+            "request_type": "get_current_attribute"
+        },
+        {
+            "ticker": "BARC",
+            "request_type": "get_news"
+        },
+        {
+            "ticker": "BARC",
+            "limit_per_source": 2,
+            "request_type": "get_news"
+        },
+        {
+            "ticker": "BARC",
+            "limit_per_source": 1,
+            "request_type": "get_news"
+        },
+        {
+            "ticker": "BARC",
+            "request_type": "get_news"
+        },
+        {
+            "ticker": "BARC",
+            "limit_per_source": 2,
+            "request_type": "get_news"
+        },
+        {
+            "ticker": "III",
+            "limit_per_source": 2,
+            "request_type": "get_news"
+        }
+    ]
+}
