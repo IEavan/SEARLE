@@ -115,6 +115,11 @@ class ChatBox extends Component {
 
 
     client.textRequest(newUserMessage)
+
+        // Handle any suggestions that comeback from the server.
+        
+
+        // Embed text response onto page.
         .then((response) => {
 
           console.log(response.result.fulfillment.messages.map(message => new BotMessageObj(message)));
