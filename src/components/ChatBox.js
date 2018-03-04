@@ -47,8 +47,8 @@ class MainWindow extends Component {
 
   render(){
     return (
-      <div ref={(el) => {this.props.getWindowRef(el)}} style={Style.MainWindow}>
-        <Conversation conversation={this.props.conversation} visible={this.props.activeTab == 'Conversation'} />
+      <div style={Style.MainWindow}>
+        <Conversation getLatestMessageRef={this.props.getLatestMessageRef} conversation={this.props.conversation} visible={this.props.activeTab == 'Conversation'} />
         <Settings visible={this.props.activeTab == 'Settings'} />
       </div>
     );
@@ -79,19 +79,19 @@ class ChatBox extends Component {
 
     this.sendMessageHandler = this.sendMessageHandler.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
-    this.getWindowRef = this.getWindowRef.bind(this);
+    this.getLatestMessageRef = this.getLatestMessageRef.bind(this);
   }
 
   componentDidUpdate(){
     this.scrollToBottom();
   }
 
-  getWindowRef(el){
-    this.el = el;
+  getLatestMessageRef(latestMessage){
+    this.latestMessage = latestMessage;
   }
 
   scrollToBottom(){
-    this.el.scrollIntoView({behavior: 'smooth'});
+    this.latestMessage.scrollIntoView({behavior: 'smooth'});
   }
 
   changeTab(tabName){
@@ -137,7 +137,7 @@ class ChatBox extends Component {
     return (
       <div style={Style.ChatBox} >
         <Header />
-        <MainWindow getWindowRef={this.getWindowRef} conversation={this.state.conversation} activeTab={this.state.activeTab}/>
+        <MainWindow getLatestMessageRef={this.getLatestMessageRef} conversation={this.state.conversation} activeTab={this.state.activeTab}/>
         <Input sendMessageHandler={this.sendMessageHandler.bind(this)} activeButton={this.state.activeTab} changeTab={this.changeTab.bind(this)}/>
       </div>
     )

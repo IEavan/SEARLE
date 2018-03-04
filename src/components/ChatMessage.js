@@ -14,8 +14,9 @@ class Message extends Component {
 
   render(){
     return (
-        <div style={{
-        }}>
+        <div
+          style={{}}
+          >
           {(this.props.messageContent ? this.props.messageContent.split('\n').map((text, i) => {
             return (
               <p key={i} style={{
@@ -39,7 +40,7 @@ class UserMessage extends Component {
 
   render(){
     return (
-      <div style={{
+      <div ref={(el) => {this.props.getLatestMessageRef(el)}} style={{
         maxWidth: '60%',
         marginLeft: 'auto',
         marginBottom: '10px',
@@ -60,7 +61,7 @@ class BotMessage extends Component {
 
   render(){
     return (
-      <div style={{
+      <div ref={(el) => {this.props.getLatestMessageRef(el)}} style={{
         width: '60%',
         marginBottom: '15px'
       }}>

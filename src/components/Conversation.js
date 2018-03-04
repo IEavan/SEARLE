@@ -23,8 +23,21 @@ class Conversation extends Component {
         textAlign: 'center'
       }}>Ask me what I can do!</p>
         {this.props.conversation.map((message, i) => {
-          if (message.type === 'bot') return (<BotMessage key={i} messageContent={message.content} timeStamp={moment().format('hh:mmA')}/>);
-          if (message.type === 'user') return (<UserMessage key={i} messageContent={message.content} />);
+          if (message.type === 'bot') return (
+            <BotMessage
+              key={i}
+              getLatestMessageRef={this.props.getLatestMessageRef}
+              messageContent={message.content}
+              timeStamp={moment().format('hh:mmA')}
+            />
+          );
+          if (message.type === 'user') return (
+            <UserMessage
+             key={i}
+             getLatestMessageRef={this.props.getLatestMessageRef}
+             messageContent={message.content}
+             />
+          );
         })}
       </div>
     );
