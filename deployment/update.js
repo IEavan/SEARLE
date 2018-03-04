@@ -28,8 +28,11 @@ setInterval(() => {
 // running the script on startup as well.
 function update(){
 
-  // Check to see we are within opening hours.
-  if (!moment().between(moment(config.openTime, 'HH:mm'), moment(config.closeTime, 'HH:mm'))) return; // Markets closed, do not update.
+  // Check to see we are within opening hours. (Between opening hours and on a weekday)
+  if (
+      !moment().isBetween(moment(config.openTime, 'HH:mm'), moment(config.closeTime, 'HH:mm')) ||
+      !(moment().weekday() >= 1 && moment().weekday() <= 5)
+    ) return; // Markets closed, do not update.
 
   log(`Updating FTSE cache...`);
   updateScript().then(() => {

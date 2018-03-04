@@ -9,6 +9,7 @@ const nodePyInt = require(require('path').resolve(__dirname, '../analysis/nodePy
 const pyScriptsPath = require('path').resolve(__dirname, '../analysis/');
 const request = require('request');
 const cheerio = require('cheerio');
+const config = require(require('path').resolve(__dirname, "../../config/config"));
 const Data = require('./data');
 
 var data = new Data();
