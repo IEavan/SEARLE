@@ -19,6 +19,13 @@
  *  }
  */
 
+/** REFACTOR TODO LIST
+* A lot of parameters which are enforced that are not actually needed, clean through
+   and make sure that you only enforce what is strictly required for the given type of substitution.
+* Stay consistent. You use 'value' for some results, and 'result' for others. Need to conform to the same
+  system throughout.
+*/
+
 // DEPENDENCIES.
 const responseTemplate = require('../../config/responseTemplate.json');
 const format = require('string-template');
@@ -35,15 +42,9 @@ const transform = (result) => {
   if (!value) value = objectDFS(result, 'result');
   var name = objectDFS(result, 'name');
 
-  log(`ltID: ${ltID}`);
-
-
-  console.log("LT RECIEVED: ");
-  console.log(result);
-
   // Check that result is not empty.
-  if (!result || !params || !ltID || !value || !name){
-    log(`Missing crucial parameter for transformation. \nResult: ${result}, Params: ${params}, ltID: ${ltID}, Value: ${value}, Name: ${name}.`);
+  if (!result || !params || !ltID || !value){
+    log(`Missing crucial parameter for transformation. \nResult: ${result}, Params: ${params}, ltID: ${ltID}, Value: ${value}.`);
     return null;
   }
 
@@ -137,8 +138,6 @@ function naiveSubstitution(result, templateString, defaults){
   // of certain responses over others).
   if (Array.isArray(templateString))
     templateString = templateString[Math.floor(Math.random() * templateString.length)];
-
-  log('template string ', templateString);
 
   // Get all substituable parameters.
   var validParams = getValidParamsFromTemplate(templateString);

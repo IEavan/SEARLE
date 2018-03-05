@@ -33,8 +33,6 @@ module.exports = (params) => {
     // If no company name return error.
     if (!params.entityName) return reject(`In order to make a stock lookup, I need a company name!`)
 
-    console.log('Performing stock lookup for ', params);
-
     resolveEntity(params.entityName, (resolvedEntity) => {
 
       if (!resolvedEntity) return reject(`Could not resolve financial entity.`);
@@ -44,8 +42,6 @@ module.exports = (params) => {
       //  (1) Company lookup
       //  (2) Sector lookup
       //  (3) Entire FTSE 100 lookup
-
-      console.log(`Spot Price lookup for `, resolvedEntity, 'params: ', params);
 
       if (resolvedEntity.entityType === 'company' && resolvedEntity.symbol){
 

@@ -52,6 +52,19 @@ module.exports = function Fetch() {
 
   // }
 
+  this.getPredictedIntent = () => {
+
+    const pyGetIntent = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
+
+    return pyGetIntent({
+      request_type: "predict_intent"
+    }).then(res => {
+      if (res.error && res.error.message) throw Error(res.error.message)
+      return res;
+    });
+
+  }
+
   this.getNews = (symbol, itemLimit) => {
 
     if (process.env.DEBUG) console.log(`Recieved news fetch`, symbol);

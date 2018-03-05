@@ -49,7 +49,22 @@ module.exports = (params) => {
         // res.result = res.result.value;
 
         // Return results, with results embedded into the rich-text field.
-        return resolve({...resolvedEntity, ...params, ...res, richText: res.value});
+        return resolve(
+          {
+            ...resolvedEntity,
+            ...params,
+            ...res,
+            richText: {
+              // Embed article type rich text response, which will be relayed
+              // through the payload into the front end.s
+              article: res.result.value,
+
+              // Attatch a suggestion to the rich text field that will be recognised
+              // byt the front end.
+              suggestion: [`Get me the spot price of ${resolvedEntity.name}`]
+            }
+          }
+        );
 
       });
 

@@ -13,6 +13,8 @@ const stockLookup = require('./functions/stockLookup');
 const rafLookup = require('./functions/rafLookup');
 const newsLookup = require('./functions/newsLookup');
 const transform = require('./resolve/languageTransformer');
+const predictIntent = require('./functions/predictIntent');
+const postProcessHandler = require('./functions/postProcessHandler');
 
 // Mapping of intent names into discrete functions which delegate task of fulfilling
 // requets. If some intent is not mapped, a default 'helper' message will be relayed
@@ -50,20 +52,24 @@ module.exports = function Core() {
     var request = new Request(intent, params);
 
     // Perform a raw request fulfilment.
-    this.fulfillRaw(request, (updatedRequest) => {
+    this.fulfillRaw(request, (fulfilledRawRequest) => {
 
       // NOTE: NEED TO CONSIDER WHERE RICH TEXT PAYLOADS WILL FALL UNDER.
+      if (process.env.DEBUG){
+        console.log("Fulfilled Raw Request: ", fulfilledRawRequest);
+      }
 
       // TODO: Enrichment flow will take place here.
-      // this.enrichRequest(<rawResponse>)
+      this.enrichRequest(fulfilledRawRequest, (enrichedRequest) => {
+          // Prepare response into human-readable string for output.
+          this.prepareResponse(enrichedRequest, (readyResponse) => {
+            return callback(readyResponse);
+          });
+      });
 
       // console.log(`------------- RAW RESPONSE --------------`, updatedRequest, `------------- END RESPONSE --------------`);
 
 
-      // Prepare response into human-readable string for output.
-      this.prepareResponse(updatedRequest, (readyResponse) => {
-        return callback(readyResponse);
-      });
     });
 
   };
@@ -97,6 +103,39 @@ module.exports = function Core() {
 
   };
 
+  // After raw request has been fulfilled, enrich the request by analysing the
+  // likelihood of a given result and attaching suggestions that will be
+  // displayed on the front end.
+  this.enrichRequest = function(fulfilledRawRequest, callback){
+
+    // Obtain suggestions which we will embed into the rich text payload.
+    predictIntent().then(predictedIntentObj => {
+
+      // Transform the predictedIntent object into a human readable response.
+      var suggestions = [];
+      suggestions.push(transform({params: {}, ltID: "suggestion", ...predictedIntentObj.result}));
+
+      // Attach the suggestions to the rich text payload of the fulfilledRawRequest object.
+      if (!fulfilledRawRequest.data) fulfilledRawRequest.data = {};
+      fulfilledRawRequest.data.suggestions = suggestions;
+
+      // Once we have obtained the suggested intents (from prediction), we need
+      // to inspect the response from the fulfilledRawRequest method to see
+      // if any of the results have a 'likelihood' of <0.5. If this is the case,
+      // we add a note and a suggestion to look up news for that particular entity.
+      postProcessHandler(fulfilledRawRequest, postProcessed => {
+
+        // Relay the enriched resposne with suggestions back for transforming.
+        return callback(postProcessed);
+
+      });
+
+
+
+    });
+
+  }
+
   // Takes a raw fulfilled request (just values, and details of original intenet /
   // request) and transforms it to be human-readable. [COMMON TRANSLATION LAYER]
   //  E.g.
@@ -128,15 +167,23 @@ module.exports = function Core() {
 
       outputString += transform(singleResRequest);
 
+      // Rich text must have a 'type' field that can be used to discriminate
+      // between different content types on the front - end. In the case
+      // where we have multiple results, they will all be 'merged' into the
+      // same payload. Where results have the same 'type' field, then the
+      // results inside that field will be merged.
+      //
+      // Suggestions may be supported at this level too.
+      if (result.richText) request.data = Object.assign(request.data, result.richText);
+
     });
 
     // Add rich-text payload (Extension).
     //
-    console.log('preparedResponse data object ',request.data);
 
 
     // Relay response into callback for now.
-    return callback({text: outputString, data: (request.data ? request.data : {})});
+    return callback({text: outputString, data: request.data});
 
   };
 
