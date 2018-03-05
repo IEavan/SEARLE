@@ -1,0 +1,6 @@
+{"request_type": "get_current_attribute", "attribute": "price", "ticker": "BARC"}
+{"request_type": "get_risers_attribute", "attribute": "per_change", "group": {"type": "fallers", "quantity": "5"}}
+{"request_type": "get_current_attribute", "attribute": "price", "ticker": "BARC", "use_test_data": "true"}
+{"request_type": "predict_intent"}
+{"request_type": "get_news", "ticker": "III", "limit_per_source": 2}
+{ "request_type": "get_news", "ticker": "BARC", "limit_per_source": 2 }

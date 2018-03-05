@@ -11,10 +11,25 @@ import sys
 import frame_reader
 import update_data
 import sector_helper
+import ai
+
+DISTRIBUTION_TYPES = {
+        "price" : "lognorm",
+        "high" : "lognorm",
+        "low" : "lognorm",
+        "volume" : "norm",
+        "market_cap" : "lognorm",
+        "last_close" : "lognorm",
+        "abs_change" : "norm",
+        "per_change" : "norm"
+        }
 
 if __name__ == "__main__":
     # Load json arguments passed in from node
     input_args = json.loads(sys.stdin.readline())
+
+    predictor = ai.Intent_Predictor()
+    log_writer = ai.User_Log_Writer(hooks=[predictor.update_graph])
 
     response = {}
     response["result"] = {}
@@ -23,16 +38,17 @@ if __name__ == "__main__":
 
     # Init the data frame reader for easy data access
     try:
-        use_test_data = input_args["use_test_data"].lower()
+        use_test_data = input_args["use_test_data"].lower() == "true"
     except (KeyError):
-        use_test_data = "false"
+        use_test_data = False
 
-    if use_test_data == "true":
+    if use_test_data:
         reader = frame_reader.Stock_Reader(data_path="./data/test_frames")
     else:
         reader = frame_reader.Stock_Reader()
 
     request_type_understood = False
+    result = -1
 
     # ------------- Handle each type of request specified in the json ------------------#
 
@@ -40,11 +56,13 @@ if __name__ == "__main__":
     if input_args["request_type"] == "get_current_attribute":
         request_type_understood = True
 
-        result = -1
         if "ticker" in input_args:
             result = reader.get_current_attribute(
                     input_args["ticker"],
                     input_args["attribute"])
+
+            prob = ai.get_likelihood(input_args["attribute"], input_args["ticker"], result,
+                                     distribution=DISTRIBUTION_TYPES[input_args["attribute"]], test=use_test_data)
         elif "group" in input_args:
             if input_args["group"]["type"] == "sector":
                 result = reader.get_current_sector_attribute(
@@ -53,6 +71,10 @@ if __name__ == "__main__":
 
         if result != -1:
             response["result"]["value"] = result
+            try:
+                response["result"]["likelihood"] = prob
+            except NameError:
+                pass
         elif "ticker" in input_args:
             response["error"]["message"] = "Stock with ticker '" + \
                     input_args["ticker"] + "' was not found"
@@ -66,8 +88,6 @@ if __name__ == "__main__":
     if input_args["request_type"] == "get_attribute":
         request_type_understood = True
         frame_name = reader.get_closest_frame(input_args["start_time"])
-
-        result = -1
 
         if "ticker" in input_args:
             result = reader.get_attribute(
@@ -127,10 +147,26 @@ if __name__ == "__main__":
             response["error"]["message"] = "Stock with ticker '" + \
                     input_args["ticker"] + "' was not found"
             response["error"]["type"] = "ValueError"
+    
+    
+    # Predict the users next request
+    if input_args["request_type"] == "predict_intent":
+        request_type_understood = True
+        intent = predictor.predict_intent()
+        predicted_request = predictor.intent_to_request(intent)
+        response["result"]["value"] = predicted_request
+
 
     if not request_type_understood:
         response["error"]["message"] = "Request type '" + \
                 input_args["request_type"] + "' was not recognised"
         response["error"]["type"] = "ValueError"
 
+
+    # If there was no error
+    # Log the user request
+    if result != -1:
+        log_writer.append_request(input_args)
+
+    # Send response out on stdout
     print(json.dumps(response))

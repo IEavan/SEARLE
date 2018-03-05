@@ -26,7 +26,7 @@ module.exports = function Fetch() {
   // }
 
   // News lookup request.
-  this.getNews = (entity, ops) => {
+  // this.getNews = (entity, ops) => {
 
     // ops template:
 
@@ -48,6 +48,38 @@ module.exports = function Fetch() {
     // then look for specifically positive, or specifically negative sentiment articles
     // based off of this. (e.g. if <50% sentiment for an entity, return 3 negative articles
     // to help derive insight)
+
+
+  // }
+
+  this.getPredictedIntent = () => {
+
+    const pyGetIntent = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
+
+    return pyGetIntent({
+      request_type: "predict_intent"
+    }).then(res => {
+      if (res.error && res.error.message) throw Error(res.error.message)
+      return res;
+    });
+
+  }
+
+  this.getNews = (symbol, itemLimit) => {
+
+    const pyNewslookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
+
+    return pyNewslookup({
+      request_type: "get_news",
+      ticker: symbol,
+      limit_per_source: (itemLimit ? itemLimit : 3)
+    }).then(result => {
+      // console.log(result);
+      if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${symbol}.`);
+      if (result && result.error && result.error.message) Promise.reject(result.error.message);
+      return result;
+    });
+
 
   }
 
@@ -87,8 +119,6 @@ module.exports = function Fetch() {
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
-    console.log(`Recieved fetch`, entity);
-
     const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
     return pyStockLookup({
@@ -115,8 +145,6 @@ module.exports = function Fetch() {
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
-    console.log(`Recieved fetch`, entity);
-
     const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
     // TODO: Account for time-dependent queries.
@@ -129,7 +157,6 @@ module.exports = function Fetch() {
       },
       attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
     }).then(result => {
-      console.log(result);
       if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
       return result;
     });
@@ -185,8 +212,6 @@ module.exports = function Fetch() {
     // }
 
   }
-
-  log(`Loaded.`);
 
 }
 

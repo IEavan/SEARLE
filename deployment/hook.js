@@ -85,7 +85,7 @@ const fulfill = (intent, params, callback) => {
     callback({
       speech: (!result.error ? result.text : result.error),
       displayText: (!result.error ? result.text : result.error),
-      data: {},
+      data: (result.data ? result.data : {}),
       contextOut: [],
       source: "Webhook"
     });

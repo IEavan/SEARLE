@@ -19,6 +19,13 @@
  *  }
  */
 
+/** REFACTOR TODO LIST
+* A lot of parameters which are enforced that are not actually needed, clean through
+   and make sure that you only enforce what is strictly required for the given type of substitution.
+* Stay consistent. You use 'value' for some results, and 'result' for others. Need to conform to the same
+  system throughout.
+*/
+
 // DEPENDENCIES.
 const responseTemplate = require('../../config/responseTemplate.json');
 const format = require('string-template');
@@ -26,20 +33,18 @@ const format = require('string-template');
 // Main function.
 const transform = (result) => {
 
-  var params = objectDFS(result, 'params');
+  // var params = objectDFS(result, 'params');
   var ltID = objectDFS(result, 'ltID');
 
   // If no ltID is defined, use the intent a a default ltID.
   if (!ltID) ltID = objectDFS(result, 'intent');
   var value  = objectDFS(result, 'value');
-  if (!value) value = objectDFS(result, 'results');
+  if (!value) value = objectDFS(result, 'result');
   var name = objectDFS(result, 'name');
 
-  log(`ltID: ${ltID}`);
-
   // Check that result is not empty.
-  if (!result || !params || !ltID || !value || !name){
-    log(`Missing crucial parameter for transformation. \nResult: ${result}, Params: ${params}, ltID: ${ltID}, Value: ${value}, Name: ${name}.`);
+  if (!result || !ltID || !value){
+    log(`Missing crucial parameter for transformation. \nResult: ${result}, ltID: ${ltID}, Value: ${value}.`);
     return null;
   }
 
@@ -55,6 +60,7 @@ const transform = (result) => {
     return null;
   }
 
+
   // No main parameter mapping to get granular templates.
   if (template.mainParam) return subByMainParam(result, template);
 
@@ -63,7 +69,7 @@ const transform = (result) => {
   if (!template.type) return naiveSubstitution(result, template);
 
   // Check to see if the template is of type list.
-  if (template.type && template.type == 'list') return listSubstitution(result, result.result.result, template, ltID);
+  if (template.type && template.type == 'list') return listSubstitution(result, value, template, ltID);
 
 
 }
@@ -132,8 +138,6 @@ function naiveSubstitution(result, templateString, defaults){
   // of certain responses over others).
   if (Array.isArray(templateString))
     templateString = templateString[Math.floor(Math.random() * templateString.length)];
-
-  log('template string ', templateString);
 
   // Get all substituable parameters.
   var validParams = getValidParamsFromTemplate(templateString);

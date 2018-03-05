@@ -1,2 +1,6 @@
 bs4
 requests
+tqdm
+numpy
+scipy
+nltk
