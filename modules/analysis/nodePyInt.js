@@ -31,9 +31,6 @@ module.exports = (path, args, ops) => {
         // Spawn the child process.
         var pyProc = spawn((ops && ops.pythonCmd ? ops.pythonCmd : "python3"), [path, ...args], spawnOps);
 
-        // Report initiation of script.
-        log(`${path} spawned with args: ${args}`);
-
         // Inject data.
         if (data) pyProc.stdin.write(JSON.stringify(data));
 

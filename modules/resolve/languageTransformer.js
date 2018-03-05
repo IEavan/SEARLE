@@ -33,7 +33,7 @@ const format = require('string-template');
 // Main function.
 const transform = (result) => {
 
-  var params = objectDFS(result, 'params');
+  // var params = objectDFS(result, 'params');
   var ltID = objectDFS(result, 'ltID');
 
   // If no ltID is defined, use the intent a a default ltID.
@@ -43,8 +43,8 @@ const transform = (result) => {
   var name = objectDFS(result, 'name');
 
   // Check that result is not empty.
-  if (!result || !params || !ltID || !value){
-    log(`Missing crucial parameter for transformation. \nResult: ${result}, Params: ${params}, ltID: ${ltID}, Value: ${value}.`);
+  if (!result || !ltID || !value){
+    log(`Missing crucial parameter for transformation. \nResult: ${result}, ltID: ${ltID}, Value: ${value}.`);
     return null;
   }
 

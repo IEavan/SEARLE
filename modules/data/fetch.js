@@ -67,8 +67,6 @@ module.exports = function Fetch() {
 
   this.getNews = (symbol, itemLimit) => {
 
-    if (process.env.DEBUG) console.log(`Recieved news fetch`, symbol);
-
     const pyNewslookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
     return pyNewslookup({
@@ -121,8 +119,6 @@ module.exports = function Fetch() {
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
-    console.log(`Recieved fetch`, entity);
-
     const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
     return pyStockLookup({
@@ -149,8 +145,6 @@ module.exports = function Fetch() {
     //     type: 'current' (def), 'open', 'close', 'high', 'low', 'percentageChange', 'unitChange'
     // }
 
-    console.log(`Recieved fetch`, entity);
-
     const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
     // TODO: Account for time-dependent queries.
@@ -163,7 +157,6 @@ module.exports = function Fetch() {
       },
       attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
     }).then(result => {
-      console.log(result);
       if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
       return result;
     });
@@ -219,8 +212,6 @@ module.exports = function Fetch() {
     // }
 
   }
-
-  log(`Loaded.`);
 
 }
 

@@ -798,6 +798,199 @@
             "request_type": "get_current_attribute",
             "ticker": "BARC",
             "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "volume"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "high"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LLOY",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "ITV",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "volume"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "high"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "ITV",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "ITV",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "ITV",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RRS",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "LLOY",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "AV.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "volume"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "III",
+            "attribute": "high"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 8
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 8
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TSCO",
+            "attribute": "high"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TSCO",
+            "attribute": "price"
         }
     ]
 }

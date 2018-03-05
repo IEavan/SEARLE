@@ -66,6 +66,8 @@ module.exports = (params) => {
           }
         );
 
+      }).catch(err => {
+        return reject(`Could not fetch news on ${resolvedEntity.name}: ${err}`);
       });
 
     });

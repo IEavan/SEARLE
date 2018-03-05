@@ -111,26 +111,26 @@ module.exports = function Core() {
     // Obtain suggestions which we will embed into the rich text payload.
     predictIntent().then(predictedIntentObj => {
 
-      // Transform the predictedIntent object into a human readable response.
-      var suggestions = [];
-      suggestions.push(transform({params: {}, ltID: "suggestion", ...predictedIntentObj.result}));
 
       // Attach the suggestions to the rich text payload of the fulfilledRawRequest object.
-      if (!fulfilledRawRequest.data) fulfilledRawRequest.data = {};
-      fulfilledRawRequest.data.suggestions = suggestions;
+      if (!fulfilledRawRequest.data) fulfilledRawRequest.data = { suggestion: []};
+      if (!fulfilledRawRequest.data.suggestion) fulfilledRawRequest.data.suggestion = [];
+      fulfilledRawRequest.data.suggestion.push(transform({params: {}, ltID: "suggestion", ...predictedIntentObj.result}));
+
+      console.log(fulfilledRawRequest);
 
       // Once we have obtained the suggested intents (from prediction), we need
       // to inspect the response from the fulfilledRawRequest method to see
       // if any of the results have a 'likelihood' of <0.5. If this is the case,
       // we add a note and a suggestion to look up news for that particular entity.
-      postProcessHandler(fulfilledRawRequest, postProcessed => {
+      // postProcessHandler(fulfilledRawRequest, postProcessed => {
 
         // Relay the enriched resposne with suggestions back for transforming.
-        return callback(postProcessed);
+        // return callback(postProcessed);
 
-      });
+      // });
 
-
+      return callback(fulfilledRawRequest);
 
     });
 
@@ -172,9 +172,9 @@ module.exports = function Core() {
       // where we have multiple results, they will all be 'merged' into the
       // same payload. Where results have the same 'type' field, then the
       // results inside that field will be merged.
-      //
+
       // Suggestions may be supported at this level too.
-      if (result.richText) request.data = Object.assign(request.data, result.richText);
+      if (result.richText) request = attachRichText(request, result.richText);
 
     });
 
@@ -186,6 +186,47 @@ module.exports = function Core() {
     return callback({text: outputString, data: request.data});
 
   };
+
+}
+
+// The data field in the response object will contain the rich text payloads,
+// this function handles adding the richText payloads from each individual 'result'
+// component that could exist as part of the fulfilment control flow, and adds it to
+// the global 'data' field at the highlest level in the JSON response object, because
+// although we could in theory have multiple results each with their own richText payloads,
+// a single response is being sent, which must contain all the richText data merged
+// into a single payload to be handled by the front end logic.
+function attachRichText(request, richText){
+
+  // Check to see if the request object has a data field already.
+  if (!request.data) request.data = {};
+
+  // Check to see if any of the properties of richText are already contained in
+  // the request.data object, and if they are, merge them.
+  Object.keys(richText).forEach(key => {
+
+    // If the request object already contains the property, then we need to
+    // merge the two.
+    if (request.data[key]) {
+
+      // If the property is an array, simply concatenate the two.
+      // TODO: Check for duplicates!
+        if (Array.isArray(request.data[key])) {
+          request.data[key] = request.data[key].concat(richText[key]);
+        }
+        else
+          // If it is *not* an array, attempt to merge the two objects.
+          request.data[key] = {...request.data[key], ...richText[key]};
+
+    } else {
+      // If the property does not already exist in the request object, simply
+      // add it.
+      request.data[key] = richText[key];
+    }
+  });
+
+  // Return the merged object.
+  return request;
 
 }
 
