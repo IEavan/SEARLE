@@ -117,8 +117,6 @@ module.exports = function Core() {
       if (!fulfilledRawRequest.data.suggestion) fulfilledRawRequest.data.suggestion = [];
       fulfilledRawRequest.data.suggestion.push(transform({params: {}, ltID: "suggestion", ...predictedIntentObj.result}));
 
-      console.log(fulfilledRawRequest);
-
       // Once we have obtained the suggested intents (from prediction), we need
       // to inspect the response from the fulfilledRawRequest method to see
       // if any of the results have a 'likelihood' of <0.5. If this is the case,

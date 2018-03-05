@@ -27,7 +27,10 @@
       ],
       "change": [
           "{name} has changed by {value}."
-        ]
+        ],
+      "market_cap": [
+        "{name} has a market cap of {value} Million GBX."
+      ]
     },
     "defaults": {
       "timePeriod": {
@@ -68,7 +71,10 @@
       ],
       "change": [
           "{name} has changed by {value}."
-        ]
+      ],
+      "market_cap": [
+        "The {name} sector has a market cap of {value} Million GBX."
+      ]
     },
     "defaults": {
       "timePeriod": {

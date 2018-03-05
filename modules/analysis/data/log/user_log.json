@@ -991,6 +991,45 @@
             "request_type": "get_current_attribute",
             "ticker": "TSCO",
             "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Aerospace & Defense"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "market_cap"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "market_cap"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "market_cap"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "market_cap"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Aerospace & Defense"
+            },
+            "attribute": "market_cap"
         }
     ]
 }
