@@ -121,14 +121,12 @@ module.exports = function Core() {
       // to inspect the response from the fulfilledRawRequest method to see
       // if any of the results have a 'likelihood' of <0.5. If this is the case,
       // we add a note and a suggestion to look up news for that particular entity.
-      // postProcessHandler(fulfilledRawRequest, postProcessed => {
+      postProcessHandler(fulfilledRawRequest, postProcessed => {
 
-        // Relay the enriched resposne with suggestions back for transforming.
-        // return callback(postProcessed);
+        // Relay the enriched response with suggestions back for transforming.
+        return callback(postProcessed);
 
-      // });
-
-      return callback(fulfilledRawRequest);
+      });
 
     });
 
@@ -153,7 +151,7 @@ module.exports = function Core() {
     var outputString = "";
 
     // Make each result component human-readable.
-    request.results.forEach(result => {
+    request.results.forEach((result, i) => {
 
       // TEMP: Make result into an object if not already.
       if (typeof result !== 'object') result = {value: result};
@@ -163,7 +161,8 @@ module.exports = function Core() {
       var {results, ...singleResRequest} = request;
       singleResRequest.result = result;
 
-      outputString += transform(singleResRequest);
+      var spacing = (i !== 0 ? "\n\n" : "");
+      outputString += spacing + transform(singleResRequest);
 
       // Rich text must have a 'type' field that can be used to discriminate
       // between different content types on the front - end. In the case

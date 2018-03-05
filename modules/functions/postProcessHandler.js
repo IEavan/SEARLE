@@ -8,14 +8,17 @@
 
 // DEPENDENCIES
 const transform = require('../resolve/languageTransformer');
+const config = require(require('path').resolve(__dirname, "../../config/config"))
 
 // Module entry point.
-module.exports = (request) => {
+module.exports = (request, callback) => {
 
-  // This will contain any notes we want to add (e.g. if a spot price is very high or very low,
-  // this is where it will be reported to the user).
-  var enrichmentNote = "";
-  var suggestions = [];
+  // Grab likelihoodThreshold from config, if not use 0.5 as a default.
+  const likelihoodThreshold = (config.likelihoodThreshold ? config.likelihoodThreshold : 0.5);
+
+  // Check to see if the request object has the data payload & suggestion property already.
+  if (!request.data) request.data = {suggestion: []};
+  if (!request.data.suggestion) request.data.suggestion = [];
 
   // Iterate through all the results, and check to see if any of them have a lieklihood field.
   var results = request.results;
@@ -23,18 +26,48 @@ module.exports = (request) => {
   // For each result, check to see if there is a lieklihood field.
   results.forEach(result => {
 
-    var likelihood = objectDFS(result, 'likelihood');
+    var resultLikelihood = objectDFS(result, 'likelihood');
+    // Skip the current iteration if there is no likelihood property in the result.
+    if (!resultLikelihood) return;
 
-    // If there is a likelihood field, and it is less than 0.5, we need to
-    // report this to the user and suggest a news lookup.
-    if (likelihood && likelihood < 0.5) {
-      // enrichmentNote += "\n" + transform({ltId: 'significantValue', ...result});
-      enrichmentNote = "\n That's quite a significant change for " + result.value.ticker + "."
+    // If there is a likelihood field, and it is less than 0.5, we construct a
+    // 'fake' reult which will be appended to request.results. This will contain
+    // the information on the nature of the change and how likely it is.
+    // The languageTransformer will detect this and embed it in the response accordingly.
+    // Addittionally, we must add an appropriate suggestion to fetch news to help
+    // gain further insight if necessary.
+    if (resultLikelihood < likelihoodThreshold) {
+
+      console.log("Likelihood exceeds threshold for the current result: ", result);
+
+      // TODO: determine if the change is positive, negative, or neutral.
+      // Add the enrichment note & the desired suggestion to act on this.
+      request.results.push({
+        ...createEnrichmentNote(result, resultLikelihood),
+        richText: {suggestion: [`Get news on ${result.name}.`]}
+      });
+
     }
 
   });
 
-};
+  // Return the enriched object.
+  if (!callback) return log(`Error. No callback defined for postProcessHandler.`);
+  return callback(request);
+
+}
+
+// EnrichmentNotification which will be added to the end of the request.result array.
+function createEnrichmentNote(result, likelihood, nature){
+
+  return {
+    ...result,
+    ltID: "enrichmentNote",
+    nature: (nature ? nature : "unspecified"),
+    likelihood: (likelihood * 100) // Return likelihood as a percentage.
+  }
+
+}
 
 /**
  * Depth - first traversal of the object, in search of the given parameter label.

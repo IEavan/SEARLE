@@ -106,5 +106,28 @@
       "get_current_attribute": "Get the {attribute} of {ticker}.",
       "get_risers_attribute": "Get the top {quantity} {type}."
     }
+  },
+  "enrichmentNote": {
+    "mainParam": "nature",
+    "nature": {
+      "positive": [
+        "{name} doesn't normally perform this well. The likelihood of this performance compared to historical data is {likelihood}%. Ask me to fetch news on {name} to learn more.",
+        "That's quite a positive change for {name}, we can fetch news to help explain it."
+      ],
+      "neutral": [
+        "This appears to be a fairly typical performance for {name}. The likelihood of this result compared to historical data is {likelihood}%.",
+        "{name} appears to be performing as expected, compared to historical data.",
+        "{name} is performing as expected.",
+        "There does not appear to be any drastic change for {name}."
+      ],
+      "negative": [
+        "That's quite a drastic change for {name}, it normally does not perform this poorly ({likelihood}% likelihood compared to historical data). Asking me to fetch news on {name} could help explain the change.",
+        "{name} doesn't normally perform this poorly. The likelihood of the current performance is {likelihood}%. Ask me to fetch news on {name} to help gain some insight."
+      ],
+      "unspecified": [
+        "That's quite a drastic change for {name}. The likelihood of this result is {likelihood}% compared to historical data.",
+        "The {attribute} does not usually change this much for {name}. Ask me to fetch news on {name} to help gain further insight."
+      ]
+    }
   }
 }
