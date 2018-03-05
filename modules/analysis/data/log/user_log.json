@@ -1125,6 +1125,16 @@
             "request_type": "get_current_attribute",
             "ticker": "BARC",
             "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
         }
     ]
 }
