@@ -16,7 +16,8 @@ BASE_URL = "http://www.londonstockexchange.com/exchange/prices-and-markets/stock
 CSV_HEADER = "Ticker, Price, High, Low, Volume, Last_Close, Absolute_Change, Percentage_Change, Market_Cap"
 
 NEWS_URLS = {
-        "stockmarketwire":"http://www.stockmarketwire.com/company-news/?epic="
+        "stockmarketwire":"http://www.stockmarketwire.com/company-news/?epic=",
+        "yahoo":"https://uk.finance.yahoo.com/quote/"
 }
 
 class LSE_Reader():
@@ -105,7 +106,7 @@ class LSE_Reader():
 
             response = requests.get(smw_url)
             if response.status_code != 200:
-                return -1
+                return news_list
             else:
                 # Parse html
                 html = BeautifulSoup(response.text, "html.parser")
@@ -124,11 +125,8 @@ class LSE_Reader():
                         time_today = time.mktime(time.strptime(time.strftime("%x"), "%m/%d/%y"))
                         time_offset = time.mktime(time.strptime(time_text + " 1970", "%H:%M %Y"))
                         time_published = time_today + time_offset
-                        print("time today is {}.. time offset is {}.. time publised is {}".format(time_today, time_offset, time_published))
-                        print("time text is {}".format(time_text))
                     except (ValueError):
                         time_published = 0
-                    # print(time.ctime(time_published))
 
                     a_tag = li.find("a")
                     title = a_tag.text
@@ -146,7 +144,45 @@ class LSE_Reader():
                         break
                 return news_list
 
+        def get_yahoo_news():
+            yahoo_url = NEWS_URLS["yahoo"] + ticker.upper() + ".L"
+            news_list = []
+
+            response = requests.get(yahoo_url)
+            if response.status_code != 200:
+                return news_list
+            else:
+                html = BeautifulSoup(response.text, "html.parser")
+                container = html.find(id="quoteNewsStream-0-Stream")
+                li_list = container.find_all("li")
+
+                for i, li in enumerate(li_list):
+                    news = {}
+                    source_time = li.find("span").parent.find_all("span")
+                    source = source_time[0].text
+                    time_text = source_time[1].text
+
+                    a_tag = li.find("a")
+                    link = "https://uk.finance.yahoo.com" + a_tag.attrs["href"]
+                    title = a_tag.text
+
+                    body = li.find("p").text
+
+                    news["time_published"] = time_text
+                    news["url"] = link
+                    news["title"] = title
+                    news["body"] = body
+
+                    news_list.append(news)
+
+                    if (i + 1) >= limit_per_source:
+                        break
+
+                return news_list
+
         news_list = get_stockmarketwire_news()
+        news_list.extend(get_yahoo_news())
+
         for news in news_list:
             news["sentiment"] = sentiment.analyze(news["body"])
 
