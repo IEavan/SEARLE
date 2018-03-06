@@ -1311,6 +1311,4737 @@
             "request_type": "get_trend_attribute",
             "ticker": "III",
             "attribute": "volume"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "attribute": "price",
+            "ticker": "III"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PRU",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ULVR",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "III",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ADM",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AAL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ANTO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AZN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BA.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BDEV",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BKG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BP.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BATS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BT.A",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BRBY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CNA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCH",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CPG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRDA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DCC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DGE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EZJ",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EVR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EXPN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FERG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FRES",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GFS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GKN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GSK",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GLEN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HLMA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HMSO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HL.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IMB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IHG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITRK",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JMAT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JE.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "KGF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LAND",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LLOY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LSE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MKS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MDC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MCRO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NG.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NMC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "OML",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PPB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSON",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PRU",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RRS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RTO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RIO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RR.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RBS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RDSA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RSA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SBRY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SDR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGRO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SVT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SN.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMDS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SSE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STAN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SLA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STJ",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TW.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TSCO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ULVR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "VOD",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WTB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WPP",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RBS",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PPB",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JMAT",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PPB",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NG.",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "III",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ADM",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AAL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ANTO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AZN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BA.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BDEV",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BKG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BP.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BATS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BT.A",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BRBY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CNA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCH",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CPG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRDA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DCC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DGE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EZJ",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EVR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EXPN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FERG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FRES",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GFS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GKN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GSK",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GLEN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HLMA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HMSO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HL.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IMB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IHG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITRK",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JMAT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JE.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "KGF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LAND",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LLOY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LSE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MKS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MDC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MCRO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NG.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NMC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "OML",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PPB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSON",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PRU",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RRS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RTO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RIO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RR.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RBS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RDSA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RSA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SBRY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SDR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGRO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SVT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SN.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMDS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SSE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STAN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SLA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STJ",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TW.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TSCO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ULVR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "VOD",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WTB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WPP",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "III",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ADM",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AAL",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ANTO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AZN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BA.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BDEV",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BKG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLT",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BP.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BATS",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BT.A",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BRBY",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCL",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CNA",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCH",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CPG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRDA",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DCC",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DGE",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EZJ",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EVR",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EXPN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FERG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FRES",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GFS",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GKN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GSK",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GLEN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HLMA",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HMSO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HL.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IMB",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IHG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITRK",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JMAT",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JE.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "KGF",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LAND",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LLOY",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LSE",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MKS",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MDC",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MCRO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NG.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NMC",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "OML",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PPB",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSON",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PRU",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RRS",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RTO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RIO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RR.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RBS",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RDSA",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RSA",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGE",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SBRY",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SDR",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMT",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGRO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SVT",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SN.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMDS",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SSE",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STAN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SLA",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STJ",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TW.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TSCO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ULVR",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "VOD",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WTB",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WPP",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "III",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ADM",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AAL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ANTO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AZN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BA.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BDEV",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BKG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BP.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BATS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BT.A",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BRBY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CNA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCH",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CPG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRDA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DCC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DGE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EZJ",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EVR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EXPN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FERG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FRES",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GFS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GKN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GSK",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GLEN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HLMA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HMSO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HL.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IMB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IHG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITRK",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JMAT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JE.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "KGF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LAND",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LLOY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LSE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MKS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MDC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MCRO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NG.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NMC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "OML",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PPB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSON",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PRU",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RRS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RTO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RIO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RR.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RBS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RDSA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RSA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SBRY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SDR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGRO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SVT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SN.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMDS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SSE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STAN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SLA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STJ",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TW.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TSCO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ULVR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "VOD",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WTB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WPP",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "III",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ADM",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AAL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ANTO",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AZN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BA.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RR.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGRO",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IMB",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BKG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MDC",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STAN",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MDC",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GFS",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EXPN",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FERG",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "VOD",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SVT",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "III",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SN.",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PPB",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WPP",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRDA",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RBS",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FRES",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NMC",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CNA",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BATS",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RSA",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BATS",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ADM",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MCRO",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WPP",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GKN",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STJ",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GKN",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LAND",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ADM",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SN.",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCL",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JE.",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGE",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RRS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Financial Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Tobacco"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Personal Goods"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SBRY",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WPP",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Pharmaceuticals & Biotechnology"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Software & Computer Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Gas, Water & Multiutilities"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EVR",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMDS",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Software & Computer Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food & Drug Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Oil & Gas Producers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Household Goods & Home Construction"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Financial Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BDEV",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RTO",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "STAN",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Retail hospitality"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Tobacco"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Travel & Leisure"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Automobiles & Parts"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Banks"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SVT",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCH",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RTO",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BRBY",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Gas, Water & Multiutilities"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Software & Computer Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Equity Investment Instruments"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food & Drug Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Industrial Metals & Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LAND",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WTB",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Travel & Leisure"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Travel & Leisure"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Banks"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Personal Goods"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Retail hospitality"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RRS",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HLMA",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SDR",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GKN",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ANTO",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AZN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EVR",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RRS",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Industrial Metals & Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Automobiles & Parts"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Software & Computer Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Household Goods & Home Construction"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GLEN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "OML",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SN.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CPG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FRES",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Fixed Line Telecommunications"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Pharmaceuticals & Biotechnology"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Real Estate Investment Trusts"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Automobiles & Parts"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Banks"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EXPN",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TSCO",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCL",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RBS",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Gas, Water & Multiutilities"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Banks"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food & Drug Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Media"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BATS",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LGEN",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "KGF",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BNZL",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Beverages"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Personal Goods"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Media"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food & Drug Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RB.",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ANTO",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food & Drug Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Travel & Leisure"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "HSBA",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SGE",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NMC",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Construction & Materials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Automobiles & Parts"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Real Estate Investment Trusts"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Pharmaceuticals & Biotechnology"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RSA",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LLOY",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MCRO",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Retail hospitality"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Gas, Water & Multiutilities"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Industrials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Software & Computer Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMT",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BP.",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LSE",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TW.",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Pharmaceuticals & Biotechnology"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food & Drug Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Life Insurance"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Construction & Materials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Health Care Equipment & Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TW.",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NG.",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WTB",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "INF",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSN",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLT",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BDEV",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EZJ",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Banks"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CPG",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Industrials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EXPN",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LLOY",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Financial Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Media"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Tobacco"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "ADM",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSON",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "FRES",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Industrial Metals & Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Aerospace & Defense"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Beverages"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AAL",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SMIN",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MNDI",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ABF",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Aerospace & Defense"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food Producers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Gas, Water & Multiutilities"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Media"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "GFS",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKG",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IAG",
+            "attribute": "last_close",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Financial Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Construction & Materials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Electricity"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Life Insurance"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "LSE",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SHP",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BRBY",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PRU",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "MRW",
+            "attribute": "high",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Industrials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Construction & Materials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Tobacco"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Equity Investment Instruments"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITRK",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "JMAT",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AHT",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SDR",
+            "attribute": "low",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Household Goods & Home Construction"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Health Care Equipment & Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food & Drug Retailers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SKY",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITRK",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RIO",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "DLG",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSN",
+            "attribute": "market_cap",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Gas, Water & Multiutilities"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Mining"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Life Insurance"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITRK",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "RR.",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "VOD",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "REL",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "PSN",
+            "attribute": "abs_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Oil & Gas Producers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Life Insurance"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Food Producers"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Financial Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "General Industrials"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "SVT",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "WTB",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BLND",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BP.",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "NXT",
+            "attribute": "per_change",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Personal Goods"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Software & Computer Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Travel & Leisure"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Media"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Support Services"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "PPB",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "RR.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BP.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "III",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "PRU",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "IHG",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CCL",
+            "attribute": "price",
+            "use_test_data": "true"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "UU.",
+            "attribute": "price",
+            "use_test_data": "true"
         }
     ]
 }

@@ -127,7 +127,6 @@ module.exports = function Fetch() {
       attribute: (ops && ops.type ? ops.type : 'price'), // Select price by default.
       use_test_data: (ops && ops.testData ? ops.testData.toString() : 'false')
     }).then(result => {
-      console.log(result);
       if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
       return result;
     });
