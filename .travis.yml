@@ -1,3 +1,9 @@
 language: node_js
 node_js:
     - "stable"
+python:
+  - "3.4"
+jdk:
+    - oraclejdk8
+install: "npm install"
+script: "npm test"
