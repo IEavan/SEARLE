@@ -124,8 +124,6 @@ class LSE_Reader():
                         time_today = time.mktime(time.strptime(time.strftime("%x"), "%m/%d/%y"))
                         time_offset = time.mktime(time.strptime(time_text + " 1970", "%H:%M %Y"))
                         time_published = time_today + time_offset
-                        print("time today is {}.. time offset is {}.. time publised is {}".format(time_today, time_offset, time_published))
-                        print("time text is {}".format(time_text))
                     except (ValueError):
                         time_published = 0
                     # print(time.ctime(time_published))

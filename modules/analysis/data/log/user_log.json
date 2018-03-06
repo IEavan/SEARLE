@@ -1135,6 +1135,172 @@
             "request_type": "get_current_attribute",
             "ticker": "BARC",
             "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "ITV",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 5
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "CRH",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CRH",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "volume"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "group": {
+                "type": "sector",
+                "sector_name": "Chemicals"
+            },
+            "attribute": "volume"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "BARC",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "fallers",
+                "quantity": 2
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "fallers",
+                "quantity": 2
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "per_change"
+        },
+        {
+            "request_type": "get_risers_attribute",
+            "group": {
+                "type": "risers",
+                "quantity": 2
+            },
+            "attribute": "abs_change"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "JE.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "JE.",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO"
+        },
+        {
+            "request_type": "get_news",
+            "limit_per_source": 1,
+            "ticker": "TSCO"
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
+        },
+        {
+            "request_type": "get_news",
+            "ticker": "TSCO",
+            "limit_per_source": 3
         }
     ]
 }
