@@ -9,24 +9,52 @@ const {spawn} = require('child_process');
 const path = require('path');
 const config = require('../config/config');
 const likelihoodThreshold = config.likelihoodThreshold;
-const numberOfRandomTickers = config.testing.numberOfRandomTickers
-if (!numberOfRandomTickers) numberOfRandomTickers = 5;
 if (!likelihoodThreshold) likelihoodThreshold = 0.5;
 const listings = require(require('path').resolve(__dirname, "../modules/data/FTSEListings"));
 
+// Get the number of test cases to produce.
+var numTestCases = 5; // Use 5 by default.
+
 var fetch = new Fetch();
 
+var coreCompanyAttributes = ["price", "volume", "last_close", "high", "low", "market_cap", "abs_change", "per_change"];
+
+describe("Functional Requirements", () => {
+  coreCompanyAttributes.forEach(attribute => {
+    describe(`Should return the ${attribute} of a given company on the FTSE 100.`, () => {
+      randomElements(listings.ticker, numTestCases).forEach(symbol => {
+        it(`Successfully looks up ${attribute} for ${symbol}.`, () => {
+          return fetch.stockLookup(symbol, {type: attribute});
+        });
+      })
+    });
+
+    describe(`Should return the ${attribute} for a given sector on the FTSE 100.`, () => {
+      randomElements(listings['ftse sector'], numTestCases).forEach(sector => {
+        it(`Successfully looks up ${attribute} for ${sector}.`, () => {
+          return fetch.groupLookup({entityType: 'sector', name: sector, type: attribute});
+        });
+      });
+    });
+  });
+
+  describe("Should return news for a given company on the FTSE 100.", () => {
+    randomElements(listings.ticker, numTestCases).forEach(symbol => {
+      it(`Successfully retrieves news articles on ${symbol}.`, () => {
+        return fetch.getNews(symbol);
+      })
+    });
+  });
+
+})
 
 
-describe('Live AI', () => {
+
+describe('Passive AI', () => {
 
     describe('Significant Change in Spot Price', () => {
 
-      var randomSymbols = [];
-      while(randomSymbols.length < numberOfRandomTickers)
-        randomSymbols.push(listings.ticker[Math.floor(Math.random() * listings.ticker.length)]);
-
-      randomSymbols.forEach(symbol => {
+      randomElements(listings.ticker, numTestCases).forEach(symbol => {
         it(`Should detect significant change in ${symbol}`, () => {
           return generateStockTestingData()
             .then(fetch.stockLookup(symbol, {testData: true}).then(result => {
@@ -36,8 +64,6 @@ describe('Live AI', () => {
       })
     })
 
-
-
 });
 
 // describe('Non-Functional Requirements', () => {
@@ -45,6 +71,17 @@ describe('Live AI', () => {
 //     assert.equal(true, false);
 //   })
 // })
+
+// Return a specified amount of random elements from the array passed.
+function randomElements(array, limit){
+  if (!limit) return array;
+
+  var output = [];
+  while (output.length < limit)
+    output.push(array[Math.floor(Math.random() * array.length)]);
+
+  return output;
+}
 
 function isUnlikely(response){
   return response.result.likelihood && (response.result.likelihood < likelihoodThreshold);
