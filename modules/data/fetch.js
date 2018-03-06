@@ -124,7 +124,8 @@ module.exports = function Fetch() {
     return pyStockLookup({
       request_type: "get_current_attribute",
       ticker: entity,
-      attribute: (ops && ops.type ? ops.type : 'price') // Select price by default.
+      attribute: (ops && ops.type ? ops.type : 'price'), // Select price by default.
+      use_test_data: (ops && ops.testData ? ops.testData.toString() : 'false')
     }).then(result => {
       console.log(result);
       if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
