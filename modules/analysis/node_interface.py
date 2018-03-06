@@ -156,6 +156,26 @@ if __name__ == "__main__":
         predicted_request = predictor.intent_to_request(intent)
         response["result"]["value"] = predicted_request
 
+    # Fit a  straight line trend to the specified attribute defaults to week backwards
+    if input_args["request_type"] == "get_trend_attribute":
+        request_type_understood = True
+
+        look_back = 604800 # One week in seconds
+        try:
+            start_time = input_args["start_time"]
+            look_back  = time.time() - start_time
+        except (KeyError):
+            pass
+
+        result = 1
+        grad, y_intercept = ai.fit_trend(input_args["attribute"],
+                                         input_args["ticker"],
+                                         look_back=look_back,
+                                         test=use_test_data)
+
+        response["result"]["gradient"]    = grad
+        response["result"]["y_intercept"] = y_intercept
+
 
     if not request_type_understood:
         response["error"]["message"] = "Request type '" + \

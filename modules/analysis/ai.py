@@ -223,6 +223,15 @@ def get_likelihood(attribute, ticker, value, exclude_current=True,
 
     return prob
 
+def fit_trend(attribute, ticker, look_back=604800, test=False):
+    """ Return the gradient and y_intercept of a straight line fit to the histroical data """
+    if not test: reader = Stock_Reader()
+    else:        reader = Stock_Reader(data_path="./data/test_frames")
+
+    historical_attrs = reader.get_attribute_range(ticker, attribute, time.time() - look_back)
+    line_grad, y_intercept = np.polyfit(range(len(historical_attrs)), historical_attrs, 1) # Fit degree 1 polynomial
+    return line_grad, y_intercept
+
 # ---------- Functionality for determining the sentiment of text --------------
 class Sentiment_Analyzer():
     def __init__(self):

@@ -23,4 +23,11 @@ get_fallers_market_cap
 get_fallers_abs_change
 get_fallers_per_change
 get_fallers_last_close
-get_week_trend_price
+get_trend_price
+get_trend_high
+get_trend_low
+get_trend_volume
+get_trend_market_cap
+get_trend_abs_change
+get_trend_per_change
+get_trend_last_close
