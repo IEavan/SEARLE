@@ -48,6 +48,8 @@ module.exports = (params) => {
         // So we must prepare the results as such.
         // res.result = res.result.value;
 
+        console.log(res);
+
         // Return results, with results embedded into the rich-text field.
         return resolve(
           {

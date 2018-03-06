@@ -103,7 +103,7 @@
     "mainParam": "request_type",
     "request_type": {
       "get_news": "Get me news on {ticker}.",
-      "get_current_attribute": "Get the {attribute} of {ticker}.",
+      "get_current_attribute": "Get the {attribute} of {ticker}{sector_name}.",
       "get_risers_attribute": "Get the top {quantity} {type}."
     }
   },

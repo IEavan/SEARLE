@@ -153,6 +153,40 @@ class LSE_Reader():
 
             response = requests.get(yahoo_url)
             if response.status_code != 200:
+                # Parse html
+                html = BeautifulSoup(response.text, "html.parser")
+                li_list = html.find(id="content").find_all("li")
+
+                for i, li in enumerate(li_list):
+                    news = {}
+                    time_text = li.div.text.strip()
+                    try: # Try parsing the full date
+                        time_published = time.mktime(time.strptime(time_text + " 2018", "%d %b%H:%M %Y"))
+                        if time_published > time.time():
+                            time_published = time.mktime(time.strptime(time_text + " 2017", "%d %b%H:%M %Y"))
+                    except (ValueError):
+                        pass
+                    try:
+                        time_today = time.mktime(time.strptime(time.strftime("%x"), "%m/%d/%y"))
+                        time_offset = time.mktime(time.strptime(time_text + " 1970", "%H:%M %Y"))
+                        time_published = time_today + time_offset
+                    except (ValueError):
+                        time_published = 0
+
+                    a_tag = li.find("a")
+                    title = a_tag.text
+                    link = "www.stockmarketwire.com" + a_tag.attrs["href"]
+                    body = li.find("p").text.strip()
+
+                    news["time_published"] = time_published
+                    news["url"] = link
+                    news["title"] = title
+                    news["body"] = body
+
+                    news_list.append(news)
+
+                    if (i + 1) >= limit_per_source:
+                        break
                 return news_list
             else:
                 try:
