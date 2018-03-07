@@ -4,7 +4,7 @@
   "description": "SEARLE webhook for resolving DiagFlow intents into processed user responses.",
   "main": "hook.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
+    "test": "mocha --timeout 5000",
     "dev": "concurrently \"npm start\" \"node ./dev/localTunnel.js\"",
     "webhook": "node ./deployment/hook.js",
     "update": "node ./deployment/update.js",
@@ -26,6 +26,7 @@
     "concurrently": "^3.5.1",
     "didyoumean2": "^1.3.0",
     "express": "^4.16.2",
+    "mocha": "^5.0.2",
     "moment": "^2.21.0",
     "ngrok": "^2.2.26",
     "query-string": "^5.1.0",
