@@ -18,6 +18,7 @@
 // DEPENDENCIES
 const resolveEntity = require('../resolve/resolveEntity');
 const Fetch = require('../data/fetch');
+const moment = require('moment');
 
 // Module entry point.
 module.exports = (params) => {
@@ -31,7 +32,14 @@ module.exports = (params) => {
     // Return extended stock name + symbol for now.
 
     // If no company name return error.
-    if (!params.entityName) return reject(`In order to make a stock lookup, I need a company name!`)
+    if (!params.entityName) return reject(`In order to make a stock lookup, I need a company name!`);
+
+    var time = false;
+
+    // Attempt to parse timeExact as unix time.
+    try {
+      time = (params.timeExact ? moment(params.timeExact).unix() : time)
+    } catch(e){}
 
     resolveEntity(params.entityName, (resolvedEntity) => {
 
@@ -54,10 +62,10 @@ module.exports = (params) => {
         // aggregating the result.
         if (params.stockLookupType == 'change'){
 
-          return resolve(fetch.stockLookup(resolvedEntity.symbol, {type: 'abs_change'}).then(absChangeResult => {
+          return resolve(fetch.stockLookup(resolvedEntity.symbol, {type: 'abs_change', time: time}).then(absChangeResult => {
 
             // Perform the same query for percentage change.
-            return fetch.stockLookup(resolvedEntity.symbol, {type: 'per_change'}).then(percentageChangeResult => {
+            return fetch.stockLookup(resolvedEntity.symbol, {type: 'per_change', time: time}).then(percentageChangeResult => {
 
               // Compose the two values and return the result.
               // TODO: Handle this part in the language transformer as a composed result.
@@ -82,7 +90,7 @@ module.exports = (params) => {
         // Fetch and return the spot price for the resolved entity and given stockLookupType.
         // TODO: Proper error handling.
         return resolve(
-          fetch.stockLookup(resolvedEntity.symbol, {type: (params.stockLookupType)}).then(result => {
+          fetch.stockLookup(resolvedEntity.symbol, {type: (params.stockLookupType), time: time}).then(result => {
             return Object.assign(result, resolvedEntity);
           })
         );
@@ -102,10 +110,10 @@ module.exports = (params) => {
         // Handle change separately. (Requires composition of percentage & absolute change).
         if (params.stockLookupType == "change"){
 
-          return resolve(fetch.groupLookup(resolvedEntity, {type: 'abs_change'}).then(absChangeResult => {
+          return resolve(fetch.groupLookup(resolvedEntity, {type: 'abs_change', time: time}).then(absChangeResult => {
 
             // Perform the same query for percentage change.
-            return fetch.groupLookup(resolvedEntity, {type: 'per_change'}).then(percentageChangeResult => {
+            return fetch.groupLookup(resolvedEntity, {type: 'per_change', time: time}).then(percentageChangeResult => {
 
               // Compose the two values and return the result.
               var composedResultValue = `${absChangeResult.result.value} (${percentageChangeResult.result.value}%)`;
@@ -126,7 +134,7 @@ module.exports = (params) => {
           }));
         }
 
-        return resolve(fetch.groupLookup(resolvedEntity, {type: params.stockLookupType}).then(res => {
+        return resolve(fetch.groupLookup(resolvedEntity, {type: params.stockLookupType, time: time}).then(res => {
           return Object.assign(res, resolvedEntity);
           })
         );

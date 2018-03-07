@@ -1311,6 +1311,194 @@
             "request_type": "get_trend_attribute",
             "ticker": "III",
             "attribute": "volume"
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "III",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520374917
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "III",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "TUI",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "CPG",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "EZJ",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "BARC",
+            "attribute": "price",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "AV.",
+            "attribute": "price",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "TUI",
+            "attribute": "last_close",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "TUI",
+            "attribute": "last_close",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_attribute",
+            "ticker": "TUI",
+            "attribute": "last_close",
+            "use_test_data": "false",
+            "start_time": 1520208000
+        },
+        {
+            "request_type": "get_current_attribute",
+            "ticker": "ITV",
+            "attribute": "volume",
+            "use_test_data": "false"
+        },
+        {
+            "request_type": "get_current_attribute",
+            "attribute": "price",
+            "ticker": "III"
         }
     ]
 }

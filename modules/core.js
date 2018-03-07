@@ -115,6 +115,7 @@ module.exports = function Core() {
       // Attach the suggestions to the rich text payload of the fulfilledRawRequest object.
       if (!fulfilledRawRequest.data) fulfilledRawRequest.data = { suggestion: []};
       if (!fulfilledRawRequest.data.suggestion) fulfilledRawRequest.data.suggestion = [];
+      if (!predictedIntentObj || !predictedIntentObj.result) predictedIntentObj.result = {};
       fulfilledRawRequest.data.suggestion.push(transform({params: {}, ltID: "suggestion", ...predictedIntentObj.result}));
 
       // Once we have obtained the suggested intents (from prediction), we need

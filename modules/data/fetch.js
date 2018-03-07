@@ -59,7 +59,7 @@ module.exports = function Fetch() {
     return pyGetIntent({
       request_type: "predict_intent"
     }).then(res => {
-      if (res.error && res.error.message) throw Error(res.error.message)
+      if (res && res.error && res.error.message) throw Error(res.error.message)
       return res;
     });
 
@@ -121,13 +121,21 @@ module.exports = function Fetch() {
 
     const pyStockLookup = nodePyInt(`${pyScriptsPath}/node_interface.py`, null, {cwd: pyScriptsPath});
 
-    return pyStockLookup({
+    var requestObject = (ops.time ? {
+      request_type: "get_attribute",
+      ticker: entity,
+      attribute: (ops && ops.type ? ops.type : 'price'), // Select price by default.
+      use_test_data: (ops && ops.testData ? ops.testData.toString() : 'false'),
+      start_time: ops.time
+    } : {
       request_type: "get_current_attribute",
       ticker: entity,
       attribute: (ops && ops.type ? ops.type : 'price'), // Select price by default.
       use_test_data: (ops && ops.testData ? ops.testData.toString() : 'false')
-    }).then(result => {
-      console.log(result);
+    });
+
+
+    return pyStockLookup(requestObject).then(result => {
       if (!result || result === 'None\n') return Promise.reject(`Could not lookup ${entity}.`);
       return result;
     });
