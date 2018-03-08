@@ -103,6 +103,7 @@ if __name__ == "__main__":
         
         if result != -1:
             response["result"]["value"] = result
+            result = -1 # TODO have logging param
         elif "ticker" in input_args:
             response["error"]["message"] = "Stock with ticker '" + \
                     input_args["ticker"] + "' was not found"
