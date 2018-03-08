@@ -17,7 +17,7 @@ const predictIntent = require('./functions/predictIntent');
 const postProcessHandler = require('./functions/postProcessHandler');
 
 // Mapping of intent names into discrete functions which delegate task of fulfilling
-// requets. If some intent is not mapped, a default 'helper' message will be relayed
+// requests. If some intent is not mapped, a default 'helper' message will be relayed
 // to the user. TODO: Implement full error handling method.
 const actionMap = {
 
